@@ -32,7 +32,9 @@ const Feedbackpage = () => {
     const getbysub = async (sub) => {
         setloader(true)
         setsubid(sub)
-        const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/v2/feedbacksub/${sub}`)
+        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/v2/feedbacksub`,{
+            sub:sub
+        })
         console.log("nayan", data)
         setfback(data.feedback)
         setloader(false)
