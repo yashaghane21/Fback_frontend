@@ -37,8 +37,11 @@ export default function AdminDashB() {
             token: "",
         })
         localStorage.removeItem("auth");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("username");
         navigate('/')
     }
+
     useEffect(() => {
         if (!auth?.user?.role === 2) {
             toast.warn("Cant access this")
