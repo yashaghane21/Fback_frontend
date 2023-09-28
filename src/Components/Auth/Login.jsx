@@ -13,11 +13,13 @@ const Login = () => {
   const { auth, setauth, setsem, setcusername } = useAuth()
   const [email, setemail] = useState("")
   const [Password, setpassword] = useState("")
+  const [loader, setloader] = useState(false)
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+    setloader(true)
     try {
-      const { data } = await axios.post(" https://f-backend-7g5y.onrender.com/api/v1/login", {
+      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v1/login", {
         email: email,
         password: Password
       })
@@ -25,6 +27,7 @@ const Login = () => {
         toast.success(" login succesfully ", {
           autoClose: 2000,
         });
+        setloader(false)
         navigate("/")
         setauth({
           ...auth,
@@ -62,6 +65,7 @@ const Login = () => {
 
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
           <h1 className='text-center text-3xl font-semibold'>Login</h1>
+          
           <h1 className='font-bold text-lg '>Email:</h1>
 
 
