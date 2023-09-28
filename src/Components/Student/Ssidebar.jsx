@@ -5,6 +5,7 @@ import { BiSolidDashboard, BiUserCircle } from 'react-icons/bi'
 import { VscFeedback } from "react-icons/vsc"
 import { toast } from "react-hot-toast"
 import { useAuth } from '../Auth/AuthContext'
+import { HiOutlineLogout } from "react-icons/hi"
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md'
 export default function AdminDashB() {
 
