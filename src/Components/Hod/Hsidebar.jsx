@@ -146,8 +146,6 @@ export default function Hsidebar() {
                                 <Link to='/hod/sub'>
                                     <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
                                 </Link>
-                                <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
-
                                 < section className='mt-4  px-8 sm:hidden' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
                                         <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={30} className=' text-white' />
@@ -156,6 +154,9 @@ export default function Hsidebar() {
                                     </section>
                                     }
                                 </section>
+                                <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+
+                              
                             </ul>
                         </div>
                     </div>
