@@ -66,9 +66,9 @@ const Hhome = () => {
                 <h1 className={`text-white text-xl sm:text-2xl py-4 px-2 font-bold `}>Welcome , {cusername} Sir👏👏 </h1>
             </section>
 
-            <div className='flex justify-center '>
+            <div className='flex justify-center items-center '>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[20vh] w-[50vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}+</h1>
@@ -86,7 +86,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[20vh] w-[50vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}+</h1>
@@ -102,7 +102,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[20vh] w-[50vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}+</h1>
@@ -124,15 +124,15 @@ const Hhome = () => {
 
             <div className='flex justify-center'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[600px]:grid-cols-1 mt-10'>
-                    <div className={`h-[30vh] bg-[#0c131d]    text-white my-5 sm:mx-5 w-[50vh] rounded-md shadow-md p-2 ${theme == "light" ? "bg-white" : "bg-[#0c131d]"} `}>
+                    <div className={`h-[30vh] w-[40vh] bg-[#0c131d]    text-white my-5 sm:mx-5  rounded-md shadow-md p-2 ${theme == "light" ? "bg-white" : "bg-[#0c131d]"} `}>
                         <FeedbackChart feedbackData={feedbackData} />
 
 
                     </div>
-                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[50vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
+                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
                         <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
                     </div>
-                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[50vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
+                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
                         <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
                     </div>
 

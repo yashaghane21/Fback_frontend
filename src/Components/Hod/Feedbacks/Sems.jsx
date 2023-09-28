@@ -44,13 +44,13 @@ const Sems = () => {
             <section>
                 <h1 className={`font-bold text-2xl ${theme == "light" ? "text-black" : "text-white"}`}>FEEDBACKS</h1>
             </section>
-            <div className='flex justify-center items-center sm:flex justify-start'>
+            <div className='flex justify-center items-center  sm:justify-start'>
                 {loader ? <section className='flex justify-center items-center h-[100vh]'>
                     <section className=' '><BarLoader size={23} color='blue' className='w-full' /></section>
                 </section> :
                     <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[600px]:grid-cols-1 p-5'>
                         {sems.map((item, index) =>
-                            <div className={`h-[27vh] my-5 shadow-xl rounded-md w-[45vh] shadow-md mx-5  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
+                            <div className={`h-[27vh] my-5 shadow-xl rounded-md w-[45vh]  mx-5  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
                                 <h1 className={`text-center  font-bold p-5 mt-7 text-4xl ${theme == "light" ? "" : "text-white"}`}>{item.name}</h1>
                                 <h1 className={`text-center sm:p-2 sm:pl-4  font-bold flex mx-10 px-2  text-xl ${theme == "light" ? "" : "text-white"}`}>View FeedBacks <AiOutlineArrowRight size={28} color='blue' className='mx-2' />   </h1>
                                 <h1 className={` font-bold   text-xl ${theme == "light" ? "" : "text-white"}`}>   </h1>
