@@ -175,7 +175,7 @@ const Students = () => {
                         <form className='w-[1005]' >
 
 
-                            {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handleold(e.target.value)} >
+                            {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]   " : "focus:outline-none  bg-[#0c131d] border-none"}' `} placeholder='select a semester ' onChange={(e) => handleold(e.target.value)} >
                                 <option value="">Select Old Semester</option>
                                 {sems.map((item, index) => (
                                     <option className='' key={index} value={item._id}>{item.name}</option>
@@ -186,7 +186,7 @@ const Students = () => {
                             }
                             {
 
-                                <select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handlenew(e.target.value)} >
+                                <select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]   " : "focus:outline-none bg-[#0c131d] border-none"}' `} placeholder='select a semester ' onChange={(e) => handlenew(e.target.value)} >
                                     <option value="">Select New option</option>
                                     {sems.map((item, index) => (
                                         <option className='' key={index} value={item._id}>{item.name}</option>
@@ -196,7 +196,7 @@ const Students = () => {
                                 </select>
                             }
 
-                            <button onClick={updatesem} className='hover:bg-blue-700 border-2 text-white px-8 py-1 mt-3 rounded-full'>Update</button>
+                            <button onClick={updatesem} className={`hover:bg-blue-700 hover:text-white border-2  font-bold px-8 py-1 mt-3 rounded-full ${theme == "light"?"text-black":"text-white"}`}>Update</button>
                         </form>
                     </div>
 

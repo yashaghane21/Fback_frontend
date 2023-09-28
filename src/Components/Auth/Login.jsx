@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from "react-hot-toast"
 import { useAuth } from './AuthContext'
-
+import { ThreeDots } from "react-loader-spinner"
 
 const Login = () => {
 
@@ -65,7 +65,11 @@ const Login = () => {
 
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
           <h1 className='text-center text-3xl font-semibold'>Login</h1>
-          
+          {loader ? <section className='flex justify-center items-center'>
+             <ThreeDots size={23} color='blue' />
+          </section> :
+            <>
+            </>}
           <h1 className='font-bold text-lg '>Email:</h1>
 
 

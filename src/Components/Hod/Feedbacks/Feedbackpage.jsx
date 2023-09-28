@@ -29,16 +29,18 @@ const Feedbackpage = () => {
         setloader(false)
     }
 
-    const getbysub = async (sub) => {
+    const getbysub = async (subject) => {
         setloader(true)
-        setsubid(sub)
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/v2/feedbacksub`,{
-            sub:sub
+        setsubid(subject)
+        console.log(subject);
+
+        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/feedbacksub",{
+            sub: subject
         })
-        console.log("nayan", data)
+        console.log(data)
         setfback(data.feedback)
         setloader(false)
-
+;
     }
 
 
@@ -63,7 +65,9 @@ const Feedbackpage = () => {
             setploader(true);
             window.my_modal_1.showModal()
             // console.log("ghfjhvjh", sid);
-            const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v3/user/${sid}`);
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+                id: sid
+            });
             window.my_modal_1.showModal()
             setstudent(data.user);
             setploader(false);
@@ -81,11 +85,12 @@ const Feedbackpage = () => {
     }, [uid])
     return (
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
+
             <div className='overflow-x-auto w-full '>
                 <ul className='flex  cursor-pointer select-none'>
-                    <li className='mx-2 shadow-lg bg-white text-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
+                    <li className='  bg-white text-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
                     {sub.map((item, index) => (
-                        <li className={`mx-2 shadow-black bg-white select-none text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                        <li className={`mx-1 shadow-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             key={index}>{item.name}</li>
                     ))}
 
@@ -133,7 +138,7 @@ const Feedbackpage = () => {
                     </table>
                 }
                 <dialog id="my_modal_1" className="modal">
-                    <form method='dialog' className={`modal-box ${theme == "dark" ? " text-white bg-[#1d232a]" : " bg-[#1d232a] text-white "}`}>
+                    <form method='dialog' className={`modal-box ${theme == "dark" ? " text-white bg-[#1d232a]" : " bg-white text-black "}`}>
                         <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
                         {ploader ?
                             <section className='flex justify-center items-center h-[20vh]'>

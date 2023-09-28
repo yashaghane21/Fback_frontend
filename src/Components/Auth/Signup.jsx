@@ -3,8 +3,10 @@ import axios from "axios"
 import { Select } from "antd"
 import { toast } from "react-hot-toast"
 import img from "./login1.png"
+import { ThreeDots } from "react-loader-spinner"
 import { Link, useNavigate } from 'react-router-dom'
 const Option = Select
+
 
 const Signup = () => {
 
@@ -15,15 +17,18 @@ const Signup = () => {
   const [enroll, setenroll] = useState("")
   const [phone, setphone] = useState("")
   const [departments, setdepartments] = useState([]);
-  const [dep, setdep] = useState("")
+  const [dept, setdept] = useState("")
   const [semester, setsemester] = useState([]);
   const [sem, setsem] = useState("")
+  const [loader, setloader] = useState(false)
 
   const alldepartments = async () => {
     try {
+      setloader(true)
       const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v1/department");
       console.log(response.data.departments);
       setdepartments(response.data.departments);
+      setloader(false)
     } catch (error) {
       console.error("Error fetching departments:", error);
     }
@@ -32,15 +37,16 @@ const Signup = () => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-
+    setloader(true)
     try {
+      setloader(true)
       const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v1/register", {
         name: name,
         email: email,
         Enroll: enroll,
         password: Password,
         phone: phone,
-        department: dep,
+        department: dept,
         sem: sem
       });
       if (data.success) {
@@ -48,6 +54,7 @@ const Signup = () => {
           autoClose: 2000,
 
         })
+        setloader(false)
         navigate("/login")
       }
       else {
@@ -69,15 +76,18 @@ const Signup = () => {
 
   // http://localhost:5000/api/v1/getsembydep
 
-  const getsems = async () => {
+  const getsems = async (dep) => {
     console.log("dd", dep);
+    setloader(true)
     try {
+      setloader(true)
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v1/getsembydep`, {
         dep: dep
       });
 
       console.log(data.sems);
       setsemester(data.sems);
+      setloader(false)
 
     } catch (error) {
       console.error("Error fetching semesters:", error);
@@ -87,8 +97,8 @@ const Signup = () => {
 
   const handlechange = (value) => {
     console.log("department", value)
-    setdep(value)
-
+    getsems(value)
+    setdept(value)
 
   };
 
@@ -103,12 +113,7 @@ const Signup = () => {
 
   }, [])
 
-  useEffect(() => {
 
-    if (setdep) {
-      getsems();
-    }
-  }, [dep])
 
 
   return (
@@ -123,6 +128,18 @@ const Signup = () => {
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
 
           <h1 className='text-center text-2xl font-semibold'>Signup</h1>
+          {loader ? <section className='flex justify-center items-center'>
+            <ThreeDots height="20"
+              width="80"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true} />
+          </section> :
+            <>
+            </>}
           <input type='text' placeholder='Name ' className='w-full p-2 border-2 mt-5 my-2 rounded-2xl'
             value={name} onChange={(e) => setname(e.target.value)} />
           <input type='email' placeholder='Enter Email' className='w-full p-2 border-2  my-2 rounded-2xl'

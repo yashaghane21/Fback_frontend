@@ -80,15 +80,16 @@ const teacher = () => {
     }
     const getteachers = async () => {
         try {
+            getuser();
             setploader(true)
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
                 dep: dep
             })
             console.log(data.teachers)
             setteachers(data.teachers)
-           
-            getuser()
-            setploader(false)
+            setploader(false);
+     
+            
         } catch (error) {
           
                 console.error('Error fetching data:', error);
@@ -168,12 +169,12 @@ const teacher = () => {
                     <div className='w-full mt-2'>
                         <form className='w-[1005]'>
                             <input type='text' placeholder='Name' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name}
                                 onChange={(e) => setname(e.target.value)}
                             />
                             <input type='email' placeholder='Email' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={email}
                                 onChange={(e) => setemail(e.target.value)}
                             />
@@ -183,16 +184,16 @@ const teacher = () => {
                                 <option className=''>sd</option>
                             </select> */}
                             <input type='text' placeholder='Phone' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={phone}
                                 onChange={(e) => setphone(e.target.value)}
                             />
                             <input type='text' placeholder='Education' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={education}
                                 onChange={(e) => seteducation(e.target.value)}
                             />
-                            <button onClick={addfac} className='hover:bg-blue-700 border-2 text-white px-8 py-1 mt-3 rounded-full'>Add</button>
+                            <button onClick={addfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light"?"text-black":"text-white"}`}>Add</button>
                         </form>
                     </div>
 
@@ -203,7 +204,7 @@ const teacher = () => {
 
             </dialog>
             <dialog id="my_modal_2" className="modal">
-                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-black  bg-[#1d232a] "}`}>
+                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-black  bg-white"}`}>
                     <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
                     {ploader ?
                         <section className='flex justify-center items-center h-[20vh]'>
@@ -212,7 +213,7 @@ const teacher = () => {
 
                         : <>
                             <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-black" : ""}`}>✕</button>
-                            <div className={`${theme == 'dark' ? " focus:outline-none border-none text-white " : "text-white"}`}>
+                            <div className={`${theme == 'dark' ? " focus:outline-none border-none text-white " : "text-black bg-white"}`}>
                                 <section className='flex justify-center items-center'>
                                     <CgProfile size={80} color='blue ' />
 
