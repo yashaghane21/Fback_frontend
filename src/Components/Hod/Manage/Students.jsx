@@ -37,7 +37,7 @@ const Students = () => {
         const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/students")
         console.log(data.students)
         setstudents(data.students)
-        setLoading(false)
+        setLoading(false);
     }
 
 

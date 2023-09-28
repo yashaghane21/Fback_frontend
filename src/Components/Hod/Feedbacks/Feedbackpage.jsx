@@ -62,6 +62,7 @@ const Feedbackpage = () => {
             window.my_modal_1.showModal()
             // console.log("ghfjhvjh", sid);
             const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v3/user/${sid}`);
+            window.my_modal_1.showModal()
             setstudent(data.user);
             setploader(false);
             console.log(data);
@@ -78,7 +79,7 @@ const Feedbackpage = () => {
     }, [uid])
     return (
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
-            <div className='overflow-x-auto '>
+            <div className='overflow-x-auto w-full '>
                 <ul className='flex  cursor-pointer select-none'>
                     <li className='mx-2 shadow-lg bg-white text-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
                     {sub.map((item, index) => (
