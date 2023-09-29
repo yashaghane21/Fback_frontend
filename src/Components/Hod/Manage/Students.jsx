@@ -1,4 +1,4 @@
-noimport React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../Auth/AuthContext'
 import axios from 'axios'
 import { BarLoader } from 'react-spinners'
