@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+noimport React, { useEffect, useState } from 'react'
 import { useAuth } from '../../Auth/AuthContext'
 import axios from 'axios'
 import { BarLoader } from 'react-spinners'
@@ -51,7 +51,7 @@ const Students = () => {
         const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
         console.log("ankita", response.data.sems)
         setsems(response.data.sems)
-        setLoading(true)
+        setLoading(false)
     }
     const getbyfilter = async (sem) => {
         setLoading(true)
