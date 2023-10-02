@@ -19,6 +19,7 @@ const Students = () => {
 
     const getUserData = async () => {
         try {
+            setLoading(true)
             console.log("Fetching user data for id:", id)
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`,{
                 id:id
@@ -51,7 +52,7 @@ const Students = () => {
         const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
         console.log("ankita", response.data.sems)
         setsems(response.data.sems)
-        setLoading(true)
+        setLoading(false)
     }
     const getbyfilter = async (sem) => {
         setLoading(true)

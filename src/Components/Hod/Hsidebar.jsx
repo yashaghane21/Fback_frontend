@@ -93,6 +93,9 @@ export default function Hsidebar() {
                                 <Link to='/hod/sub'>
                                     <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
                                 </Link>
+                                <Link to='/hod/efb'>
+                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />EndCourse Feedback</li>
+                                </Link>
                                 <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
                                 < section className='mt-4  px-8 sm:hidden' >
