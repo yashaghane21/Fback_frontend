@@ -41,8 +41,11 @@ const Sems = () => {
     }, [dept])
     return (
         <div className={`${theme == "light" ? " bg-white text-black" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
-            <section>
+            <section className='flex justify-between items-center'>
                 <h1 className={`font-bold text-2xl ${theme == "light" ? "text-black" : "text-white"}`}>FEEDBACKS</h1>
+                <section className=' w-[20%]'>
+                    <button  className='px-4 font-bold shadow-blue-700 shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
+                </section>
             </section>
             <div className='flex justify-center items-center   sm:justify-start'>
                 {loader ? <section className='flex justify-center w-full items-center h-[100vh]'>

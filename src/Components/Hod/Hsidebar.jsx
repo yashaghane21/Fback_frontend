@@ -58,9 +58,11 @@ export default function Hsidebar() {
             <div className={`${theme == "light" ? "" : ""} w-[100%]      `}>
 
 
+
                 <div onClick={handleNav} className='block sm:hidden absolute right-0 top-0 mt-5 m-2'>
-                    {nav ? <AiOutlineClose size={20} className='text-white' /> : <AiOutlineMenu size={20} className='text-white' />}
+                    {nav ? <AiOutlineClose size={20} className={`${theme == "light" ? "text-black" : ""}`} /> : <AiOutlineMenu size={20} className={`${theme == "light" ? "text-black" : ""}`} />}
                 </div>
+
 
 
 
@@ -71,9 +73,9 @@ export default function Hsidebar() {
                         <div className='flex justify-center mt-0 items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
                             <section className='h-[6vh] w-[6vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
-                            <VscFeedback  size={40} color='white' className='p-2 font-bold'/>
+                                <VscFeedback size={40} color='white' className='p-2 font-bold' />
                             </section>
-                           
+
                         </div>
                         <hr className='mt-1 font-bold'></hr>
                         <div className='flex justify-start  mt-8 items-start'>
@@ -96,7 +98,7 @@ export default function Hsidebar() {
                                 <Link to='/hod/efb'>
                                     <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />EndCourse Feedback</li>
                                 </Link>
-                                <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+                                <li onClick={handleLogOut} className='text-white w-max mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
                                 < section className='mt-4  px-8 sm:hidden' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
@@ -127,9 +129,9 @@ export default function Hsidebar() {
                         <div className='flex justify-center items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
                             <section className='h-[7vh] w-[7vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
-                            <VscFeedback  size={40} color='white' className='p-2 font-bold'/>
+                                <VscFeedback size={40} color='white' className='p-2 font-bold' />
                             </section>
-                           
+
                         </div>
                         <hr></hr>
                         <div className='flex flex-col text-xl  list-none'>
@@ -159,7 +161,7 @@ export default function Hsidebar() {
                                 </section>
                                 <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
-                              
+
                             </ul>
                         </div>
                     </div>

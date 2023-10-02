@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../Auth/AuthContext'
 import { BarLoader } from 'react-spinners'
 import { AiOutlineEye } from "react-icons/ai"
+import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const Endfeedbacks = () => {
     const { theme } = useAuth()
@@ -9,41 +11,53 @@ const Endfeedbacks = () => {
     const [dep, setdep] = useState("")
     const uid = localStorage.getItem("userid")
     const [loader, setloader] = useState(false)
+    const navigate = useNavigate()
+    console.log(uid)
 
     const getuser = async () => {
+        setloader(true)
         try {
-            setloader(true);
+            setloader(true)
 
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: uid
             });
             console.log(data);
             setdep(data.user.department);
+            getfbydep()
             setloader(false);
-            console.log(data);
+
         } catch (error) {
-            setloader(false);
         }
     }
 
     const getfbydep = async () => {
+        setloader(true)
+        console.log(dep)
         try {
-            setloader(true);
+            setloader(true)
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/ecfeedbackby", {
                 dep: dep
             });
             console.log(data.feedback)
             setfbacks(data.feedback)
-            setloader(false);
+            setloader(false)
         } catch (error) {
-            setloader(false);
         }
     }
 
+
     useEffect(() => {
+        console.log("useEffect triggered");
         getuser();
-        getfbydep();
-    }, []);
+    }, [uid]);
+
+    useEffect(() => {
+        if (dep) {
+            getfbydep();
+        }
+    }, [dep]);
+
 
 
     return (
@@ -53,42 +67,43 @@ const Endfeedbacks = () => {
                 <BarLoader size={23} color='blue' />
             </section> :
                 <>
-                </>}
-            <div className={`py-3 sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
+                    <div className={`py-3 sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
 
-                <table className='border-collapse select-none w-[90%] '>
-                    <thead>
-                        <tr className=' bg-blue-700 '>
-                            <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
-                            <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
-                            <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
-                            {/* <th className='p-2 text-left py-2 text-white text-lg'>Student</th> */}
-                            <th className='p-2 text-left py-2 text-white text-lg'>Status</th>
-                        </tr>
-                    </thead>
-                    <>
-
-                        {fbacks.map((item, index) => {
-                            return (
-                                <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
-                                    <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
-                                    <td className=' p-2 font-semibold cursor-pointer text-left' >{item.student.name}</td>
-                                    <td className=' p-2 font-semibold cursor-pointer text-left' >{item.student.Enroll}</td>
-
-                                    <td className=' p-2 font-semibold text-left flex cursor-pointer ' > View<AiOutlineEye size={23} className='mx-1 mt-1' /></td>
+                        <table className='border-collapse select-none w-[90%] '>
+                            <thead>
+                                <tr className=' bg-blue-700 '>
+                                    <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
+                                    {/* <th className='p-2 text-left py-2 text-white text-lg'>Student</th> */}
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Status</th>
                                 </tr>
-                            )
-                        }
+                            </thead>
+                            <>
+
+                                {fbacks.map((item, index) => {
+                                    return (
+                                        <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
+                                            <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
+                                            <td className=' p-2 font-semibold  cursor-pointer text-left' >{item.student?.name}</td>
+                                            <td className=' p-2 font-semibold cursor-pointer text-left' >{item.student?.Enroll}</td>
+
+                                            <td onClick={() => navigate(`/hod/ecmain/${item._id}`)} className=' p-2 font-semibold text-left flex cursor-pointer ' > View<AiOutlineEye size={23} className='mx-1 mt-1' /></td>
+                                        </tr>
+                                    )
+                                }
 
 
-                        )
-                        }
-                    </>
+                                )
+                                }
+                            </>
 
 
-                </table>
-            </div>
-            {/* // </>} */}
+                        </table>
+                    </div>
+                </>}
+
+
 
         </div >
     )

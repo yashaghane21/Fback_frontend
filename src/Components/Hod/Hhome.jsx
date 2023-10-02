@@ -61,9 +61,9 @@ const Hhome = () => {
     return (
 
 
-        <div className={`${theme == "light" ? "" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5  w-full`}>
-            <section className='bg-blue-500 h-[12vh] rounded-md '>
-                <h1 className={`text-white text-xl sm:text-2xl py-4 px-2 font-bold `}>Welcome , {cusername} Sir👏👏 </h1>
+        <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto  w-full`}>
+            <section className='bg-blue-500 h-[12vh] rounded-md m-5'>
+                <h1 className={`text-white text-xl sm:text-2xl py-4 px-2 font-bold `}>Welcome , {cusername} 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center '>

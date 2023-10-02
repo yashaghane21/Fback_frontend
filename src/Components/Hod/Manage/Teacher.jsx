@@ -132,7 +132,7 @@ const teacher = () => {
 
             </div>
 
-            <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1 shadow-blue-700 shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Teacher +</button>
+            <button onClick={() => window.my_modal_1.showModal()} className='px-3 mt-5 py-1 shadow-blue-700 shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Teacher +</button>
             <div className='flex justify-center'>
                 {ploader ? <section className='flex justify-center items-center h-[100vh]'>
                     <BarLoader color='blue' />
@@ -141,7 +141,7 @@ const teacher = () => {
                         <div className={`p-2 sm:p-5 grid  select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-4   min-[600px]:grid-cols-1   ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
 
-                                <div className={`h-[28vh] sm:h-[20vh] w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] shadow-black "}`} key={index}>
+                                <div className={`h-[26• vh] sm:h-[22vh] mb-2 w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] shadow-black "}`} key={index}>
                                     <section className='w-[50%] p-4'>
                                         <CgProfile size={80} />
                                     </section>
