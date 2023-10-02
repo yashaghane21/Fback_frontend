@@ -4,6 +4,7 @@ import axios from 'axios'
 import { BarLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineAlignRight, AiOutlineArrowRight } from 'react-icons/ai'
+import { toast } from 'react-hot-toast'
 
 const Sems = () => {
     const { auth } = useAuth()
@@ -13,9 +14,23 @@ const Sems = () => {
     const [sems, setsems] = useState([])
     const id = localStorage.getItem("userid")
     const [loader, setloader] = useState(false)
+    const [name, setname] = useState("")
+
+
+    const addsem = async (e) => {
+        e.preventDefault();
+        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/sem", {
+            department: dept,
+            name: name
+        });
+        if (data.success) {
+            toast.success("semster added succesfully")
+            getsems()
+        }
+    }
     const getdepid = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`,{
-            id:id
+        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            id: id
         })
         console.log(data)
         console.log(data.user.department)
@@ -44,16 +59,16 @@ const Sems = () => {
             <section className='flex justify-between items-center'>
                 <h1 className={`font-bold text-2xl ${theme == "light" ? "text-black" : "text-white"}`}>FEEDBACKS</h1>
                 <section className=' w-[20%]'>
-                    <button  className='px-4 font-bold shadow-blue-700 shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
+                    <button onClick={() => window.my_modal_1.showModal()} className='px-4 font-bold shadow-blue-700 shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
                 </section>
             </section>
-            <div className='flex justify-center items-center   sm:justify-start'>
+            <div className='flex justify-center items-center mt-5   sm:justify-start'>
                 {loader ? <section className='flex justify-center w-full items-center h-[100vh]'>
                     <section className=' '><BarLoader size={23} color='blue' className='w-full' /></section>
                 </section> :
-                    <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[600px]:grid-cols-1 '>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[700px]:grid-cols-2  min-[900px]:grid-cols-3 '>
                         {sems.map((item, index) =>
-                            <div className={`h-[27vh] my-2 shadow-xl rounded-md w-[40vh]  sm:mx-4  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
+                            <div className={`h-[27vh] my-2 shadow-xl rounded-md w-[40vh] sm:w-[55vh]  sm:mx-4  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
                                 <h1 className={`text-center  font-bold p-5 mt-2 text-3xl ${theme == "light" ? "" : "text-white"}`}>{item.name}</h1>
                                 <h1 className={`text-center sm:p-2 sm:pl-4  font-bold flex mx-10 px-2  text-xl ${theme == "light" ? "" : "text-white"}`}>View FeedBacks <AiOutlineArrowRight size={28} color='blue' className='mx-2' />   </h1>
                                 <h1 className={` font-bold   text-xl ${theme == "light" ? "" : "text-white"}`}>   </h1>
@@ -64,6 +79,29 @@ const Sems = () => {
                 }
 
             </div>
+            <dialog id="my_modal_1" className="modal">
+                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
+                    <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
+                    <h1 className='text-blue-700 font-bold'>Add Semester</h1>
+                    <div className='w-full mt-2'>
+                        <form className='w-[1005]'>
+                            <input type='text' placeholder=' Semester Name' className=
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                value={name}
+                                onChange={(e) => setname(e.target.value)}
+                            />
+
+
+                            <button onClick={addsem} className='bg-blue-700 text-white px-8 py-1 mt-3 rounded-full'>Add</button>
+                        </form>
+                    </div>
+
+
+
+                </form>
+
+
+            </dialog>
         </div>
     )
 }
