@@ -122,8 +122,8 @@ const Feedbackpage = () => {
                                 <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
                                     <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
                                     <td className=' p-2 font-semibold text-left text-blue-600'>{item.course.name}</td>
-                                    <td className=' p-2 font-semibold text-leneft cursor-pointer' onClick={() => getuser(item.student._id)}>{item.student.Enroll}</td>
-                                    <td className=' p-2 font-semibold text-green-700 cursor-pointer text-left' onClick={() => getuser(item.student._id)}>{item.student.name}</td>
+                                    <td className=' p-2 font-semibold text-left cursor-pointer' onClick={() => getuser(item.student._id)}>{item.student.Enroll}</td>
+                                    <td className=' p-2 font-semibold  cursor-pointer text-left' onClick={() => getuser(item.student._id)}>{item.student.name}</td>
                                     <td className=' p-2 font-semibold text-left flex cursor-pointer ' onClick={() => navigate(`/hod/mainf/${item._id}`)}> View<AiOutlineEye size={23} className='mx-1 mt-1' /></td>
                                 </tr>
 

@@ -106,7 +106,7 @@ const Ecform = () => {
 
 
                             <input type='text' placeholder='question' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={text} onChange={(e) => settext(e.target.value)}
                             />
 

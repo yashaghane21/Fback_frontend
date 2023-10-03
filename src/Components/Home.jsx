@@ -6,7 +6,7 @@ import { useAuth } from './Auth/AuthContext'
 const Home = () => {
 
     const { theme, auth } = useAuth()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     return (
         <div>
             <section className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
@@ -16,8 +16,8 @@ const Home = () => {
                         {!auth?.user ? (
                             <>
                                 <div className='flex items-center font-bold'>
-                                    <button className='mx-2 bg-blue-700 text-sm py-0.5 hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/login")}> Login</button>
-                                    <button className='mx-2 bg-blue-700 text-sm py-0.5 hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/signup")}>Signup</button>
+                                    <button className='mx-2 border-[1px] text-sm py-[0.5px] hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/login")}> Login</button>
+                                    <button className='mx-2 border-[1px]  text-sm py-[0.5px] hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/signup")}>Signup</button>
                                 </div>
                             </>
                         ) : (
@@ -42,7 +42,7 @@ const Home = () => {
                                             <div className="flex flex-row">
 
                                                 <li className="cursor-pointer flex group-hover:underline-offset-1 " >
-                                                   
+
                                                     <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/student ' >{auth?.user?.name}</Link>
                                                     <BiUserCircle size={23} className="text-blue-700 mt-2" onClick={() => navigate('/student')} />
                                                 </li>

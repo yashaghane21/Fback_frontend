@@ -44,14 +44,7 @@ export default function AdminDashB() {
     }
 
     useEffect(() => {
-        if (!auth?.user?.role === 2) {
-            toast.warn("Cant access this")
-            navigate("/")
-        }
-        if (!auth?.user) {
-            toast.warn("Cant access this")
-            navigate("/")
-        }
+
         localStorage.setItem("theme", theme)
         const localtheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute("data-theme", localtheme)
@@ -90,6 +83,10 @@ export default function AdminDashB() {
                                 <Link to='/admin/ecf'>
                                     <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />EndCourse Form</li>
                                 </Link>
+                                <Link to='/admin/manage'>
+                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />Manage</li>
+                                </Link>
+
 
                                 <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
@@ -134,6 +131,9 @@ export default function AdminDashB() {
                                 </Link>
                                 <Link to='/admin/ecf'>
                                     <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />EndCourse Form</li>
+                                </Link>
+                                <Link to='/admin/manage'>
+                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />Manage</li>
                                 </Link>
 
 

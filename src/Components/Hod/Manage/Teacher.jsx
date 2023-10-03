@@ -138,7 +138,7 @@ const teacher = () => {
                     <BarLoader color='blue' />
                 </section> :
                     <>
-                        <div className={`p-2 sm:p-5 grid  select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-4   min-[600px]:grid-cols-1   ${theme == "light" ? "text-black" : ""}`}>
+                        <div className={`p-2 sm:p-5 grid rounded-lg  select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-4   min-[600px]:grid-cols-1   ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
 
                                 <div className={`h-[26• vh] sm:h-[22vh] mb-2 w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] shadow-black "}`} key={index}>

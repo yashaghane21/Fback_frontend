@@ -23,6 +23,7 @@ import Ecfeedback from './Components/Student/Ecfeedback'
 import Ecform from './Components/Admin/Ecform'
 import Endfeedbacks from './Components/Hod/Feedbacks/Endfeedbacks'
 import Ecmainf from './Components/Hod/Feedbacks/Ecmainf'
+import Manage from './Components/Admin/Manage'
 const App = () => {
   return (
     <Authprovider>
@@ -38,6 +39,7 @@ const App = () => {
             <Route index element={<Cform />} />
             <Route path='cform' element={<Cform />} />
             <Route path='ecf' element={<Ecform />} />
+            <Route path='manage' element={<Manage />} />
           </Route>
 
           <Route path='/student' element={<Ssidebar />}>

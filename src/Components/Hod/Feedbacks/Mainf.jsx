@@ -26,7 +26,7 @@ const Mainf = () => {
         getf()
     }, [])
     return (
-        <div className={`${theme == "light" ? "" : "bg-[#1d232a]"} h-[91vh]  overflow-y-auto `}>
+        <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh]  overflow-y-auto `}>
             <section className={`flex flex-col select-none sm:flex-row sm:justify-between ${theme == "light" ? "text-black" : "text-white"}`}>
                 <span>
                     <h1 className='font-semibold px-5 py-2'> <span className='text-blue-700'>Subject </span>  :-{fbacks.course?.name} </h1>

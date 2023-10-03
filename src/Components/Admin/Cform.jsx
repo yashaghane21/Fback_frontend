@@ -98,7 +98,7 @@ const Cform = () => {
 
             <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1 sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Add Questions +</button>
             <dialog id="my_modal_1" className="modal">
-                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
+                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-black bg-white"}`}>
                     <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
                     <h1 className='text-blue-700 font-bold'>Add Question</h1>
                     <div className='w-full mt-2'>
@@ -106,7 +106,7 @@ const Cform = () => {
 
 
                             <input type='text' placeholder='question' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={text} onChange={(e) => settext(e.target.value)}
                             />
 
