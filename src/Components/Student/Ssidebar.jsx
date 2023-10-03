@@ -26,6 +26,7 @@ export default function AdminDashB() {
         localStorage.removeItem("userid");
         localStorage.removeItem("username");
         navigate('/')
+        toast.success("Logout Succesfully ")
     }
 
 
@@ -143,7 +144,7 @@ export default function AdminDashB() {
                     <div className="w-full h-[50vh] sm:w-[90%] bg-[#f1f5f9]">
                         <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
-                        <section className="flex justify-center items-center ">
+                            <section className="flex justify-center items-center ">
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>STUDENT DASHBOARD</h1>
                             </section>
                             <section>

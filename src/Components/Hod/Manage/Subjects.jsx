@@ -28,8 +28,8 @@ const Subjects = () => {
     const getUserData = async () => {
         try {
             console.log("Fetching user data for id:", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`,{
-                id:id
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+                id: id
             })
             console.log(data.user)
             setDep(data.user.department)
@@ -67,7 +67,7 @@ const Subjects = () => {
         } catch (error) {
             console.error("Error fetching subjects:", error)
         } finally {
-         
+
         }
     }
 
@@ -173,9 +173,9 @@ const Subjects = () => {
                     </form>
                 </section>
                 <section className='w-[20%] '>
-                    <button className='px-5 py-1 hidden sm:block text-white shadow-blue-700 shadow-lg bg-blue-700 rounded-full' onClick={() => window.my_modal_1.showModal()} > New Subject</button>
+                    <button className='px-7 py-1 hidden sm:block text-white  bg-blue-700 rounded-full' onClick={() => window.my_modal_1.showModal()} > New Subject</button>
                 </section>
-                <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1 sm:hidden shadow-blue-700 shadow-lg absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Subject +</button>
+                <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Subject +</button>
 
 
 

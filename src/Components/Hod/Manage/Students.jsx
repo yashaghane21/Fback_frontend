@@ -119,9 +119,9 @@ const Students = () => {
                     </form>
                 </section>
                 <section className=' w-[30%]'>
-                    <button onClick={() => window.my_modal_1.showModal()} className='px-4 font-bold shadow-blue-700 shadow-lg  hidden sm:block text-white bg-blue-700 rounded-full'> Update Students</button>
+                    <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold   hidden sm:block text-white bg-blue-700 rounded-full'> Update Students</button>
                 </section>
-            <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1 shadow-blue-700 shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Update Students </button>
+            <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1  sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Update Students </button>
             </div>
             {loading ? <section className='h-[70vh] flex justify-center items-center'>
                 <BarLoader size={23} color='blue' />

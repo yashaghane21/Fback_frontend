@@ -31,6 +31,7 @@ export default function Hsidebar() {
         localStorage.removeItem("userid");
         localStorage.removeItem("username");
         navigate('/')
+        toast.success("Logout Succesfully ")
     }
 
 

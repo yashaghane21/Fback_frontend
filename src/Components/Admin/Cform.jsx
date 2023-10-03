@@ -70,7 +70,7 @@ const Cform = () => {
                     <div className='w-[100%] sm:w-[80%] h-[82vh] mb-0 overflow-y-auto'>
                         {questions.map((item, index) => {
                             return (
-                                <section key={index} className={`h-[12vh] flex justify-between items-center mx-2 my-4 rounded-lg ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d]"}`}>
+                                <section key={index} className={`h-[12vh] flex justify-between items-center mx-2 my-4 rounded-lg ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d] text-white"}`}>
                                     <section>
 
                                         <h1 className='px-2 font-bold text-xl'> {index + 1}) {item.question}</h1>
@@ -85,9 +85,9 @@ const Cform = () => {
 
 
 
-                    <div className='hidden ml-5 sm:block sm:w-[20%]'>
+                    <div className='hidden ml-5 sm:block sm:w-[30%]'>
                         <section className='flex flex-col justify-center items-center mt-5'>
-                            <button onClick={() => window.my_modal_1.showModal()} className='px-2 py-1 shadow-blue-700 shadow-lg bg-blue-700 rounded-md text-white font-bold '>ADD QUESTIONS</button>
+                            <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 shadow-blue-700  bg-blue-700 rounded-md text-white font-bold '>Add Questions</button>
                             <h1 className='mt-5  font-bold text-2xl'>Total Questions</h1>
                             <h1 className=' font-bold text-xl'>{total}</h1>
                         </section>

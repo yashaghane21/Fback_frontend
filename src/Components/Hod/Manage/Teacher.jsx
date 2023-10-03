@@ -127,12 +127,12 @@ const teacher = () => {
                     </form>
                 </section>
                 <section className=' w-[20%]'>
-                    <button onClick={() => window.my_modal_1.showModal()} className='px-4 font-bold shadow-blue-700 shadow-lg hidden sm:block text-white bg-blue-700 rounded-full'> New Teacher</button>
+                    <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold hidden sm:block text-white bg-blue-700 rounded-full'> New Teacher</button>
                 </section>
 
             </div>
 
-            <button onClick={() => window.my_modal_1.showModal()} className='px-3 mt-5 py-1 shadow-blue-700 shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Teacher +</button>
+            <button onClick={() => window.my_modal_1.showModal()} className='px-3 mt-5 py-1  shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Teacher +</button>
             <div className='flex justify-center'>
                 {ploader ? <section className='flex justify-center items-center h-[100vh]'>
                     <BarLoader color='blue' />

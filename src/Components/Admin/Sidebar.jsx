@@ -4,7 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { BiSolidDashboard } from 'react-icons/bi'
 import { VscFeedback } from "react-icons/vsc"
 import { useAuth } from '../Auth/AuthContext'
-import { toast } from "react-toastify"
+import { toast } from "react-hot-toast"
 import { HiOutlineLogout } from "react-icons/hi"
 import { AiOutlineHome } from "react-icons/ai"
 import { BsCalendarCheck } from "react-icons/bs"
@@ -40,6 +40,7 @@ export default function AdminDashB() {
         localStorage.removeItem("userid");
         localStorage.removeItem("username");
         navigate('/')
+        toast.success("Logout Succesfully ")
     }
 
     useEffect(() => {

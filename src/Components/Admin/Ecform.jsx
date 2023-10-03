@@ -85,9 +85,9 @@ const Ecform = () => {
 
 
 
-                    <div className='hidden ml-5 sm:block sm:w-[20%]'>
+                    <div className='hidden ml-5 sm:block sm:w-[30%]'>
                         <section className='flex flex-col justify-center items-center mt-5'>
-                            <button onClick={() => window.my_modal_1.showModal()} className='px-2 py-1 shadow-blue-700 shadow-lg bg-blue-700 rounded-md text-white font-bold '>ADD QUESTIONS</button>
+                            <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 shadow-blue-700  bg-blue-700 rounded-md text-white font-bold '>Add Question</button>
                             <h1 className='mt-5  font-bold text-2xl'>Total Questions</h1>
                             <h1 className=' font-bold text-xl'>{total}</h1>
                         </section>
@@ -96,7 +96,7 @@ const Ecform = () => {
                 </div>
             </>}
 
-            <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1 sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Add Questions +</button>
+            <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Add Questions +</button>
             <dialog id="my_modal_1" className="modal">
                 <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
                     <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>

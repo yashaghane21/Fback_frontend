@@ -59,7 +59,7 @@ const Sems = () => {
             <section className='flex justify-between items-center'>
                 <h1 className={`font-bold text-2xl ${theme == "light" ? "text-black" : "text-white"}`}>FEEDBACKS</h1>
                 <section className=' w-[20%]'>
-                    <button onClick={() => window.my_modal_1.showModal()} className='px-4 font-bold shadow-blue-700 shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
+                    <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold  shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
                 </section>
             </section>
             <div className='flex justify-center items-center mt-5   sm:justify-start'>
