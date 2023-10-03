@@ -23,8 +23,8 @@ const teacher = () => {
         try {
 
             console.log("ghfjhvjh", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`,{
-                id:id
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+                id: id
             })
             console.log(data.user.department)
             setdep(data.user.department)
@@ -88,13 +88,13 @@ const teacher = () => {
             console.log(data.teachers)
             setteachers(data.teachers)
             setploader(false);
-     
-            
+
+
         } catch (error) {
-          
-                console.error('Error fetching data:', error);
-            } 
-        
+
+            console.error('Error fetching data:', error);
+        }
+
     }
 
     const getbyid = async (id) => {
@@ -193,7 +193,7 @@ const teacher = () => {
                                 value={education}
                                 onChange={(e) => seteducation(e.target.value)}
                             />
-                            <button onClick={addfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light"?"text-black":"text-white"}`}>Add</button>
+                            <button onClick={addfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Add</button>
                         </form>
                     </div>
 

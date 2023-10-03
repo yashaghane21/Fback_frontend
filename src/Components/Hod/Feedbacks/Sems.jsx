@@ -62,17 +62,20 @@ const Sems = () => {
                     <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold  shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
                 </section>
             </section>
-            <div className='flex justify-center items-center mt-5   sm:justify-start'>
+            <div className='flex justify-center items-center mt-5   '>
                 {loader ? <section className='flex justify-center w-full items-center h-[100vh]'>
                     <section className=' '><BarLoader size={23} color='blue' className='w-full' /></section>
                 </section> :
-                    <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[700px]:grid-cols-2  min-[900px]:grid-cols-3 '>
+                    <div className='p-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 '>
                         {sems.map((item, index) =>
-                            <div className={`h-[27vh] my-2 shadow-xl rounded-md w-[40vh] sm:w-[55vh]  sm:mx-4  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
+                            <div className={`h-40 my-2 w-[40vh]  shadow-xl rounded-lg   sm:mx-4  ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`} key={index} onClick={() => navigate(`/hod/fpage/${item._id}`)}>
                                 <h1 className={`text-center  font-bold p-5 mt-2 text-3xl ${theme == "light" ? "" : "text-white"}`}>{item.name}</h1>
-                                <h1 className={`text-center sm:p-2 sm:pl-4  font-bold flex mx-10 px-2  text-xl ${theme == "light" ? "" : "text-white"}`}>View FeedBacks <AiOutlineArrowRight size={28} color='blue' className='mx-2' />   </h1>
-                                <h1 className={` font-bold   text-xl ${theme == "light" ? "" : "text-white"}`}>   </h1>
+                                <section className='flex flex-col justify-start items-center'>
+                                    <button className='my-2 border-[1px] border-gray-400 py-[0.5px] px-5 rounded-3xl  font-semibold hover:bg-blue-600 hover:font-bold hover:border-none hover:text-white '>View</button>
+                                </section>
+
                             </div>
+
                         )}
                     </div>
 
