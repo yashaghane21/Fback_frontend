@@ -15,9 +15,9 @@ const Home = () => {
                     <li>
                         {!auth?.user ? (
                             <>
-                                <div className='flex items-center font-bold'>
-                                    <button className='mx-2 border-[1px] text-sm py-[0.5px] hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/login")}> Login</button>
-                                    <button className='mx-2 border-[1px]  text-sm py-[0.5px] hover:bg-white hover:text-black  rounded-full px-3 text-white' onClick={() => navigate("/signup")}>Signup</button>
+                                <div className={`flex items-center font-bold `}>
+                                    <button className={`mx-2 border-[1px]  text-sm py-[0.5px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white "} `} onClick={() => navigate("/login")}> Login</button>
+                                    <button className={`mx-2 border-[1px] border-black  text-sm py-[0.5px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white"} `} onClick={() => navigate("/signup")}>Signup</button>
                                 </div>
                             </>
                         ) : (

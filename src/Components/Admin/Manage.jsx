@@ -24,10 +24,28 @@ const Manage = () => {
         sethodi(value)
     }
 
+    const updept = async (id, value) => {
+        console.log("uuuuu", id, value)
+
+        const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/uphod", {
+            id: id, value: value
+        });
+        if (data?.success) {
+            alldepartments()
+            toast.success('Hod updated succesfully.', {
+                position: "top-center"
+            })
+        }
+        else {
+            toast.error("something went wrong")
+        }
+    }
+
+
     const addhod = async (e) => {
         e.preventDefault()
         const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/addhod", {
-            name: name,
+            name: hname,
             email: email,
             password: password,
             phone: phone,
@@ -120,7 +138,7 @@ const Manage = () => {
                                         <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
                                         <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
                                         <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.hod.name}</td>
-                                        <Select className='w-full ant-input text-xl mb-2 mt-2 rounded-2xl ' placeholder='Select A Hod'  >
+                                        <Select className='w-full ant-input text-xl mb-2 mt-2 rounded-2xl ' placeholder='Select A Hod' onChange={(value) => updept(item._id, value)}  >
 
                                             {hods.map((s) => (
                                                 <Option key={s._id} value={s._id}>

@@ -61,7 +61,7 @@ const Cform = () => {
 
     return (
         <div className={`p-2 h-[91vh] overflow-y-auto  sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
-            <h1 className={` font-bold sm:text-2xl ${theme == "light" ? "text-black" : "text-white"}`}>Course Form </h1>
+            <h1 className={` font-bold sm:text-2xl ${theme == "light" ? "text-black" : "text-white"}`}> Course Form </h1>
             {loader ? <section className='flex justify-center items-center h-[70vh]'>
                 <BarLoader size={23} color='blue' />
             </section> : <>

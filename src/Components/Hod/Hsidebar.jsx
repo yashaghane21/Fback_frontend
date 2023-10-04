@@ -79,10 +79,10 @@ export default function Hsidebar() {
 
                         </div>
                         <hr className='mt-1 font-bold'></hr>
-                        <div className='flex justify-start  mt-8 items-start'>
-                            <ul className='mt-4  cursor-none ' >
+                        <div className='flex justify-start  mt-8 items-center'>
+                            <ul className='mt-4  cursor-pointer ' >
                                 <Link to='/hod/home'>
-                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />DashBoard</li>
+                                    <li className='text-white  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />DashBoard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
                                     <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
