@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from "axios"
-import Pie from "../Hod/Charts/Pie"
 import FeedbackChart from './Charts/FeedbackChart'
 import { useAuth } from '../Auth/AuthContext'
 import a from "./1.png"
 import b from "./2.png"
 import c from "./3.png"
 import Mpie from './Charts/Mpie'
+import Pie from "./Charts/PIe"
 
 const Hhome = () => {
     const { theme, cusername } = useAuth()
