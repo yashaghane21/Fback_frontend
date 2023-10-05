@@ -53,7 +53,7 @@ const data = [
   }
 ];
 
-export default function App() {
+export default function Pie() {
   return (
     <AreaChart
       width={700}
