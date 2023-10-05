@@ -11,7 +11,7 @@ import {
 const data = [
   {
     name: "Page A",
-    uv: 4000,
+    uv: 2416,
     pv: 2400,
     amt: 2400
   },
@@ -56,8 +56,8 @@ const data = [
 export default function App() {
   return (
     <AreaChart
-      width={700}
-      height={300}
+      width={300}
+      height={200}
       data={data}
       margin={{
         top: 10,

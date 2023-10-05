@@ -12,6 +12,7 @@ import { MdManageAccounts } from "react-icons/md"
 import { PiStudent } from "react-icons/pi"
 import { MdSubject } from "react-icons/md"
 import { HiOutlineLogout } from "react-icons/hi"
+import { BiLastPage } from "react-icons/bi"
 export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth } = useAuth()
@@ -97,7 +98,7 @@ export default function Hsidebar() {
                                     <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
                                 </Link>
                                 <Link to='/hod/efb'>
-                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />EndCourse Feedback</li>
+                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BiLastPage size={30} className=' pr-2 pb-2 ' />EndCourse Feedback</li>
                                 </Link>
                                 <li onClick={handleLogOut} className='text-white w-max mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
@@ -138,7 +139,7 @@ export default function Hsidebar() {
                         <div className='flex flex-col text-xl  list-none'>
                             <ul className='mt-4  cursor-none' >
                                 <Link to='/hod/home'>
-                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />DashBoard</li>
+                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' /></li>
                                 </Link>
                                 <Link to='/hod/sems'>
                                     <li className='text-white w-max     hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>

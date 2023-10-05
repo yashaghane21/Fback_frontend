@@ -88,9 +88,9 @@ const Feedbackpage = () => {
 
             <div className='overflow-x-auto w-full '>
                 <ul className='flex  cursor-pointer select-none'>
-                    <li className='  bg-white text-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
+                    <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
                     {sub.map((item, index) => (
-                        <li className={`mx-1 shadow-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                        <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             key={index}>{item.name}</li>
                     ))}
 

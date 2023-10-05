@@ -182,9 +182,9 @@ const Subjects = () => {
             </div>
             <div className='overflow-x-auto mt-5 '>
                 <ul className='flex  cursor-pointer select-none'>
-                    <li className='mx-2 shadow-lg bg-white text-black rounded-md px-3 font-bold' onClick={() => { getTeachers(); getSubjects(); }}>All</li>
+                    <li className='mx-2 shadow-lg bg-white border-[1px] border-black text-black rounded-md px-3 font-bold' onClick={() => { getTeachers(); getSubjects(); }}>All</li>
                     {sems.map((item, index) => (
-                        <li className={`mx-2 shadow-lg bg-white select-none text-black rounded-md px-3 font-bold ${item._id == s ? "border-l-8 border-blue-700" : "border-b-0"} `} onClick={() => getbyfilter(item._id)}>{item.name}</li>
+                        <li className={`mx-2 shadow-lg border-[1px] border-black bg-white select-none text-black rounded-md px-3 font-bold ${item._id == s ? "border-b-4 border-blue-700" : "border-b-0"} `} onClick={() => getbyfilter(item._id)}>{item.name}</li>
                     ))}
 
 

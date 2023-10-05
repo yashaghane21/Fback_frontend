@@ -3,50 +3,53 @@ import { Bar } from 'react-chartjs-2';
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale } from 'chart.js';
 
 ChartJS.register(
-    CategoryScale,LinearScale,BarElement
+    CategoryScale, LinearScale, BarElement
 )
-const FeedbackChart = ({ feedbackData,semdata }) => {
+const FeedbackChart = ({ feedbackData, semdata }) => {
     const data = {
         labels: ['Feedbacks'],
         datasets: [
             {
                 label: 'Total Feedbacks',
-                backgroundColor: 'rgba(0,68,204,0.6)',
+                backgroundColor: '#ff6384',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
                 data: [feedbackData.tfeedbacks]
             },
             {
                 label: 'Total Feedbacks',
-                backgroundColor: 'rgba(0,68,204,0.6)',
+                backgroundColor: '#36a2eb',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
-                // data: [semdata.fbacks]
+                data: [feedbackData.tfeedbacks]
             },
             {
                 label: 'Total Feedbacks',
-                backgroundColor: 'rgba(0,68,204,0.6)',
+                backgroundColor: '#cc65fe',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
                 data: [feedbackData.tfeedbacks]
             }
             , {
                 label: 'Total Feedbacks',
-                backgroundColor: 'rgba(0,68,204,0.6)',
+                backgroundColor: '#ffce56',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
                 data: [feedbackData.tfeedbacks]
             }
         ]
     };
-    
+
 
     const options = {
         scales: {
             y: {
-                type: 'linear', 
+                type: 'linear',
                 beginAtZero: true,
-                max: 10,
+                y: {
+                    min: 0,
+                    max: 100
+                },
                 ticks: {
                     stepSize: 1
                 }
@@ -62,13 +65,17 @@ const FeedbackChart = ({ feedbackData,semdata }) => {
                 intersect: false,
             },
         },
-        animation: {
-            duration: 2000,
-            easing: 'easeOutQuart'
-        },
-        
+        animations: {
+            tension: {
+              duration: 1000,
+              easing: 'linear',
+              from: 1,
+              to: 0,
+              loop: true
+            }
+        }
     };
-    
+
 
     return <Bar data={data} options={options} />;
 };

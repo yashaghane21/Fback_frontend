@@ -127,7 +127,7 @@ const Signup = () => {
 
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
 
-          <h1 className='text-center text-2xl font-semibold'>Signup</h1>
+          <h1 className='text-center text-2xl font-bold'>Signup</h1>
           {loader ? <section className='flex justify-center items-center'>
             <ThreeDots height="20"
               width="80"
@@ -167,7 +167,7 @@ const Signup = () => {
             ))}
           </Select>
 
-          <input type='submit' className='w-[100%] bg-blue-500 border-2 rounded-2xl  p-2 mt-6 text-white' />
+          <input type='submit' className='w-[100%] bg-blue-700 border-2 rounded-2xl  p-2 mt-6 text-white' />
           <h1 className='text-center mt-2 font-semibold'>Already Registered ? <Link to="/login" className='text-blue-800'>Sign in Here</Link></h1>
         </form>
       </div>

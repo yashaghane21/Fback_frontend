@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg"
 import axios from "axios"
 import { BarLoader } from 'react-spinners'
 import { toast } from "react-hot-toast"
+import { AiOutlineDelete } from "react-icons/ai"
 
 const teacher = () => {
     const { theme } = useAuth()
@@ -141,7 +142,7 @@ const teacher = () => {
                         <div className={`p-2 sm:p-5 grid rounded-lg  select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-4   min-[600px]:grid-cols-1   ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
 
-                                <div className={`h-[26• vh] sm:h-[22vh] mb-2 w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] shadow-black "}`} key={index}>
+                                <div className={`h-[26• vh] sm:h-[22vh] mb-2 w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] text-white shadow-black "}`} key={index}>
                                     <section className='w-[50%] p-4'>
                                         <CgProfile size={80} />
                                     </section>
@@ -216,7 +217,7 @@ const teacher = () => {
                             <div className={`${theme == 'dark' ? " focus:outline-none border-none text-white " : "text-black bg-white"}`}>
                                 <section className='flex justify-center items-center'>
                                     <CgProfile size={80} color='blue ' />
-
+                                    <AiOutlineDelete />
 
                                 </section>
                                 <h1 className='text-center'>Faculty Profile</h1>
