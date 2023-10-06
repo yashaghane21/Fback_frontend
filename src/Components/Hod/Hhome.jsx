@@ -26,6 +26,7 @@ const Hhome = () => {
 
     const getdata = async () => {
         const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/getdata");
+        console.log(data)
         setts(data.totalstudents)
         settf(data.tfeedbacks)
         sett(data.tteacher)
@@ -40,34 +41,23 @@ const Hhome = () => {
         setfbacks(response.data)
     }
 
-    const qdata = async () => {
-        const { data } = await axios.get(` https://f-backend-7g5y.onrender.com/api/v2/feedbackby/${dep}`)
-        console.log("aditya", data)
-        setTotalGood(data.totalgood)
-        settotalaverage(data.feedback.totalaverage)
-    }
+
 
     const user = async () => {
-        const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v3/user/${id}`)
+        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            id: id
+        })
         console.log(data)
         console.log("useert", data.user.department)
         setdep(data.user.department)
     }
     useEffect(() => {
-        fdata()
-        user()
-        qdata()
-        getdata()
+        fdata();
+        user();
+        getdata();
     }, [])
 
-    const containerStyle = {
-        backgroundColor: theme === 'light' ? 'black' : '#FFFFFF',
-        color: theme === 'light' ? '#000000' : '#ffffff',
-        height: '91vh',
-        overflowY: 'auto',
-        padding: '5px',
-        width: '100%'
-    };
+
     return (
 
 
@@ -132,43 +122,55 @@ const Hhome = () => {
                 </div>
             </div>
             {/* 
-            <div className='flex justify-center'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[600px]:grid-cols-1 mt-10'>
-                    <div className={`h-[30vh] w-[40vh] bg-[#0c131d]    text-white my-5 sm:mx-5  rounded-md shadow-md p-2 ${theme == "light" ? "bg-white" : "bg-[#0c131d]"} `}>
-                        <FeedbackChart feedbackData={feedbackData} />
+            // <div className='flex justify-center'>
+            //     <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   min-[600px]:grid-cols-1 mt-10'>
+            //         <div className={`h-[30vh] w-[40vh] bg-[#0c131d]    text-white my-5 sm:mx-5  rounded-md shadow-md p-2 ${theme == "light" ? "bg-white" : "bg-[#0c131d]"} `}>
+            //             <FeedbackChart feedbackData={feedbackData} />
 
 
-                    </div>
-                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
-                        <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
-                    </div>
-                    <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
-                        <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
-                    </div>
+            //         </div>
+            //         <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
+            //             <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
+            //         </div>
+            //         <div className={`h-[40vh] sm:h-[30vh] my-5 sm:mx-5 w-[40vh] rounded-md p-1 shadow-md ${theme == "light" ? "bg-white" : "bg-[#0c131d]"}`}>
+            //             <PIe totalgood={totalgood} totalaverage={totalaverage} totalBelowaverage={totalBelowaverage} />
+            //         </div>
 
-                </div>
-            </div> */}
+            //     </div>
+            // </div> */}
 
-            <div className='sm:p-5 p-2 flex justify-center items-center sm:flex-row flex-col-reverse' >
+            <div className='sm:px-5 p-2 flex justify-center items-center sm:flex-row flex-col-reverse' >
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
                         <div className={`h-[30vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
                             <FeedbackChart feedbackData={feedbackData} />
                         </div>
                         <div className={`h-[18vh] my-2  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                            <section className='flex w-full h-[100%] '>
+                                <section className='p-5 w-[50%] h-full '>
+                                    <h1 className='font-bold text-xl'>Xyz</h1>
+                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt  wetfewtrtgerg g</h1>
+                                </section>
+                                <section className='flex justify-center items-center  rounded-2xl w-[50%]'>
+                                    <button className='px-5 py-2 border-green-700  shadow-sm shadow-green-700 border-[1px] rounded-lg '>ABCD</button>
+                                </section>
+                            </section>
 
                         </div>
                     </div>
                 </div>
                 <div className='w-[100%] sm:w-[70%] p-2 flex justify-center items-center'>
                     <section className='hidden sm:block'>
-                        <div className={`h-[50vh]  sm:w-[95%] flex justify-center items-center  w-[90vh] sm:mr-[10vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+                        <div className={`h-[50vh]  sm:w-[95%] flex flex-col justify-center items-center  w-[90vh] sm:mr-[10vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+                            <h1 className={`font-bold text-xl  text-left  ${theme == "light" ? " text-black" : " text-white"}`}>Good Feedbacks</h1>
+
                             <Pie />
                         </div>
                     </section>
 
                     <section className='block sm:hidden'>
                         <div className={`h-[50vh] flex justify-center items-center  w-[50vh] rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+
                             <Mpie />
                         </div>
 

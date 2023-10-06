@@ -98,7 +98,7 @@ const Feedbackpage = () => {
 
                 </ul>
             </div>
-            <div className={`py-3 sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
+            <div className={`py-3  sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
                 {loader ? <section className='flex justify-center items-center h-[100vh] w-[100%]'>
                     <section className=' '><BarLoader size={23} color='blue' /></section>
                 </section> :

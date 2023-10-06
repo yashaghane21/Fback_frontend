@@ -57,7 +57,7 @@ const Login = () => {
   return (
     <div className='flex h-screen w-full'>
 
-      <div className='hidden sm:flex justify-center items-center bg-blue-500 w-1/2'>
+      <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
         <img src={img} alt='ff' className='w-[50%] h-[40%]' />
       </div>
 
