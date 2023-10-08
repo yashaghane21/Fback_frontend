@@ -13,6 +13,7 @@ import { PiStudent } from "react-icons/pi"
 import { MdSubject } from "react-icons/md"
 import { HiOutlineLogout } from "react-icons/hi"
 import { BiLastPage } from "react-icons/bi"
+import u from "./user.png";
 export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth } = useAuth()
@@ -172,12 +173,15 @@ export default function Hsidebar() {
                     </div>
 
                     <div className="w-full h-[50vh] sm:w-[90%] bg-[#f1f5f9]">
-                        <div className={`${theme === 'light' ? 'bg-ehite' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
+                        <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>HOD DASHBOARD</h1>
                             </section>
-                            <section>
+                            <section className='flex'>
+                                <section className=' hidden sm:block  h-[5vh]'>
+                                    <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' />
+                                </section>
                                 < section className='mt-4  px-8 hidden sm:block' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
                                         <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={30} className={`${theme == "light" ? "" : "text-black"}`} />

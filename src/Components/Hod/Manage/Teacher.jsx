@@ -30,7 +30,7 @@ const teacher = () => {
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
             })
-            console.log(data.user.department)
+            console.log(data)
             setdep(data.user.department)
         } catch (error) {
 
@@ -114,7 +114,7 @@ const teacher = () => {
             setploader(true)
             getuser()
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
-                dep:dep
+                dep: dep
             })
             console.log(data.teachers)
             setteachers(data.teachers)

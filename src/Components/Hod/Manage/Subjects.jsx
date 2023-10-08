@@ -167,7 +167,7 @@ const Subjects = () => {
                 </section>
                 <section className='flex w-[65%] p-2 sm:[50%] justify-center items-center'>
                     <form className='w-[80%] ' action="" onSubmit={searchsub} >
-                        <input type='text' placeholder='Search For Subject' value={search} onChange={handlesearchchange} className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : ""}`}
+                        <input type='text' placeholder='Search For Subject' value={search} onChange={handlesearchchange} className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
 
                         />
                     </form>

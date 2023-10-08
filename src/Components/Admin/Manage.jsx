@@ -5,14 +5,16 @@ const Option = Select
 import axios from 'axios'
 import { BarLoader } from 'react-spinners'
 import { toast } from 'react-hot-toast'
+import { CgProfile } from "react-icons/cg"
 
 const Manage = () => {
-    const { theme } = useAuth()
+    const { theme } = useAuth();
     const [departments, setdepartments] = useState([]);
     const [loader, setloader] = useState(false)
     const [name, setname] = useState("")
     const [hodi, sethodi] = useState("")
     const [hods, sethods] = useState([])
+    const [uhod, setuhod] = useState("")
     const [hname, sethname] = useState("")
     const [email, setemail] = useState("")
     const [phone, setphone] = useState("")
@@ -27,49 +29,60 @@ const Manage = () => {
     const updept = async (id, value) => {
         console.log("uuuuu", id, value)
 
-        const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/uphod", {
-            id: id, value: value
-        });
-        if (data?.success) {
-            alldepartments()
-            toast.success('Hod updated succesfully.', {
-                position: "top-center"
-            })
-        }
-        else {
-            toast.error("something went wrong")
+        try {
+            const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/uphod", {
+                id: id,
+                value: value
+            });
+
+            if (data?.success) {
+                alldepartments()
+                toast.success('Hod updated successfully.', {
+                    position: "top-center"
+                })
+            } else {
+                toast.error("Something went wrong")
+            }
+        } catch (error) {
+            console.error("Error updating department:", error);
         }
     }
-
 
     const addhod = async (e) => {
         e.preventDefault()
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/addhod", {
-            name: hname,
-            email: email,
-            password: password,
-            phone: phone,
-            department: dept
-        });
-        console.log(data)
-        if (data.success) {
-            toast.success("Hod added succesfullly")
-            gethods()
-        }
-        else {
-            alert("not at all")
+        try {
+            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/addhod", {
+                name: hname,
+                email: email,
+                password: password,
+                phone: phone,
+                department: dept
+            });
+
+            if (data.success) {
+                toast.success("Hod added successfully")
+                gethods()
+            } else {
+                alert("Failed to add Hod")
+            }
+        } catch (error) {
+            console.error("Error adding Hod:", error);
         }
     }
+
     const adddept = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post(" https://f-backend-7g5y.onrender.com/api/v2/department", {
+            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/department", {
                 name: name,
                 hod: hodi
             });
+
             if (data.success) {
-                toast.success("Department Added Succesfully")
+                toast.success("Department Added Successfully")
                 alldepartments()
+            } else {
+                toast.error("Failed to add department")
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
@@ -80,14 +93,31 @@ const Manage = () => {
                 toast.error("An error occurred:", error.message);
             }
         }
-
-
     }
 
     const gethods = async () => {
-        const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/hods");
-        sethods(data.hods)
+        try {
+            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/hods");
+            sethods(data.hods)
+        } catch (error) {
+            console.error("Error fetching HODs:", error);
+        }
     }
+
+    const getuser = async (id) => {
+        try {
+            console.log(id)
+            window.my_modal_3.showModal()
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+                id: id
+            });
+            setuhod(data.user)
+            console.log(data);
+        } catch (error) {
+            console.error("Error fetching user:", error);
+        }
+    }
+
     const alldepartments = async () => {
         try {
             setloader(true)
@@ -99,10 +129,14 @@ const Manage = () => {
             console.error("Error fetching departments:", error);
         }
     };
+
+
+
     useEffect(() => {
         alldepartments()
         gethods()
     }, [])
+
     return (
         <div className={`p-2 h-[91vh] overflow-y-auto  sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
 
@@ -137,7 +171,7 @@ const Manage = () => {
                                     <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
                                         <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
                                         <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
-                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.hod.name}</td>
+                                        <td onClick={() => getuser(item.hod._id)} className={`p-2  cursor-pointer font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.hod.name}</td>
                                         <Select className='w-full ant-input text-xl mb-2 mt-2 rounded-2xl ' placeholder='Select A Hod' onChange={(value) => updept(item._id, value)}  >
 
                                             {hods.map((s) => (
@@ -238,8 +272,57 @@ const Manage = () => {
 
 
             </dialog>
+            <dialog id="my_modal_3" className="modal">
+                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-black  bg-white"}`}>
+                    <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
+                    {loader ?
+                        <section className='flex justify-center items-center h-[20vh]'>
+                            <section className=' '><BarLoader size={23} color='blue' /></section>
+                        </section>
+
+                        :
+
+                        <>
+                            <section className='flex justify-between'>
+                                {/* <section className='flex'>
+
+                                    <AiOutlineDelete onClick={() => delfac(teach._id)} size={23} color='red' className='mx-2' />
+                                    <AiOutlineEdit onClick={handleEditClick} size={23} />
+
+                                </section> */}
+                                <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-black" : ""}`}>✕</button>
+                            </section>
+
+                            <div className={`${theme == 'dark' ? " focus:outline-none border-none text-white " : "text-black bg-white"}`}>
+                                <section className='flex justify-center items-center'>
+                                    <CgProfile size={80} color='blue ' />
+
+                                </section>
+                                <h1 className='text-center'>Hod Profile</h1>
+                                <hr></hr>
+                                <h1 className='font-bold  text-1xl'>Name</h1>
+                                <h1 className='font-semibold text-sm my-1'>{uhod?.name}</h1>
+                                <hr className=''></hr>
+                                <h1 className='font-bold  text-1xl'>Email</h1>
+                                <h1 className='my-2 font-semibold'>{uhod?.email}</h1>
+                                <hr></hr>
+
+                                <h1 className='font-bold  text-1xl'>Mobile</h1>
+                                <h1 className='my-2 font-semibold'>{uhod?.phone}</h1>
+                              
+                                <hr></hr>
+
+                            </div>
+                        </>
+
+                    }
+
+                </form>
+
+
+            </dialog>
         </div>
     )
 }
 
-export default Manage
+export default Manage;
