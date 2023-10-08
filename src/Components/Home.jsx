@@ -3,6 +3,8 @@ import img from "../assets/yy.png"
 import { BiUserCircle } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './Auth/AuthContext'
+import { TypeAnimation } from 'react-type-animation';
+
 const Home = () => {
 
     const { theme, auth } = useAuth()
@@ -26,7 +28,7 @@ const Home = () => {
                                     <div className='flex flex-row cursor-pointer' onClick={() => navigate('/hod')} >
                                         <li className=' ml-0 flex' >
                                             <BiUserCircle size={23} className='text-blue-700 mt-2' />
-                                            <li className='mx-2 font-bold mt-2 items-center  hover:border-b-2 border-blue-700' >Hod</li>
+                                            <li className='mx-2 font-bold mt-2 items-center  hover:border-b-4 border-blue-700' >Hod</li>
                                         </li>
                                     </div>
                                 ) : (
@@ -62,9 +64,24 @@ const Home = () => {
 
 
                     <p className={`${theme == "light" ? "" : "text-white"}`}>
-                        <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}>FEEDBACKER </h1>
-                        Building a Better College Together, Join the Feedbacker Revolution!
-                        Building a Better College Together, Join the Feedbacker Revolution!""
+                        <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}>FEEDBACKER FOR </h1>
+                      <TypeAnimation
+                            sequence={[
+
+                                ' Better Student Experiences ',
+                                1000,
+                                ' Continuous Improvement',
+                                1000,
+                                ' Building Trust',
+                                1000,
+                                ' More Engagement    ',
+                                1000
+                            ]}
+                            wrapper="span"
+                            speed={100}
+                            style={{ fontSize: ' 2rem', display: 'inline-block', paddingLeft: "5px" }}
+                            repeat={Infinity}
+                        />
                     </p>
                     <button className='bg-blue-700 rounded-md text-white  px-4 py-1 mt-5 '>Get Started </button>
 

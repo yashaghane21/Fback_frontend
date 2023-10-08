@@ -34,13 +34,13 @@ const Feedbackpage = () => {
         setsubid(subject)
         console.log(subject);
 
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/feedbacksub",{
+        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/feedbacksub", {
             sub: subject
         })
         console.log(data)
         setfback(data.feedback)
         setloader(false)
-;
+            ;
     }
 
 
@@ -99,44 +99,73 @@ const Feedbackpage = () => {
                 </ul>
             </div>
             <div className={`py-3  sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
-                {loader ? <section className='flex justify-center items-center h-[100vh] w-[100%]'>
-                    <section className=' '><BarLoader size={23} color='blue' /></section>
-                </section> :
 
-                    <table className='border-collapse select-none w-[90%] '>
-                        <thead>
-                            <tr className=' bg-blue-700 '>
-                                <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
-                                <th className='p-2 text-left py-2 text-white text-lg'>Course</th>
-                                <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
-                                <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
-                                <th className='p-2 text-left py-2 text-white text-lg'>Status</th>
+
+                <table className='border-collapse select-none w-[90%] '>
+                    <thead>
+                        <tr className=' bg-blue-700 '>
+                            <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
+                            <th className='p-2 text-left py-2 text-white text-lg'>Course</th>
+                            <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
+                            <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
+                            <th className='p-2 text-left py-2 text-white text-lg'>Status</th>
+                        </tr>
+                    </thead>
+                    {loader ? (
+                        <tr className=' h-[60vh]'>
+                            <td></td>
+                            <td></td>
+                            <td className='flex justify-center items-center h-[70vh]'>
+                                <BarLoader color='blue' />
+                            </td>
+                            <td></td>
+                        </tr>
+                    ) : fback.length === 0 ? (
+                        <tr className=' h-[50vh] w-full'>
+                            <td className=' w-24'></td>
+                            <td className=' w-70'></td>
+                            <td className=' w-48 font-bold text-center'>No Feedbacks found</td>
+                            <td className=' w-44'></td>
+                        </tr>
+                    ) : (
+                        fback.map((item, index) => (
+                            <tr
+                                className='hover:bg-gray-400 border-b select-none first-letter:border-slate-500'
+                                key={index}
+                            >
+                                <td className='p-2 font-semibold text-left hidden sm:block text-sm'>
+                                    {index + 1}
+                                </td>
+                                <td className='p-2 font-semibold text-left text-blue-600'>
+                                    {item.course.name}
+                                </td>
+                                <td
+                                    className='p-2 font-semibold text-left cursor-pointer'
+                                    onClick={() => getuser(item.student._id)}
+                                >
+                                    {item.student.Enroll}
+                                </td>
+                                <td
+                                    className='p-2 font-semibold cursor-pointer text-left'
+                                    onClick={() => getuser(item.student._id)}
+                                >
+                                    {item.student.name}
+                                </td>
+                                <td
+                                    className='p-2 font-semibold text-left flex cursor-pointer'
+                                    onClick={() => navigate(`/hod/mainf/${item._id}`)}
+                                >
+                                    View<AiOutlineEye size={23} className='mx-1 mt-1' />
+                                </td>
                             </tr>
-                        </thead>
+                        ))
+                    )}
 
 
 
-                        <>
-
-                            {fback.map((item, index) => (
-                                <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
-                                    <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
-                                    <td className=' p-2 font-semibold text-left text-blue-600'>{item.course.name}</td>
-                                    <td className=' p-2 font-semibold text-left cursor-pointer' onClick={() => getuser(item.student._id)}>{item.student.Enroll}</td>
-                                    <td className=' p-2 font-semibold  cursor-pointer text-left' onClick={() => getuser(item.student._id)}>{item.student.name}</td>
-                                    <td className=' p-2 font-semibold text-left flex cursor-pointer ' onClick={() => navigate(`/hod/mainf/${item._id}`)}> View<AiOutlineEye size={23} className='mx-1 mt-1' /></td>
-                                </tr>
-
-                            ))
-                            }
-                        </>
+                </table>
 
 
-
-
-
-                    </table>
-                }
                 <dialog id="my_modal_1" className="modal">
                     <form method='dialog' className={`modal-box ${theme == "dark" ? " text-white bg-[#1d232a]" : " bg-white text-black "}`}>
                         <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>

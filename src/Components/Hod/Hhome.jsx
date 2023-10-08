@@ -18,7 +18,9 @@ const Hhome = () => {
     const [dep, setdep] = useState("")
     const [fbacks, setfbacks] = useState("")
     const id = localStorage.getItem("userid")
+    const [year, setyear] = useState("")
 
+    const years = [2021, 2022, 2023]
 
     const [ts, setts] = useState("")
     const [tf, settf] = useState("")
@@ -67,8 +69,8 @@ const Hhome = () => {
             </section>
 
             <div className='flex justify-center items-center sm:justify-start '>
-                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  min-[600px]:grid-cols-1 p-2 sm:p-5 '>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
@@ -86,7 +88,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
@@ -102,7 +104,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[50vh] mx-5 my-5  rounded-lg shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>
@@ -138,7 +140,6 @@ const Hhome = () => {
 
             //     </div>
             // </div> */}
-
             <div className='sm:px-5 p-2 flex justify-center items-center sm:flex-row flex-col-reverse' >
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
@@ -149,7 +150,7 @@ const Hhome = () => {
                             <section className='flex w-full h-[100%] '>
                                 <section className='p-5 w-[50%] h-full '>
                                     <h1 className='font-bold text-xl'>Xyz</h1>
-                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt  wetfewtrtgerg g</h1>
+                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt {year}  wetfewtrtgerg g</h1>
                                 </section>
                                 <section className='flex justify-center items-center  rounded-2xl w-[50%]'>
                                     <button className='px-5 py-2 border-green-700  shadow-sm shadow-green-700 border-[1px] rounded-lg '>ABCD</button>
@@ -161,17 +162,32 @@ const Hhome = () => {
                 </div>
                 <div className='w-[100%] sm:w-[70%] p-2 flex justify-center items-center'>
                     <section className='hidden sm:block'>
-                        <div className={`h-[50vh]  sm:w-[95%] flex flex-col justify-center items-center  w-[90vh] sm:mr-[10vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
-                            <h1 className={`font-bold text-xl  text-left  ${theme == "light" ? " text-black" : " text-white"}`}>Good Feedbacks</h1>
+                        <div className={`h-[50vh]  sm:w-[95%] flex flex-col  justify-center items-center   w-[90vh] sm:mr-[10vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+                            <section className=''>
+                                {/* <h1 className={`font-bold text-xl   ${theme == "light" ? " text-black" : " text-white"}`}>Good Feedbacks</h1> */}
+                                <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                    <option>Year</option>
+                                    {years.map((y) => (
 
-                            <Pie />
+                                        <option key={y} value={y}>{y}</option>
+                                    ))}
+                                </select>
+                            </section>
+
+                            <Pie year={year} />
                         </div>
                     </section>
 
                     <section className='block sm:hidden'>
-                        <div className={`h-[50vh] flex justify-center items-center  w-[50vh] rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+                        <div className={`h-[50vh] flex flex-col justify-center items-center  w-[50vh] rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
+                            <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                <option>Year</option>
+                                {years.map((y) => (
 
-                            <Mpie />
+                                    <option key={y} value={y}>{y}</option>
+                                ))}
+                            </select>
+                            <Mpie year={year} />
                         </div>
 
                     </section>

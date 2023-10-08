@@ -9,44 +9,9 @@ import {
   Tooltip
 } from "recharts";
 
-// const data = [
-//   {
-//     name: "Sem 1",
-//     uv: 40,
+export default function PIe({ year }) {
 
-//   },
-//   {
-//     name: "Sem 2",
-//     uv: 30,
-
-//   },
-//   {
-//     name: "Sem 3",
-//     uv: 200,
-
-//   },
-//   {
-//     name: "Sem 4",
-//     uv: 270,
-
-//   },
-//   {
-//     name: "Sem 4",
-//     usssv: 10,
-
-//   },
-//   {
-//     name: "Sem 5",
-//     uv: 190,
-
-//   },
-//   {
-//     name: "Sem 6",
-//     uv: 90,
-
-//   }
-// ];
-export default function PIe() {
+  console.log(year)
 
   const id = localStorage.getItem("userid");
   const [dep, setDep] = useState("");
@@ -56,6 +21,7 @@ export default function PIe() {
   const [sem4, setSem4] = useState('');
   const [sem5, setSem5] = useState('');
   const [sem6, setSem6] = useState('');
+  const [y, sety] = useState("")
   const [mdata, setMdata] = useState([]);
 
   const user = async () => {
@@ -68,6 +34,7 @@ export default function PIe() {
       console.error("Error fetching user:", error);
     }
   }
+
   const getSemesters = async () => {
     try {
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v1/getsembydep`, {
@@ -76,14 +43,12 @@ export default function PIe() {
 
       if (Array.isArray(data.sems) && data.sems.length >= 6) {
         const semesterIDs = data.sems.slice(0, 6).map(sem => sem._id);
-        // Set each semester ID individually in state
         setSem1(semesterIDs[0]);
         setSem2(semesterIDs[1]);
         setSem3(semesterIDs[2]);
         setSem4(semesterIDs[3]);
         setSem5(semesterIDs[4]);
         setSem6(semesterIDs[5]);
-        console.log("yash", sem1, sem2, sem3, sem4, sem5, sem6)
       } else {
         console.error("Error: 'data.sems' is not in the expected format.");
       }
@@ -94,9 +59,9 @@ export default function PIe() {
 
   const pieData = async () => {
     try {
-      console.log("hhhhdddd", dep)
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/feedbackby", {
+      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/goodfeedbackby", {
         dep: dep,
+        year: year,
         sem1: sem1,
         sem2: sem2,
         sem3: sem3,
@@ -106,7 +71,6 @@ export default function PIe() {
       });
 
       setMdata(data.responseData);
-      console.log("dd", data.responseData)
     } catch (error) {
       console.error("Error fetching pie data:", error);
     }
@@ -118,9 +82,9 @@ export default function PIe() {
       await getSemesters();
       await pieData();
     }
+    sety(year)
     fetchData();
-    console.log("hhhhhhhhhhhh", mdata)
-  }, [id]);
+  }, [id, dep, sem1, sem2, sem3, sem4, sem5, sem6, year]);
 
   return (
     <AreaChart

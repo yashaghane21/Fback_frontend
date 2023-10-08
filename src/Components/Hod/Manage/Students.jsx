@@ -3,7 +3,7 @@ import { useAuth } from '../../Auth/AuthContext'
 import axios from 'axios'
 import { BarLoader } from 'react-spinners'
 import { toast } from 'react-hot-toast'
-
+import { AiOutlineDelete } from "react-icons/ai"
 const Students = () => {
     const { theme } = useAuth()
     const [students, setstudents] = useState([])
@@ -146,6 +146,8 @@ const Students = () => {
                                     <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Email</th>
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Actions</th>
+
 
 
                                 </tr>
@@ -157,6 +159,7 @@ const Students = () => {
                                         <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
                                         <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
                                         <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.email}</td>
+                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}> <AiOutlineDelete size={23} color='red'/></td>
                                     </tr>
                                 </>
                             ))}

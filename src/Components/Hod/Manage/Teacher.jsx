@@ -5,6 +5,7 @@ import axios from "axios"
 import { BarLoader } from 'react-spinners'
 import { toast } from "react-hot-toast"
 import { AiOutlineDelete } from "react-icons/ai"
+import { AiOutlineEdit } from "react-icons/ai"
 
 const teacher = () => {
     const { theme } = useAuth()
@@ -17,7 +18,9 @@ const teacher = () => {
     const [phone, setphone] = useState("")
     const [education, seteducation] = useState("")
     const [dep, setdep] = useState()
+
     const [search, setsearch] = useState("")
+    const [uid, setuid] = useState("")
     const id = localStorage.getItem("userid")
 
     const getuser = async () => {
@@ -33,6 +36,9 @@ const teacher = () => {
 
         }
     }
+    const handleEditClick = () => {
+        window.my_modal_4.showModal();
+    };
 
     const getst = async (e) => {
         e.preventDefault();
@@ -79,31 +85,78 @@ const teacher = () => {
 
         }
     }
+
+
+    const upfac = async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/updateteacher", {
+                name: name,
+                email: email,
+                phone: phone,
+                education: education,
+                id: uid
+            });
+            console.log(data)
+            if (data.success) {
+                toast.success(" Faculty updated Succesfully  ", {
+                    autoClose: 2000,
+                });
+                getteachers()
+            }
+        } catch (error) {
+
+        }
+    }
+
     const getteachers = async () => {
         try {
-            getuser();
             setploader(true)
+            getuser()
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
                 dep: dep
             })
             console.log(data.teachers)
             setteachers(data.teachers)
+
             setploader(false);
 
 
         } catch (error) {
-
+            setploader(false);
             console.error('Error fetching data:', error);
         }
 
     }
 
+    const delfac = async (id) => {
+        const confirmed = window.confirm("Are you sure?");
+
+        if (confirmed) {
+            console.log(id);
+            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/delfac/${id}`);
+            if (data.success) {
+                toast.success("teacher deleted succesfully")
+                getteachers()
+            }
+        }
+
+
+    }
     const getbyid = async (id) => {
         setploader(true)
         console.log(id)
         const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/fac/${id}`)
         console.log("yashhshs", data.teachers)
-        setteach(data.teachers);
+
+        setteach(data.teachers)
+        setname(data.teachers.name)
+        setemail(data.teachers.email)
+        seteducation(data.teachers.education)
+        setphone(data.teachers.phone)
+        setdep(data.teachers.department)
+        setuid(data.teachers._id)
+        console.log(data.teachers.name)
         window.my_modal_2.showModal();
 
         setploader(false)
@@ -135,34 +188,75 @@ const teacher = () => {
 
             <button onClick={() => window.my_modal_1.showModal()} className='px-3 mt-5 py-1  shadow-lg sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> New Teacher +</button>
             <div className='flex justify-center'>
-                {ploader ? <section className='flex justify-center items-center h-[100vh]'>
-                    <BarLoader color='blue' />
-                </section> :
-                    <>
-                        <div className={`p-2 sm:p-5 grid rounded-lg  select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-4   min-[600px]:grid-cols-1   ${theme == "light" ? "text-black" : ""}`}>
+                {ploader ? (
+                    <section className='flex justify-center items-center h-[100vh]'>
+                        <BarLoader color='blue' />
+                    </section>
+                    // ) : teachers.length === 0 ? (
+                    //     <section className='flex justify-center items-center h-[70vh]'>
+                    //         <h1 className=''>No Such Teacher found</h1>
+                    //     </section>
+                    // 
+                ) :
+                    (
+                        <div className={`p-2 sm:p-5 grid rounded-lg select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 min-[600px]:grid-cols-1 ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
-
-                                <div className={`h-[26• vh] sm:h-[22vh] mb-2 w-[39vh] mx-5 my-5 flex  rounded-lg  ${theme == "light" ? "text-black bg-[#f5f1f0]" : " bg-[#0c131d] text-white shadow-black "}`} key={index}>
-                                    <section className='w-[50%] p-4'>
+                                <div className={`h-[26vh] sm:h-[22vh] mb-2 w-[42vh] mx-5 my-5 flex rounded-2xl ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d] text-white shadow-black"}`} key={index}>
+                                    <section className='w-[30%] p-4'>
                                         <CgProfile size={80} />
                                     </section>
-                                    <section className='p-2 mt-4'>
+                                    <section className='p-2 mx-2 mt-4'>
                                         <h1 className='font-bold text-xl'>{item.name}</h1>
                                         <h1 className='font-bold'>{item.education} </h1>
-                                        <h1 onClick={() => getbyid(item._id)} className=' mt-2 text-blue-700 font-bold cursor-pointer'>View Profile </h1>
+                                        <h1 onClick={() => getbyid(item._id)} className='mt-2 text-blue-700 font-bold cursor-pointer'>View Profile </h1>
                                     </section>
                                 </div>
-
                             ))}
-
-
-
-
-
                         </div>
-                    </>}
-
+                    )}
             </div>
+
+
+
+            <dialog id="my_modal_4" className="modal">
+                <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
+                    <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
+                    <h1 className='text-blue-700 font-bold text-xl'>Update Teacher</h1>
+                    <div className='w-full mt-2'>
+                        <form className='w-[100%]' >
+                            <input type='text' placeholder='Name' className=
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                value={name}
+
+                                onChange={(e) => setname(e.target.value)}
+                            />
+                            <input type='email' placeholder='Email' className=
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                value={email}
+                                onChange={(e) => setemail(e.target.value)}
+                            />
+
+                            <input type='text' placeholder='Phone' className=
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                value={phone}
+                                onChange={(e) => setphone(e.target.value)}
+                            />
+                            <input type='text' placeholder='Education' className=
+                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                value={education}
+                                onChange={(e) => seteducation(e.target.value)}
+                            />
+                            <button onClick={upfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Update</button>
+                        </form>
+                    </div>
+
+
+
+                </form>
+
+
+            </dialog>
+
             <dialog id="my_modal_1" className="modal">
                 <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
                     <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
@@ -212,12 +306,22 @@ const teacher = () => {
                             <section className=' '><BarLoader size={23} color='blue' /></section>
                         </section>
 
-                        : <>
-                            <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-black" : ""}`}>✕</button>
+                        :
+
+                        <>
+                            <section className='flex justify-between'>
+                                <section className='flex'>
+
+                                    <AiOutlineDelete onClick={() => delfac(teach._id)} size={23} color='red' className='mx-2' />
+                                    <AiOutlineEdit onClick={handleEditClick} size={23} />
+
+                                </section>
+                                <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-black" : ""}`}>✕</button>
+                            </section>
+
                             <div className={`${theme == 'dark' ? " focus:outline-none border-none text-white " : "text-black bg-white"}`}>
                                 <section className='flex justify-center items-center'>
                                     <CgProfile size={80} color='blue ' />
-                                    <AiOutlineDelete />
 
                                 </section>
                                 <h1 className='text-center'>Faculty Profile</h1>
