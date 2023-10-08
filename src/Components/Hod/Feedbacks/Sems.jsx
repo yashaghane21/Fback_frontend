@@ -33,8 +33,8 @@ const Sems = () => {
             id: id
         })
         console.log(data)
-        console.log(data.user.department)
-        setdept(data.user.department)
+        console.log(data.user.department._id)
+        setdept(data.user.department._id)
     }
 
 

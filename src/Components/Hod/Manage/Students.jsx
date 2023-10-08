@@ -24,8 +24,8 @@ const Students = () => {
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
             })
-            console.log(data.user)
-            setdep(data.user.department)
+            console.log(data.user.department._id)
+            setdep(data.user.department._id)
             setLoading(false)
         } catch (error) {
             console.error("Error fetching user data:", error)
@@ -35,7 +35,10 @@ const Students = () => {
 
     const getstudents = async () => {
         setLoading(true);
-        const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/students")
+        console.log(dep)
+        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/students", {
+            dep: dep
+        })
         console.log(data.students)
         setstudents(data.students)
         setLoading(false);
@@ -111,7 +114,6 @@ const Students = () => {
         setstudents(data.result)
     }
     useEffect(() => {
-        getstudents()
         getUserData()
 
     }, [])
@@ -119,6 +121,7 @@ const Students = () => {
     useEffect(() => {
         if (dep) {
             getsems()
+            getstudents()
         }
     }, [dep])
     return (
@@ -168,17 +171,26 @@ const Students = () => {
 
                                 </tr>
                             </thead>
-                            {students.map((item, index) => (
-                                <>
-                                    <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
-                                        <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
-                                        <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
-                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
-                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.email}</td>
-                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}> <AiOutlineDelete onClick={() => delstu(item._id)} size={23} color='red' /></td>
+                            {students.length === 0 ? (  
+                              <tr className=' h-[50vh] w-full'>
+                              <td className=' w-24'></td>
+                              <td className=' w-70'></td>
+                              <td className=' w-48 font-bold text-center'>No Students</td>
+                              <td className=' w-44'></td>
+                          </tr>
+                            ) : (
+                                students.map((item, index) => (
+                                    <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500' key={index}>
+                                        <td className='p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
+                                        <td className='p-2 font-semibold text-left text-blue-600'>{item.name}</td>
+                                        <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
+                                        <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>{item.email}</td>
+                                        <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>
+                                            <AiOutlineDelete onClick={() => delstu(item._id)} size={23} color='red' />
+                                        </td>
                                     </tr>
-                                </>
-                            ))}
+                                ))
+                            )}
 
 
                         </table>

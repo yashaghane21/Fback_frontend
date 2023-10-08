@@ -32,9 +32,20 @@ const Hhome = () => {
     const [tf, settf] = useState("")
     const [tt, sett] = useState("")
 
-    const getdata = async () => {
-        const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/getdata");
+    const user = async () => {
+        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            id: id
+        })
         console.log(data)
+        console.log("useert", data.user.department)
+        setdep(data.user.department._id)
+        getdata();
+    }
+    const getdata = async () => {
+        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/getdata", {
+            dep: dep
+        });
+        console.log("fgfg", data)
         setts(data.totalstudents)
         settf(data.tfeedbacks)
         sett(data.tteacher)
@@ -51,27 +62,23 @@ const Hhome = () => {
 
 
 
-    const user = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
-            id: id
-        })
-        console.log(data)
-        console.log("useert", data.user.department)
-        setdep(data.user.department)
-    }
     useEffect(() => {
-        fdata();
         user();
-        getdata();
-    }, [])
+        fdata();
+    }, [id]);
 
+    useEffect(() => {
+        if (dep) {
+            getdata();
+        }
+    }, [dep]);
 
     return (
 
 
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-full`}>
             <section className='rounded-md  px-7 mt-4'>
-                <h1 className={`text-white text-center sm:text-left text-xl sm:text-2xl px-2 font-bold `}>Welcome , HOD 👏👏 </h1>
+                <h1 className={`text-white text-center sm:text-left text-xl sm:text-2xl px-2 font-bold `}>Welcome , {cusername} 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center sm:justify-start '>

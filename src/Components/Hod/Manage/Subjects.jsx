@@ -31,8 +31,8 @@ const Subjects = () => {
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
             })
-            console.log(data.user)
-            setDep(data.user.department)
+            console.log(data.user.department._id)
+            setDep(data.user.department._id)
             setLoading(false)
         } catch (error) {
             console.error("Error fetching user data:", error)
@@ -42,6 +42,7 @@ const Subjects = () => {
 
     const getTeachers = async () => {
         try {
+            getUserData()
             setLoading(true)
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
                 dep: dep
@@ -119,6 +120,7 @@ const Subjects = () => {
     }
     const addsub = async (e) => {
         e.preventDefault();
+        console.log("sem", sem, "dep", dep)
         const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/course", {
             name: name,
             department: dep,
@@ -129,6 +131,7 @@ const Subjects = () => {
             toast.success('subject added succesfully.', {
                 position: "top-center"
             })
+            getSubjects()
         }
     }
 
@@ -247,7 +250,9 @@ const Subjects = () => {
                                     />
 
                                     {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a teacher ' onChange={(e) => handlet(e.target.value)}>
+                                        <option>select a teacher</option>
                                         {teachers.map((item, index) => (
+
                                             <option className='' key={index} value={item._id}>{item.name}</option>
                                         ))}
 
@@ -255,6 +260,7 @@ const Subjects = () => {
                                     </select>
                                     }
                                     {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handles(e.target.value)}>
+                                    <option>select a semester</option>
                                         {sems.map((item, index) => (
                                             <option className='' key={index} value={item._id}>{item.name}</option>
                                         ))}

@@ -11,7 +11,7 @@ import {
 
 export default function PIe({ year }) {
 
-  console.log(year)
+  
 
   const id = localStorage.getItem("userid");
   const [dep, setDep] = useState("");
@@ -27,7 +27,6 @@ export default function PIe({ year }) {
   const cyear = date;
 
   const [y, sety] = useState(cyear)
-  console.log(y);
   const user = async () => {
     try {
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {

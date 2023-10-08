@@ -11,7 +11,6 @@ import {
 
 export default function Mpie({ year }) {
 
-  console.log(year)
 
   const id = localStorage.getItem("userid");
   const [dep, setDep] = useState("");

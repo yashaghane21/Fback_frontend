@@ -30,8 +30,8 @@ const teacher = () => {
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
             })
-            console.log(data)
-            setdep(data.user.department)
+            console.log(data.user.department._id)
+            setdep(data.user.department._id)
         } catch (error) {
 
         }
@@ -111,8 +111,8 @@ const teacher = () => {
 
     const getteachers = async () => {
         try {
+            console.log(dep)
             setploader(true)
-            getuser()
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
                 dep: dep
             })
@@ -163,9 +163,17 @@ const teacher = () => {
 
 
     useEffect(() => {
-        getteachers()
+        getuser()
 
-    }, [])
+
+    }, [id])
+
+    useEffect(() => {
+        if (dep) {
+            getteachers();
+        }
+    }, [dep]);
+
     return (
         <div className={`p-2 h-[91vh] overflow-y-auto sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
             <div className='flex items-center justify-between flex-col sm:flex-row w-full'>
@@ -191,11 +199,11 @@ const teacher = () => {
                     <section className='flex justify-center items-center h-[100vh]'>
                         <BarLoader color='blue' />
                     </section>
-                    // ) : teachers.length === 0 ? (
-                    //     <section className='flex justify-center items-center h-[70vh]'>
-                    //         <h1 className=''>No Such Teacher found</h1>
-                    //     </section>
-                    // 
+                ) : teachers.length === 0 ? (
+                    <section className='flex justify-center items-center h-[70vh]'>
+                        <h1 className=''>No  Teacher found</h1>
+                    </section>
+
                 ) :
                     (
                         <div className={`p-2 sm:p-5 grid rounded-lg select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 min-[600px]:grid-cols-1 ${theme == "light" ? "text-black" : ""}`}>

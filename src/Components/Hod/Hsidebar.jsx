@@ -4,6 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { BiSolidDashboard, BiUserCircle } from 'react-icons/bi'
 // import { VscFeedback } from "react-icons/vsc"
 import { toast } from "react-hot-toast";
+import axios from "axios"
 import { VscFeedback } from "react-icons/vsc";
 import { AiOutlineHome } from "react-icons/ai"
 import { useAuth } from '../Auth/AuthContext'
@@ -17,7 +18,16 @@ import u from "./user.png";
 export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth } = useAuth()
-
+    const id = localStorage.getItem("userid")
+    const [dep, setdep] = useState("")
+    const user = async () => {
+        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            id: id
+        })
+        console.log(data)
+        console.log("useert", data.user.department)
+        setdep(data.user.department.name)
+    }
     const [nav, setNav] = useState(false);
     const navigate = useNavigate()
     const handleNav = () => {
@@ -47,7 +57,7 @@ export default function Hsidebar() {
     }
 
     useEffect(() => {
-
+        user();
         localStorage.setItem("theme", theme)
         const localtheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute("data-theme", localtheme)
@@ -75,12 +85,9 @@ export default function Hsidebar() {
 
                         <div className='flex justify-center mt-0 items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
-                            <section className='h-[6vh] w-[6vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
-                                <VscFeedback size={40} color='white' className='p-2 font-bold' />
-                            </section>
+                                <h1 className='font-bold text-xl mt-2'>{dep}</h1>
 
                         </div>
-                        <hr className='mt-1 font-bold'></hr>
                         <div className='flex justify-start  mt-8 items-center'>
                             <ul className='mt-4  cursor-pointer ' >
                                 <Link to='/hod/home'>
