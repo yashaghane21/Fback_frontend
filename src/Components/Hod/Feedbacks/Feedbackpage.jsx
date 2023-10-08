@@ -86,17 +86,31 @@ const Feedbackpage = () => {
     return (
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
 
-            <div className='overflow-x-auto w-full '>
-                <ul className='flex  cursor-pointer select-none'>
+            <div className='overflow-x-auto   '>
+                <ul className='flex  w-full cursor-pointer select-none'>
                     <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
-                    {sub.map((item, index) => (
-                        <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
-                            key={index}>{item.name}</li>
-                    ))}
 
 
+                    <select className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
+                        <option className='text-black'>Filter By Subject </option>
+                        {sub.map((item, index) => (
+                            // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                            //     key={index}>{item.name}</li>]
+                            <option value={item._id} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item.name} </option>
+                        ))}
+                    </select>
+                    
+                    <select className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
+                        <option>Filter By Year </option>
+                        {sub.map((item, index) => (
+                            // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                            //     key={index}>{item.name}</li>]
+                            <option value={item._id} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item.name} </option>
+                        ))}
+                    </select>
 
                 </ul>
+
             </div>
             <div className={`py-3  sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
 
