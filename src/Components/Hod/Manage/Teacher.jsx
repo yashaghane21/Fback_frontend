@@ -17,7 +17,7 @@ const teacher = () => {
     const [email, setemail] = useState("")
     const [phone, setphone] = useState("")
     const [education, seteducation] = useState("")
-    const [dep, setdep] = useState()
+    const [dep, setdep] = useState("")
 
     const [search, setsearch] = useState("")
     const [uid, setuid] = useState("")
@@ -114,7 +114,7 @@ const teacher = () => {
             setploader(true)
             getuser()
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
-                dep: dep
+                dep:dep
             })
             console.log(data.teachers)
             setteachers(data.teachers)
@@ -123,7 +123,6 @@ const teacher = () => {
 
 
         } catch (error) {
-            setploader(false);
             console.error('Error fetching data:', error);
         }
 
@@ -166,7 +165,7 @@ const teacher = () => {
     useEffect(() => {
         getteachers()
 
-    }, [dep])
+    }, [])
     return (
         <div className={`p-2 h-[91vh] overflow-y-auto sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
             <div className='flex items-center justify-between flex-col sm:flex-row w-full'>
@@ -175,7 +174,7 @@ const teacher = () => {
                 </section>
                 <section className='flex w-[90%] p-2 sm:[50%] justify-center items-center'>
                     <form className='w-[80%] ' action="" onSubmit={getst}>
-                        <input type='text' placeholder='Search For Teacher' className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : ""}`}
+                        <input type='text' placeholder='Search For Teacher' className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
                             value={search} onChange={handlesearchchange}
                         />
                     </form>

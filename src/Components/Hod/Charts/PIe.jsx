@@ -21,9 +21,13 @@ export default function PIe({ year }) {
   const [sem4, setSem4] = useState('');
   const [sem5, setSem5] = useState('');
   const [sem6, setSem6] = useState('');
-  const [y, sety] = useState("")
   const [mdata, setMdata] = useState([]);
 
+  const date = new Date().getFullYear();
+  const cyear = date;
+
+  const [y, sety] = useState(cyear)
+  console.log(y);
   const user = async () => {
     try {
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {

@@ -20,8 +20,14 @@ const Hhome = () => {
     const id = localStorage.getItem("userid")
     const [year, setyear] = useState("")
 
-    const years = [2021, 2022, 2023]
+    const currentYear = new Date().getFullYear();
+    const pastYears = 3;
+    const futureYears = 10;
+    const years = [];
 
+    for (let i = -pastYears; i <= futureYears; i++) {
+        years.push(String(currentYear + i));
+    }
     const [ts, setts] = useState("")
     const [tf, settf] = useState("")
     const [tt, sett] = useState("")
@@ -70,7 +76,7 @@ const Hhome = () => {
 
             <div className='flex justify-center items-center sm:justify-start '>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
@@ -88,7 +94,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
@@ -104,7 +110,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[47vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>

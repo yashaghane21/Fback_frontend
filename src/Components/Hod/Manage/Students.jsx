@@ -21,8 +21,8 @@ const Students = () => {
         try {
             setLoading(true)
             console.log("Fetching user data for id:", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`,{
-                id:id
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+                id: id
             })
             console.log(data.user)
             setdep(data.user.department)
@@ -85,6 +85,22 @@ const Students = () => {
         }
     }
 
+
+    const delstu = async (id) => {
+        const confirmed = window.confirm("note: if you delete student then student details from respective feedbacks will be delete,Developers will not be responsible for this.");
+
+        if (confirmed) {
+            console.log(id);
+            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/studel/${id}`);
+            if (data.success) {
+                toast.success("Student deleted succesfully")
+                getstudents()
+            }
+        }
+
+
+    }
+
     const searchs = async (e) => {
         e.preventDefault();
 
@@ -113,7 +129,7 @@ const Students = () => {
                 </section>
                 <section className='flex w-[90%] p-2 sm:[50%] justify-center items-center'>
                     <form className='w-[100%] sm:w-[80%] ' action="" onSubmit={searchs} >
-                        <input value={search} onChange={handlesearchchange} type='text' placeholder='Search For Students' className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : ""}`}
+                        <input value={search} onChange={handlesearchchange} type='text' placeholder='Search For Students' className={`rounded-full px-5 p-1 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
 
                         />
                     </form>
@@ -121,7 +137,7 @@ const Students = () => {
                 <section className=' w-[30%]'>
                     <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold   hidden sm:block text-white bg-blue-700 rounded-full'> Update Students</button>
                 </section>
-            <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1  sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Update Students </button>
+                <button onClick={() => window.my_modal_1.showModal()} className='px-3 py-1  sm:hidden absolute bottom-1 right-2  text-white font-semibold bg-blue-700 rounded-full'> Update Students </button>
             </div>
             {loading ? <section className='h-[70vh] flex justify-center items-center'>
                 <BarLoader size={23} color='blue' />
@@ -159,7 +175,7 @@ const Students = () => {
                                         <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
                                         <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
                                         <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.email}</td>
-                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}> <AiOutlineDelete size={23} color='red'/></td>
+                                        <td className={`p-2 font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}> <AiOutlineDelete onClick={() => delstu(item._id)} size={23} color='red' /></td>
                                     </tr>
                                 </>
                             ))}
@@ -200,7 +216,7 @@ const Students = () => {
                                 </select>
                             }
 
-                            <button onClick={updatesem} className={`hover:bg-blue-700 hover:text-white border-2  font-bold px-8 py-1 mt-3 rounded-full ${theme == "light"?"text-black":"text-white"}`}>Update</button>
+                            <button onClick={updatesem} className={`hover:bg-blue-700 hover:text-white border-2  font-bold px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Update</button>
                         </form>
                     </div>
 

@@ -49,6 +49,7 @@ const Signup = () => {
         department: dept,
         sem: sem
       });
+      console.log(data)
       if (data.success) {
         toast.success("Registration Successfully ! ", {
           autoClose: 2000,

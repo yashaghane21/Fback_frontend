@@ -137,19 +137,19 @@ const Feedbackpage = () => {
                                     {index + 1}
                                 </td>
                                 <td className='p-2 font-semibold text-left text-blue-600'>
-                                    {item.course.name}
+                                    {item.course?.name}
                                 </td>
                                 <td
                                     className='p-2 font-semibold text-left cursor-pointer'
                                     onClick={() => getuser(item.student._id)}
                                 >
-                                    {item.student.Enroll}
+                                    {item.student?.Enroll}
                                 </td>
                                 <td
                                     className='p-2 font-semibold cursor-pointer text-left'
                                     onClick={() => getuser(item.student._id)}
                                 >
-                                    {item.student.name}
+                                    {item.student?.name}
                                 </td>
                                 <td
                                     className='p-2 font-semibold text-left flex cursor-pointer'

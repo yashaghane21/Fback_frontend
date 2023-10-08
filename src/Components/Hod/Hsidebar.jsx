@@ -139,7 +139,7 @@ export default function Hsidebar() {
                         <div className='flex flex-col text-xl  list-none'>
                             <ul className='mt-4  cursor-none' >
                                 <Link to='/hod/home'>
-                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' /></li>
+                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />Dashboard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
                                     <li className='text-white w-max     hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
