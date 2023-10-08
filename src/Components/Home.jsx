@@ -64,7 +64,7 @@ const Home = () => {
 
 
                     <p className={`${theme == "light" ? "" : "text-white"}`}>
-                        <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}>FEEDBACKER FOR </h1>
+                        <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}> Website is under development please ignore </h1>
                       <TypeAnimation
                             sequence={[
 

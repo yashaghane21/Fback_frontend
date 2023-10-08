@@ -70,13 +70,13 @@ const Hhome = () => {
 
 
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-full`}>
-            <section className='bg-blue-500 h-[12vh] rounded-md m-5'>
-                <h1 className={`text-white text-xl sm:text-2xl py-4 px-2 font-bold `}>Welcome , {cusername} 👏👏 </h1>
+            <section className='rounded-md  px-7 mt-4'>
+                <h1 className={`text-white text-center sm:text-left text-xl sm:text-2xl px-2 font-bold `}>Welcome , HOD 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center sm:justify-start '>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
@@ -94,7 +94,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
@@ -110,7 +110,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[20vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>

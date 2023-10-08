@@ -1,12 +1,12 @@
 import React from 'react'
 import { useAuth } from './Auth/AuthContext'
-import img from "../assets/react.svg"
+import img from "../assets/s.jpg"
 const Dash = () => {
     const { theme } = useAuth()
     return (
         <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : " bg-[#0c131d]"} flex h-[85vh] flex-col-reverse sm:flex-row  p-5`}>
-            <div className='w-[100%] sm:w-[45%] p-3'>
-                <img src={img} className='w-full h-full' />
+            <div className='w-[100%] sm:w-[50%] p-3 flex justify-center items-center'>
+                <img src={img} className='w-[80%] h-[80%]' />
             </div>
             <div className='w-[100%] sm:w-[55%] p-2 sm:p-5 flex flex-col justify-center items-center'>
                 <h1 className='font-bold text-xl  text-blue-600 sm:text-xl'> Dedicated dashboards to users and admin</h1>
