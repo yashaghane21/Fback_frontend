@@ -83,7 +83,7 @@ const Home = () => {
                             repeat={Infinity}
                         />
                     </p>
-                    <button className='bg-blue-700 rounded-md text-white  px-4 py-1 mt-5 '>Get Started </button>
+                    {/* <button className='bg-blue-700 rounded-md text-white  px-4 py-1 mt-5 '>Get Started </button> */}
 
                 </div>
                 <div className='w-full sm:w-[50%] flex justify-center p-2 mt-5'>

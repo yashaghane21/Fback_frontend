@@ -162,8 +162,9 @@ const Students = () => {
                             <thead>
                                 <tr className=' bg-blue-700 rounded-md'>
                                     <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
-                                    <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
+
                                     <th className='p-2 text-left py-2 text-white text-lg'>Email</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Actions</th>
 
@@ -171,19 +172,19 @@ const Students = () => {
 
                                 </tr>
                             </thead>
-                            {students.length === 0 ? (  
-                              <tr className=' h-[50vh] w-full'>
-                              <td className=' w-24'></td>
-                              <td className=' w-70'></td>
-                              <td className=' w-48 font-bold text-center'>No Students</td>
-                              <td className=' w-44'></td>
-                          </tr>
+                            {students.length === 0 ? (
+                                <tr className=' h-[50vh] w-full'>
+                                    <td className=' w-24'></td>
+                                    <td className=' w-70'></td>
+                                    <td className=' w-48 font-bold text-center'>No Students</td>
+                                    <td className=' w-44'></td>
+                                </tr>
                             ) : (
                                 students.map((item, index) => (
                                     <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500' key={index}>
                                         <td className='p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
-                                        <td className='p-2 font-semibold text-left text-blue-600'>{item.name}</td>
                                         <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
+                                        <td className='p-2 font-semibold text-left text-blue-600'>{item.name}</td>
                                         <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>{item.email}</td>
                                         <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>
                                             <AiOutlineDelete onClick={() => delstu(item._id)} size={23} color='red' />

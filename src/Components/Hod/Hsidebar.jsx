@@ -85,30 +85,30 @@ export default function Hsidebar() {
 
                         <div className='flex justify-center mt-0 items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
-                                <h1 className='font-bold text-xl mt-2'>{dep}</h1>
+                            <h1 className='font-bold text-white text-xl mt-2'>{dep}</h1>
 
                         </div>
-                        <div className='flex justify-start  mt-8 items-center'>
-                            <ul className='mt-4  cursor-pointer ' >
+                        <div className='flex justify-start  mt-8 '>
+                            <ul className='mt-4  cursor-pointer px-8 ' >
                                 <Link to='/hod/home'>
-                                    <li className='text-white  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />DashBoard</li>
+                                <li className='text-white my-2  px-3 hover:rounded-md font-semibold hover:bg-[#6528F7] flex text-sm  rounded-lg border-none cursor-pointer w-[180px]'><AiOutlineHome size={30} className='pr-2 pb-2' />DashBoard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
-                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
+                                    <li className='text-white   my-2 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  px-3   rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
                                 </Link>
                                 <Link to='/hod/teacher'>
-                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdManageAccounts size={30} className=' pr-2 pb-2 ' />Faculties</li>
+                                    <li className='text-white my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm px-3 w-[180px]  rounded-md border-none cursor-pointer'><MdManageAccounts size={30} className=' pr-2 pb-2 ' />Faculties</li>
                                 </Link>
                                 <Link to='/hod/students'>
-                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><PiStudent size={30} className=' pr-2 pb-2 ' />Students</li>
+                                    <li className='text-white w-[180px] my-2 px-3    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm  rounded-md border-none cursor-pointer'><PiStudent size={30} className=' pr-2 pb-2 ' />Students</li>
                                 </Link>
                                 <Link to='/hod/sub'>
-                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
+                                    <li className='text-white w-[180px] my-2 px-3   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex text-sm   rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
                                 </Link>
                                 <Link to='/hod/efb'>
-                                    <li className='text-white w-max my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BiLastPage size={30} className=' pr-2 pb-2 ' />EndCourse Feedback</li>
+                                    <li className='text-white w-[180px] my-2 px-3   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  rounded-md border-none cursor-pointer'><BiLastPage size={30} className=' pr-2 pb-2 ' />EndCourse Fback</li>
                                 </Link>
-                                <li onClick={handleLogOut} className='text-white w-max mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+                                <li onClick={handleLogOut} className='text-white w-[180px] px-3 mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
                                 < section className='mt-4  px-8 sm:hidden' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>

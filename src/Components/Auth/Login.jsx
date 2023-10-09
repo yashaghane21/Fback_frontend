@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useState } from 'react'
-import img from "./login1.png"
+import img from "./ss.png"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from "react-hot-toast"
@@ -58,7 +58,7 @@ const Login = () => {
     <div className='flex h-screen w-full'>
 
       <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
-        <img src={img} alt='ff' className='w-[50%] h-[40%]' />
+        <img src={img} alt='ff' className='w-[80%] h-[90%]' />
       </div>
 
       <div className='flex flex-col w-[100%] sm:w-1/2 justify-center items-center'>

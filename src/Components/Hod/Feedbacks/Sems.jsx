@@ -5,7 +5,7 @@ import { BarLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineAlignRight, AiOutlineArrowRight } from 'react-icons/ai'
 import { toast } from 'react-hot-toast'
-
+import { AiOutlineDelete } from "react-icons/ai"
 const Sems = () => {
     const { auth } = useAuth()
     const navigate = useNavigate()
@@ -47,6 +47,22 @@ const Sems = () => {
         setloader(false)
     }
 
+
+    const delsem = async (id) => {
+        const confirmed = window.confirm("Are you sure ?");
+
+        if (confirmed) {
+            console.log(id);
+            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/semdel/${id}`);
+            if (data.success) {
+                toast.success("Semester deleted succesfully")
+                getsems()
+            }
+        }
+
+
+    }
+
     useEffect(() => {
         getdepid()
     }, [id])
@@ -69,9 +85,12 @@ const Sems = () => {
                     <div className='p-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 '>
                         {sems.map((item, index) =>
                             <div className={`h-40 my-2 w-[40vh]  shadow-xl rounded-2xl   sm:mx-4  ${theme == "light" ? "bg-[#f5f1f0] text-black" : "bg-[#0c131d] text-white"}`} key={index}>
+                                <AiOutlineDelete onClick={() => delsem(item._id)} size={23} color='red' className='m-2' />
                                 <h1 className={`text-center  font-bold p-5 mt-2 text-3xl ${theme == "light" ? "t" : "text-white"}`}>{item.name}</h1>
                                 <section className='flex flex-col justify-start items-center'>
+
                                     <button onClick={() => navigate(`/hod/fpage/${item._id}`)} className='my-2 border-[1px] border-gray-400 py-[0.5px] px-5 rounded-3xl  font-semibold hover:bg-blue-600 hover:font-bold hover:border-none hover:text-white '>View</button>
+
                                 </section>
 
                             </div>

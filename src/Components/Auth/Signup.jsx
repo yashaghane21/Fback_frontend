@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { Select } from "antd"
 import { toast } from "react-hot-toast"
-import img from "./login1.png"
+import img from "./ss.png"
 import { ThreeDots } from "react-loader-spinner"
 import { Link, useNavigate } from 'react-router-dom'
 const Option = Select
@@ -120,8 +120,8 @@ const Signup = () => {
   return (
     <div className='flex h-screen'>
 
-      <div className='hidden sm:flex justify-center items-center bg-blue-500 w-1/2'>
-        <img src={img} alt='ff' className='w-[50%] h-[40%]' />
+      <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
+        <img src={img} alt='ff' className='w-[80%] h-[90%]' />
       </div>
 
       <div className='flex flex-col w-[100%] sm:w-1/2 justify-center items-center'>
@@ -130,14 +130,7 @@ const Signup = () => {
 
           <h1 className='text-center text-2xl font-bold'>Signup</h1>
           {loader ? <section className='flex justify-center items-center'>
-            <ThreeDots height="20"
-              width="80"
-              radius="9"
-              color="#4fa94d"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={true} />
+            <ThreeDots size={23} color='blue'  />
           </section> :
             <>
             </>}
