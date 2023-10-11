@@ -17,7 +17,7 @@ import { BiLastPage } from "react-icons/bi"
 import u from "./user.png";
 export default function Hsidebar() {
 
-    const { theme, setauth, settheme, auth } = useAuth()
+    const { theme, setauth, settheme, auth, cusername } = useAuth()
     const id = localStorage.getItem("userid")
     const [dep, setdep] = useState("")
     const user = async () => {
@@ -186,8 +186,9 @@ export default function Hsidebar() {
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>Hod Dashboard</h1>
                             </section>
                             <section className='flex'>
-                                <section className=' hidden sm:block  h-[5vh]'>
-                                    <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' />
+                                <section className=' hidden sm:block border-orange-700 mt-4 bg-orange-700 h-[5vh] w-[5vh] border-2 rounded-full'>
+                                    {/* <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' /> */}
+                                    <h1 className='text-center font-bold text-xl'>{cusername[0]}</h1>
                                 </section>
                                 < section className='mt-4  px-8 hidden sm:block' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>

@@ -9,9 +9,9 @@ import {
   Tooltip
 } from "recharts";
 
-export default function PIe({ year }) {
+export default function PIe({ year, type }) {
 
-  
+
 
   const id = localStorage.getItem("userid");
   const [dep, setDep] = useState("");
@@ -27,6 +27,7 @@ export default function PIe({ year }) {
   const cyear = date;
 
   const [y, sety] = useState(cyear)
+  const [ty, setty] = useState()
   const user = async () => {
     try {
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
@@ -70,7 +71,8 @@ export default function PIe({ year }) {
         sem3: sem3,
         sem4: sem4,
         sem5: sem5,
-        sem6: sem6
+        sem6: sem6,
+        type: ty
       });
 
       setMdata(data.responseData);
@@ -86,6 +88,7 @@ export default function PIe({ year }) {
       await pieData();
     }
     sety(year)
+    setty(type)
     fetchData();
   }, [id, dep, sem1, sem2, sem3, sem4, sem5, sem6, year]);
 

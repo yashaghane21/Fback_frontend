@@ -83,7 +83,7 @@ const Endfeedbacks = () => {
 
                                 {fbacks.map((item, index) => {
                                     return (
-                                        <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
+                                        <tr className={`${theme == "light" ? "hover:bg-gray-300 " : "hover:bg-slate-950"}`} key={index}>
                                             <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
                                             <td className=' p-2 font-semibold  cursor-pointer text-left' >{item.student?.name}</td>
                                             <td className=' p-2 font-semibold cursor-pointer text-left' >{item.student?.Enroll}</td>

@@ -9,7 +9,8 @@ import {
   Tooltip
 } from "recharts";
 
-export default function Mpie({ year }) {
+export default function Mpie({ year, type }) {
+
 
 
   const id = localStorage.getItem("userid");
@@ -20,9 +21,13 @@ export default function Mpie({ year }) {
   const [sem4, setSem4] = useState('');
   const [sem5, setSem5] = useState('');
   const [sem6, setSem6] = useState('');
-  const [y, sety] = useState("")
   const [mdata, setMdata] = useState([]);
 
+  const date = new Date().getFullYear();
+  const cyear = date;
+
+  const [y, sety] = useState(cyear)
+  const [ty, setty] = useState()
   const user = async () => {
     try {
       const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
@@ -66,7 +71,8 @@ export default function Mpie({ year }) {
         sem3: sem3,
         sem4: sem4,
         sem5: sem5,
-        sem6: sem6
+        sem6: sem6,
+        type: ty
       });
 
       setMdata(data.responseData);
@@ -82,6 +88,7 @@ export default function Mpie({ year }) {
       await pieData();
     }
     sety(year)
+    setty(type)
     fetchData();
   }, [id, dep, sem1, sem2, sem3, sem4, sem5, sem6, year]);
 

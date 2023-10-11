@@ -169,7 +169,7 @@ const Feedbackpage = () => {
                     ) : (
                         fback.map((item, index) => (
                             <tr
-                                className='hover:bg-gray-400 border-b select-none first-letter:border-slate-500'
+                                className={`${theme == "light" ? "hover:bg-gray-300 " : "hover:bg-slate-950"}`}
                                 key={index}
                             >
                                 <td className='p-2 font-semibold text-left hidden sm:block text-sm'>

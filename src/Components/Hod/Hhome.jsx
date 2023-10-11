@@ -18,12 +18,12 @@ const Hhome = () => {
     const [dep, setdep] = useState("")
     const [fbacks, setfbacks] = useState("")
     const id = localStorage.getItem("userid")
-
+    const [type, settype] = useState("good😃")
     const date = new Date().getFullYear();
     const cyear = date;
 
     const [year, setyear] = useState(cyear)
-
+    let values = ['good😃', 'average🙂', 'below average🙂'];
     const currentYear = new Date().getFullYear();
     const pastYears = 3;
     const futureYears = 10;
@@ -105,7 +105,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
@@ -121,7 +121,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>
@@ -167,7 +167,7 @@ const Hhome = () => {
                             <section className='flex w-full h-[100%] '>
                                 <section className='p-5 w-[50%] h-full '>
                                     <h1 className='font-bold text-xl'>Xyz</h1>
-                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt {year}  wetfewtrtgerg g</h1>
+                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt {year} {type}  wetfewtrtgerg g</h1>
                                 </section>
                                 <section className='flex justify-center items-center  rounded-2xl w-[50%]'>
                                     <button className='px-5 py-2 border-green-700  shadow-sm shadow-green-700 border-[1px] rounded-lg '>ABCD</button>
@@ -189,9 +189,17 @@ const Hhome = () => {
                                         <option key={y} value={y}>{y}</option>
                                     ))}
                                 </select>
+                                <select onChange={(e) => settype(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                    <option>{type}</option>
+                                    {values.map((item, index) => (
+                                        <option key={index} value={item}>
+                                            <h1 className='font-semibold'>{item}</h1>
+                                        </option>
+                                    ))}
+                                </select>
                             </section>
 
-                            <Pie year={year} />
+                            <Pie year={year} type={type} />
                         </div>
                     </section>
 
@@ -204,7 +212,15 @@ const Hhome = () => {
                                     <option key={y} value={y}>{y}</option>
                                 ))}
                             </select>
-                            <Mpie year={year} />
+                            <select onChange={(e) => settype(e.target.value)} className={`px-5 my-2 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                <option>{type}</option>
+                                {values.map((item, index) => (
+                                    <option key={index} value={item}>
+                                        <h1 className='font-semibold'>{item}</h1>
+                                    </option>
+                                ))}
+                            </select>
+                            <Mpie year={year} type={type} />
                         </div>
 
                     </section>
