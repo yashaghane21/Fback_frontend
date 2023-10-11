@@ -18,7 +18,11 @@ const Hhome = () => {
     const [dep, setdep] = useState("")
     const [fbacks, setfbacks] = useState("")
     const id = localStorage.getItem("userid")
-    const [year, setyear] = useState("")
+
+    const date = new Date().getFullYear();
+    const cyear = date;
+
+    const [year, setyear] = useState(cyear)
 
     const currentYear = new Date().getFullYear();
     const pastYears = 3;
@@ -78,7 +82,7 @@ const Hhome = () => {
 
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-full`}>
             <section className='rounded-md  px-7 mt-4'>
-                <h1 className={ `  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black":"text-white"}`}>Welcome , {cusername} 👏👏 </h1>
+                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , {cusername} 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center sm:justify-start '>
@@ -179,7 +183,7 @@ const Hhome = () => {
                             <section className=''>
                                 {/* <h1 className={`font-bold text-xl   ${theme == "light" ? " text-black" : " text-white"}`}>Good Feedbacks</h1> */}
                                 <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                    <option>Year</option>
+                                    <option>{year}</option>
                                     {years.map((y) => (
 
                                         <option key={y} value={y}>{y}</option>
@@ -194,7 +198,7 @@ const Hhome = () => {
                     <section className='block sm:hidden'>
                         <div className={`h-[50vh] flex flex-col justify-center items-center  w-[50vh] rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`} v>
                             <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                <option>Year</option>
+                                <option>{year}</option>
                                 {years.map((y) => (
 
                                     <option key={y} value={y}>{y}</option>

@@ -85,13 +85,13 @@ export default function Hsidebar() {
 
                         <div className='flex justify-center mt-0 items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
-                            <h1 className='font-bold text-white text-xl mt-2'>{dep}</h1>
+                            <h1 className='font-bold text-white  mt-2'>{dep}</h1>
 
                         </div>
                         <div className='flex justify-start  mt-8 '>
                             <ul className='mt-4  cursor-pointer px-8 ' >
                                 <Link to='/hod/home'>
-                                <li className='text-white my-2  px-3 hover:rounded-md font-semibold hover:bg-[#6528F7] flex text-sm  rounded-lg border-none cursor-pointer w-[180px]'><AiOutlineHome size={30} className='pr-2 pb-2' />DashBoard</li>
+                                    <li className='text-white my-2  px-3 hover:rounded-md font-semibold hover:bg-[#6528F7] flex text-sm  rounded-lg border-none cursor-pointer w-[180px]'><AiOutlineHome size={30} className='pr-2 pb-2' />DashBoard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
                                     <li className='text-white   my-2 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  px-3   rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
@@ -183,7 +183,7 @@ export default function Hsidebar() {
                         <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">
-                                <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>HOD DASHBOARD</h1>
+                                <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>Hod Dashboard</h1>
                             </section>
                             <section className='flex'>
                                 <section className=' hidden sm:block  h-[5vh]'>

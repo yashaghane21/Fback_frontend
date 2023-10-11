@@ -181,7 +181,7 @@ const Students = () => {
                                 </tr>
                             ) : (
                                 students.map((item, index) => (
-                                    <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500' key={index}>
+                                    <tr className={`${theme == "light" ? "hover:bg-gray-300 " : "hover:bg-slate-950"}`} key={index}>
                                         <td className='p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
                                         <td className={`p-2 font-semibold text-left ${theme === "light" ? "text-black" : "text-white"}`}>{item.Enroll}</td>
                                         <td className='p-2 font-semibold text-left text-blue-600'>{item.name}</td>
