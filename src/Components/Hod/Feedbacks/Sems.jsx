@@ -51,7 +51,7 @@ const Sems = () => {
     const delsem = async (id) => {
         const confirmed = prompt("Enter password ");
 
-        if (confirmed === "delsem") {
+        if (confirmed === "del") {
             console.log(id);
             const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/semdel/${id}`);
             if (data.success) {

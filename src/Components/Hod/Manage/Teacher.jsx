@@ -6,7 +6,7 @@ import { BarLoader } from 'react-spinners'
 import { toast } from "react-hot-toast"
 import { AiOutlineDelete } from "react-icons/ai"
 import { AiOutlineEdit } from "react-icons/ai"
-
+import up from "../Manage/user.png"
 const teacher = () => {
     const { theme } = useAuth()
     const [teachers, setteachers] = useState([])
@@ -209,8 +209,9 @@ const teacher = () => {
                         <div className={`p-2 h-[60vh] sm:h-[70vh] overflow-y-auto sm:p-5 grid rounded-lg select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 min-[600px]:grid-cols-1 ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
                                 <div className={` relative h-[20vh] sm:h-[22vh] mb-2 w-[42vh] mx-5 my-5 flex rounded-2xl ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d] text-white shadow-black"}`} key={index}>
-                                    <section className='w-[30%] p-4'>
-                                        <CgProfile size={80} className='' />
+                                    <section className='w-[30%] rounded-full p-4'>
+                                        {/* <CgProfile size={80} className='' /> */}
+                                        <img src={up} alt='dd' />
                                     </section>
                                     <section className='p-2 mx-2 mt-4'>
                                         <h1 className='font-bold text-xl'>{item.name}</h1>

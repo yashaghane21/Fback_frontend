@@ -90,15 +90,18 @@ const Students = () => {
 
 
     const delstu = async (id) => {
-        const confirmed = window.confirm("note: if you delete student then student details from respective feedbacks will be delete,Developers will not be responsible for this.");
+        const confirmed = window.prompt("note: if you delete student then student details from respective feedbacks will be delete,Developers will not be responsible for this. Enter password");
 
-        if (confirmed) {
+        if (confirmed === "del") {
             console.log(id);
             const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/studel/${id}`);
             if (data.success) {
                 toast.success("Student deleted succesfully")
                 getstudents()
             }
+        }
+        else{
+            alert("wrong password")
         }
 
 
