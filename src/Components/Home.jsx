@@ -96,7 +96,7 @@ const Home = () => {
 
                 </div>
                 <div className='w-full sm:w-[50%] flex justify-center p-2 mt-5'>
-                    <img src={img} alt='' className='h-[25vh] sm:h-[70vh] w-full  ' />
+                    <img src={img} alt='' className='h-[25vh] sm:h-[70vh] w-[70%] sm:w-[100%]  ' />
 
                 </div>
 

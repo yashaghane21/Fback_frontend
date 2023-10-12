@@ -90,6 +90,7 @@ const Students = () => {
 
 
     const delstu = async (id) => {
+        
         const confirmed = window.prompt("note: if you delete student then student details from respective feedbacks will be delete,Developers will not be responsible for this. Enter password");
 
         if (confirmed === "del") {

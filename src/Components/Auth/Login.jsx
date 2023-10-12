@@ -41,6 +41,7 @@ const Login = () => {
       }
       else {
         toast.error("check email or password")
+        setloader(false)
       }
 
 
@@ -51,6 +52,7 @@ const Login = () => {
         });
       } else {
         toast.error("An error occurred:", error.message);
+        setloader(false)
       }
     }
   }
@@ -66,7 +68,7 @@ const Login = () => {
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
           <h1 className='text-center text-3xl font-bold'>Login</h1>
           {loader ? <section className='flex justify-center items-center'>
-             <ThreeDots size={23} color='blue' />
+            <ThreeDots size={23} color='blue' />
           </section> :
             <>
             </>}

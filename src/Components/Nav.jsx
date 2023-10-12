@@ -114,7 +114,7 @@ export default function Nav() {
                 </ul>
             </div>
 
-            <section className=' md:hidden h-screen'>
+            <section className='  md:hidden '>
                 <ul className={`bg-gray-300 flex flex-col absolute left-0 h-screen shadow-sm ${nav ? 'w-[90%] sm:w-17' : "w-0 overflow-hidden"} transition-all ease-linear duration-200`}>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/")}>Home</li>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>Contact</li>
