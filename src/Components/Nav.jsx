@@ -5,11 +5,12 @@ import { BiUserCircle } from 'react-icons/bi';
 import { useAuth } from './Auth/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md'
+import { HiOutlineLogout } from "react-icons/hi"
 
 export default function Nav() {
     const [nav, setnav] = useState(false);
     const navigate = useNavigate();
-    const { theme,settheme,auth }=useAuth()
+    const { theme, settheme, auth } = useAuth()
 
     const handle = () => {
         setnav(!nav);
@@ -23,6 +24,19 @@ export default function Nav() {
             settheme("light")
         }
     }
+    const handleLogOut = () => {
+        setauth({
+            user: null,
+            token: "",
+        })
+        localStorage.removeItem("auth");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("username");
+        navigate('/')
+        toast.success("Logout Succesfully ")
+    }
+
+
 
     useEffect(() => {
 
@@ -96,16 +110,16 @@ export default function Nav() {
                             )}
                         </>
                     )}</li>
-                   
+
                 </ul>
             </div>
 
-            <section className='sm:flex md:hidden'>
-                <ul className={`bg-gray-300 flex flex-col absolute left-0 h-screen shadow-sm ${nav ? 'w-[50%] sm:w-17' : "w-0 overflow-hidden"} transition-all ease-linear duration-200`}>
-                    <li className='mx-2 my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/")}>Home</li>
-                    <li className='mx-2 my-1 font-semibold hover:border-b-2 border-black inline'>Contact</li>
-                    <li className='mx-2 my-1 font-semibold hover:border-b-2 border-black inline'>About</li>
-                    <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
+            <section className=' md:hidden h-screen'>
+                <ul className={`bg-gray-300 flex flex-col absolute left-0 h-screen shadow-sm ${nav ? 'w-[90%] sm:w-17' : "w-0 overflow-hidden"} transition-all ease-linear duration-200`}>
+                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/")}>Home</li>
+                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>Contact</li>
+                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>About</li>
+                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 '>
                         < section >
                             {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
                                 <h1 className=' text-black font-semibold'>Dark Mode</h1> <MdDarkMode size={30} className='text-black' />
@@ -126,7 +140,7 @@ export default function Nav() {
                         <>
                             {auth?.user?.role === 1 ? (
                                 <div className='flex flex-row cursor-pointer' onClick={() => navigate('/hod')} >
-                                    <li className='mx-2 font-bold mt-2 items-center' >Hod</li>
+                                    <li className='mx-2 font-bold mt-2 text-black items-center' >Hod</li>
                                     <li className=' ml-0' >
                                         <BiUserCircle size={40} className='text-green-700' />
                                     </li>
@@ -135,17 +149,33 @@ export default function Nav() {
                                 <>
                                     {auth.user?.role === 2 ? (
                                         <div className='flex flex-row cursor-pointer' onClick={() => navigate('/Admin')} >
-                                            <li className='mx-2 font-bold mt-2 items-center' >Principal</li>
+                                            <li className='mx-2 font-bold mt-2 items-center text-black' >Principal</li>
                                             <li className=' ml-0' >
                                                 <BiUserCircle size={40} className='text-green-700' />
                                             </li>
                                         </div>
                                     ) : (
-                                        <div className="flex flex-row">
-                                            <Link className='mx-2 font-bold mt-2' to='/student' >{auth?.user?.name}</Link>
-                                            <li className="cursor-pointer" >
-                                                <BiUserCircle size={40} className="text-green-700" onClick={() => navigate('/student')} />
-                                            </li>
+                                        <div className="flex flex-col">
+                                            <section className='flex '>
+                                                <Link className='mx-2 font-bold text-black mt-2' to='/student' >{auth?.user?.name}    </Link>
+                                                <li className="cursor-pointer" >
+                                                    <BiUserCircle size={40} className="text-green-700" onClick={() => navigate('/student')} />
+                                                </li>
+                                            </section>
+
+                                            <section className='flex flex-col'>
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
+
+                                                    <Link className='mx-2  mt-2 text-black hover:border-b-2 border-blue-700' to='/cof ' >Course Feedback</Link>
+                                                </li>
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
+
+                                                    <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/ecf ' >EC Feedback</Link>
+                                                </li>
+                                                <li onClick={handleLogOut} className='text-black w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+
+                                            </section>
+
                                         </div>
                                     )}
                                 </>

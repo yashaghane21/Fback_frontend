@@ -48,6 +48,15 @@ const Home = () => {
                                                     <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/student ' >{auth?.user?.name}</Link>
                                                     <BiUserCircle size={23} className="text-blue-700 mt-2" onClick={() => navigate('/student')} />
                                                 </li>
+
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
+
+                                                    <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/cof ' >Course Feedback</Link>
+                                                </li>
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
+
+                                                    <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/ecf ' >EC Feedback</Link>
+                                                </li>
                                             </div>
                                         )}
                                     </>
@@ -65,7 +74,7 @@ const Home = () => {
 
                     <p className={`${theme == "light" ? "" : "text-white"}`}>
                         <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}> Website is under development please ignore </h1>
-                      <TypeAnimation
+                        <TypeAnimation
                             sequence={[
 
                                 ' Better Student Experiences ',

@@ -42,13 +42,12 @@ const App = () => {
             <Route path='manage' element={<Manage />} />
           </Route>
 
-          <Route path='/student' element={<Ssidebar />}>
-            <Route index element={<Home />} />
-            <Route path='home' element={<Home />} />
-            <Route path='cof' element={<Cofeedback />} />
+          <Route path='/student' element={<Ssidebar />} />
+         
+            <Route path='/cof' element={<Cofeedback />} />
             <Route path='done' element={<Done />} />
-            <Route path='ecf' element={<Ecfeedback />} />
-          </Route>
+            <Route path='/ecf' element={<Ecfeedback />} />
+     
 
           <Route path='/hod' element={<Hsidebar />}>
             <Route index element={<Hhome />} />

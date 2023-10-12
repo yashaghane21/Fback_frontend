@@ -5,7 +5,7 @@ import { useAuth } from '../Auth/AuthContext';
 const Done = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            window.location.href = '/student/home';
+            window.location.href = '/home';
         }, 5000);
 
         return () => clearTimeout(timer);
