@@ -21,7 +21,7 @@ const Cofeedback = () => {
 
     const [loader, setloader] = useState(false)
     const id = localStorage.getItem("userid")
-    const [feedbackData, setFeedbackData] = useState([])    
+    const [feedbackData, setFeedbackData] = useState([])
     console.log(id)
 
     const quesions = async () => {
@@ -84,31 +84,35 @@ const Cofeedback = () => {
         console.log(feedbackData);
         setFeedbackData([...feedbackData, { question: questionId, answer }]);
     }
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (feedbackData == "") {
+            toast.error("Please Provide Answers")
+        } else {
+            try {
+                const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/feedback', {
+                    department: dep,
+                    sem: sems,
+                    course: subject,
+                    student: id,
+                    feedback: feedbackData
+                });
+                if (data?.success) {
+                    toast.success("Feedback Submited Succesfully ")
+                    navigate("/student/done")
 
-        try {
-            const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/feedback', {
-                department: dep,
-                sem: sems,
-                course: subject,
-                student: id,
-                feedback: feedbackData
-            });
-            if (data?.success) {
-                toast.success("Feedback Submited Succesfully ")
-                navigate("/student/done")
+                }
+                else {
 
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert('Error submitting feedback. Please try again.');
             }
-            else {
-
-            }
-            
-        } catch (error) {
-            console.error(error); 
-            alert('Error submitting feedback. Please try again.');
         }
+
     }
 
     useEffect(() => {

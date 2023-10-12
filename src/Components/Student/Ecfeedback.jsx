@@ -56,26 +56,32 @@ const Ecfeedback = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/ecfeedback', {
-                department: dep,
-                student: id,
-                feedback: feedbackData
-            });
-            console.log("gau",data)
-            if (data?.success) {
-                toast.success("Feedback Submited Succesfully ")
-                navigate("/student/done")
-
-            }
-            else {
-
-            }
-
-        } catch (error) {
-            console.error(error);
-            alert('Error submitting feedback. Please try again.');
+        if (feedbackData == "") {
+            toast.error("Please Provide Answers")
         }
+        else {
+            try {
+                const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/ecfeedback', {
+                    department: dep,
+                    student: id,
+                    feedback: feedbackData
+                });
+                console.log("gau", data)
+                if (data?.success) {
+                    toast.success("Feedback Submited Succesfully ")
+                    navigate("/student/done")
+
+                }
+                else {
+
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert('Error submitting feedback. Please try again.');
+            }
+        }
+
     }
 
     useEffect(() => {

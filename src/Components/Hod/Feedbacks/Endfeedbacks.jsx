@@ -72,7 +72,7 @@ const Endfeedbacks = () => {
                         <table className='border-collapse select-none w-[90%] '>
                             <thead>
                                 <tr className=' bg-blue-700 '>
-                                    <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
+                                    <th className='p-2 py-2 text-left text-white text-lg '>Index</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
                                     {/* <th className='p-2 text-left py-2 text-white text-lg'>Student</th> */}
