@@ -63,6 +63,7 @@ const teacher = () => {
 
     const handlesearchchange = (e) => {
         setsearch(e.target.value);
+        getst()
     }
 
     const addfac = async (e) => {
