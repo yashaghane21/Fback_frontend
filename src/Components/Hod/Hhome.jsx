@@ -166,8 +166,8 @@ const Hhome = () => {
                         <div className={`h-[18vh] my-2  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                             <section className='flex w-full h-[100%] '>
                                 <section className='p-5 w-[50%] h-full '>
-                                    <h1 className='font-bold text-xl'>Xyz</h1>
-                                    <h1 className='font-bold over text-green-700'>Xyzqwer erfwerfewt {year} {type}  wetfewtrtgerg g</h1>
+                                    <h1 className='font-bold text-xl'>FeedBacker</h1>
+                                    <h1 className='font-bold over text-green-700'>Your Tickites Here</h1>
                                 </section>
                                 <section className='flex justify-center items-center  rounded-2xl w-[50%]'>
                                     <button className='px-5 py-2 border-green-700  shadow-sm shadow-green-700 border-[1px] rounded-lg '>ABCD</button>

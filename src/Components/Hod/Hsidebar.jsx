@@ -89,10 +89,11 @@ export default function Hsidebar() {
                         </div>
                         <div className='flex justify-start  mt-8 '>
                             <ul className='mt-4  cursor-pointer px-8 ' >
-                                <Link to='/hod/home'>
+                            <Link to='/hod/home'>
+                                    <li className='text-white w-[180px]  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-sm   rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />Dashboard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
-                                    <li className='text-white   my-2 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  px-3   rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
+                                    <li className='text-white   my-2 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm  px-3   rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
                                 </Link>
                                 <Link to='/hod/teacher'>
                                     <li className='text-white my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm px-3 w-[180px]  rounded-md border-none cursor-pointer'><MdManageAccounts size={30} className=' pr-2 pb-2 ' />Faculties</li>
@@ -126,7 +127,7 @@ export default function Hsidebar() {
 
 
 
-                    {/* Mobile Navbar is here */}
+                    {/* Mobile nav*/}
 
                     <div
                         className={`${theme === 'light' ? 'bg-[#1e293b]' : 'bg-[#1e293b]'

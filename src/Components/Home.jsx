@@ -73,21 +73,22 @@ const Home = () => {
 
 
                     <p className={`${theme == "light" ? "" : "text-white"}`}>
-                        <h1 className={`font-bold text-2xl mt-2 sm:text-5xl`}> Website is under development please ignore </h1>
+                        <h1 className={`font-bold text-4xl mt-2 sm:text-5xl px-2`}> Feedbacker   </h1>
+                        <h1 className='font-bold w-[100%] sm:w-[90%] mt-4 p-2'>Your Voice Matters! This platform bridges the gap between students and departments, allowing seamless feedback submission and in-depth analysis. Join us in shaping a better academic experience!</h1>
                         <TypeAnimation
                             sequence={[
 
                                 ' Better Student Experiences ',
-                                1000,
-                                ' Continuous Improvement',
-                                1000,
+                                2000,
+                                '  Improvement',
+                                2000,
                                 ' Building Trust',
-                                1000,
+                                2000,
                                 ' More Engagement    ',
-                                1000
+                                2000
                             ]}
                             wrapper="span"
-                            speed={100}
+                            speed={50}
                             style={{ fontSize: ' 2rem', display: 'inline-block', paddingLeft: "5px" }}
                             repeat={Infinity}
                         />
@@ -95,8 +96,8 @@ const Home = () => {
                     {/* <button className='bg-blue-700 rounded-md text-white  px-4 py-1 mt-5 '>Get Started </button> */}
 
                 </div>
-                <div className='w-full sm:w-[50%] flex justify-center p-2 mt-5'>
-                    <img src={img} alt='' className='h-[25vh] sm:h-[70vh] w-[70%] sm:w-[100%]  ' />
+                <div className='w-full sm:w-[60%] flex justify-center  p-2 '>
+                    <img src={img} alt='' className='h-[30vh] sm:h-[80vh] w-[100%] sm:w-[90%]  ' />
 
                 </div>
 

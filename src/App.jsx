@@ -45,7 +45,7 @@ const App = () => {
           <Route path='/student' element={<Ssidebar />} />
          
             <Route path='/cof' element={<Cofeedback />} />
-            <Route path='done' element={<Done />} />
+            <Route path='/done' element={<Done />} />
             <Route path='/ecf' element={<Ecfeedback />} />
      
 

@@ -69,7 +69,7 @@ const Ecfeedback = () => {
                 console.log("gau", data)
                 if (data?.success) {
                     toast.success("Feedback Submited Succesfully ")
-                    navigate("/student/done")
+                    navigate("/done")
 
                 }
                 else {

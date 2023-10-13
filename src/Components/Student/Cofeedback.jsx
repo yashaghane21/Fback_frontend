@@ -100,7 +100,7 @@ const Cofeedback = () => {
                 });
                 if (data?.success) {
                     toast.success("Feedback Submited Succesfully ")
-                    navigate("/student/done")
+                    navigate("/done")
 
                 }
                 else {
