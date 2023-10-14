@@ -62,7 +62,7 @@ export default function Nav() {
                 <ul className='hidden md:flex items-center cursor-pointer'>
                     <li className='mx-2 font-bold' onClick={() => navigate("/")}>Home</li>
                     <li className='mx-2 font-bold'>Contact</li>
-                    <li className='mx-2 font-bold'>About</li>
+                    <li className='mx-2 font-bold' onClick={()=> navigate("/about")}>About</li>
                     <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
                         < section >
                             {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
@@ -118,7 +118,7 @@ export default function Nav() {
                 <ul className={`bg-gray-300 flex flex-col absolute left-0 h-screen shadow-sm ${nav ? 'w-[90%] sm:w-17' : "w-0 overflow-hidden"} transition-all ease-linear duration-200`}>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/")}>Home</li>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>Contact</li>
-                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>About</li>
+                    <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/about")}>About</li>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 '>
                         < section >
                             {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>

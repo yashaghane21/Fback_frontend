@@ -87,7 +87,7 @@ const Hhome = () => {
 
             <div className='flex justify-center items-center sm:justify-start '>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh] mx-5 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh] mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
@@ -189,7 +189,7 @@ const Hhome = () => {
                                         <option key={y} value={y}>{y}</option>
                                     ))}
                                 </select>
-                                <select onChange={(e) => settype(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                <select onChange={(e) => settype(e.target.value)} className={`px-5 my-2 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                     <option>{type}</option>
                                     {values.map((item, index) => (
                                         <option key={index} value={item}>
