@@ -309,7 +309,7 @@ const Manage = () => {
 
                                 <h1 className='font-bold  text-1xl'>Mobile</h1>
                                 <h1 className='my-2 font-semibold'>{uhod?.phone}</h1>
-                              
+
                                 <hr></hr>
 
                             </div>

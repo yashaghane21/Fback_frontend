@@ -190,7 +190,6 @@ const Hhome = () => {
                                     ))}
                                 </select>
                                 <select onChange={(e) => settype(e.target.value)} className={`px-5 my-2 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                    <option>{type}</option>
                                     {values.map((item, index) => (
                                         <option key={index} value={item}>
                                             <h1 className='font-semibold'>{item}</h1>
@@ -213,7 +212,6 @@ const Hhome = () => {
                                 ))}
                             </select>
                             <select onChange={(e) => settype(e.target.value)} className={`px-5 my-2 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                <option>{type}</option>
                                 {values.map((item, index) => (
                                     <option key={index} value={item}>
                                         <h1 className='font-semibold'>{item}</h1>
