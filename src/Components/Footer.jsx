@@ -3,9 +3,11 @@ import { AiOutlineTwitter } from "react-icons/ai"
 import { AiOutlineInstagram } from "react-icons/ai"
 import { AiFillLinkedin } from "react-icons/ai"
 import i from "../assets/ss.png"
+import { useAuth } from './Auth/AuthContext'
 const Footer = () => {
+    const { theme } = useAuth()
     return (
-        <div className='h-[20vh] w-full bg-slate-950 '>
+        <div className={`${theme == "light" ? "bg-white" : " bg-slate-950"} h-[20vh] w-full`}>
             <div className='flex justify-between items-center'>
                 <section className='px-5 pt-5 flex  justify-center items-center'>
                     <section>
