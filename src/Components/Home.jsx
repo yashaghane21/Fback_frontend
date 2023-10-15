@@ -67,7 +67,7 @@ const Home = () => {
                 </ul>
             </section>
             <div className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
-                <div className='h-[50vh] w-full sm:h-[70vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
+                <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
 
 
 
@@ -96,8 +96,8 @@ const Home = () => {
                     {/* <button className='bg-blue-700 rounded-md text-white  px-4 py-1 mt-5 '>Get Started </button> */}
 
                 </div>
-                <div className='w-full sm:w-[60%] flex justify-center  p-2 '>
-                    <img src={img} alt='' className='h-[40vh] sm:h-[80vh] w-[100%] sm:w-[90%]  ' />
+                <div className='w-full sm:w-[60%] sm:h-[81vh] h-[40vh] flex justify-center  items-center  '>
+                    <img src={img} alt='' className='h-[40vh] sm:h-[90vh] w-[100%] sm:w-[100%]  ' />
 
                 </div>
 

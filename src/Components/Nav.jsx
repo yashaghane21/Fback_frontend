@@ -48,10 +48,10 @@ export default function Nav() {
 
     return (
         <div className=''>
-            <div className='flex justify-between items-center px-4 py-2 shadow-lg'>
+            <div className='flex justify-between items-center px-4 py-3 shadow-lg'>
                 <section>
                     <h1 className='mx-2 font-bold text-md sm:text-2xl text-blue-700 cursor-pointer flex'>
-                        <VscFeedback size={23} className='mr-2 mt-1' />
+                        <VscFeedback size={23} className='mr-2 sm:mt-2 mt-1' />
                         FEED<span className='text-gray-500'>BACKER</span>
                     </h1>
                 </section>
