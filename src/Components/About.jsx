@@ -9,7 +9,7 @@ const About = () => {
         <div className={`p-2 h-[100vh] overflow-y-auto sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
             <div className='h-full sm:h-[50vh] mt-8 p-4 w-[100%] flex flex-col  sm:flex-row'>
                 <section className='w-[100%] sm:w-[50%]'>
-                    <h1 className='font-bold px-2 text-2xl'>Welcome to Feedbacker</h1>
+                    <h1 className='font-bold px-2 text-4xl'>Welcome to Feedbacker</h1>
                     <p className='font-bold text-xl px-2 mt-3'>
                         {`"Welcome to Feedbacker – Your Voice Matters! This platform bridges the gap between
                     students and departments, allowing seamless feedback submission and in-depth analysis.

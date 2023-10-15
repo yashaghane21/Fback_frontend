@@ -161,7 +161,7 @@ const Hhome = () => {
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
                         <div className={`h-[30vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <FeedbackChart feedbackData={feedbackData} />
+                            <FeedbackChart feedbackData={feedbackData} tott={tt} tots={ts} />
                         </div>
                         <div className={`h-[18vh] my-2  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                             <section className='flex w-full h-[100%] '>

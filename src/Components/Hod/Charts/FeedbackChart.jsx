@@ -5,9 +5,9 @@ import { BarElement, CategoryScale, Chart as ChartJS, LinearScale } from 'chart.
 ChartJS.register(
     CategoryScale, LinearScale, BarElement
 )
-const FeedbackChart = ({ feedbackData, semdata }) => {
+const FeedbackChart = ({ feedbackData, tott, tots }) => {
     const data = {
-        labels: ['Feedbacks'],
+        labels: ['Feedbacks,Teachers,Students,other'],
         datasets: [
             {
                 label: 'Total Feedbacks',
@@ -17,18 +17,18 @@ const FeedbackChart = ({ feedbackData, semdata }) => {
                 data: [feedbackData.tfeedbacks]
             },
             {
-                label: 'Total Feedbacks',
+                label: 'Total Teachers',
                 backgroundColor: '#36a2eb',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
-                data: [feedbackData.tfeedbacks]
+                data: [tott]
             },
             {
                 label: 'Total Feedbacks',
                 backgroundColor: '#cc65fe',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
-                data: [feedbackData.tfeedbacks]
+                data: [tots]
             }
             , {
                 label: 'Total Feedbacks',
@@ -62,16 +62,16 @@ const FeedbackChart = ({ feedbackData, semdata }) => {
             },
             tooltip: {
                 mode: 'index',
-                intersect: false,
+                intersect: true,
             },
         },
         animations: {
             tension: {
-              duration: 1000,
-              easing: 'linear',
-              from: 1,
-              to: 0,
-              loop: true
+                duration: 1000,
+                easing: 'linear',
+                from: 1,
+                to: 0,
+                loop: true
             }
         }
     };
