@@ -1,19 +1,32 @@
 import React from 'react'
-
+import { AiOutlineTwitter } from "react-icons/ai"
+import { AiOutlineInstagram } from "react-icons/ai"
+import { AiFillLinkedin } from "react-icons/ai"
+import i from "../assets/ss.png"
 const Footer = () => {
     return (
         <div className='h-[20vh] w-full bg-slate-950 '>
-            <div className='flex justify-between sm:flex-row flex-col '>
-                <div className='mt-5  '>
-                    <h1 className='text-white font-semibold'>All Rights Reserved</h1>
-                </div>
-                <div className='mt-5  h-[20vh] flex flex-col'>
-                    <h1 className='text-white font-semibold'>Developed By --❤️❤️❤️
-                    </h1>
-                    <h1 className='text-white font-semibold mt-2'>@Gpm 2023</h1></div>
-                    
+            <div className='flex justify-between items-center'>
+                <section className='px-5 pt-5 flex  justify-center items-center'>
+                    <section>
+                        <h1 className='font-bold text-blue-700 mx-5 text-xl'>FeedBacker</h1>
+                        <h1>All rights are reserved.</h1>
+                        <section className="flex mt-7 gap-3">
+                            <AiOutlineTwitter size={33} />
+                            <AiOutlineInstagram size={33} />
+                            <AiFillLinkedin size={33} />
+                        </section>
+                    </section>
+
+
+                </section>
+                <section className='px-5 sm:mt-2 mt-9'>
+                    <img src={i} className='h-[12vh] rounded-full' />
+                </section>
             </div>
-          
+
+
+
         </div>
     )
 }
