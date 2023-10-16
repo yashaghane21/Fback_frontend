@@ -48,7 +48,7 @@ export default function Nav() {
 
     return (
         <div className=''>
-            <div className='flex justify-between items-center px-4 py-3 shadow-lg'>
+            <div className='flex justify-between items-center px-4 py-4 shadow-lg'>
                 <section>
                     <h1 className='mx-2 font-bold text-md sm:text-2xl text-blue-700 cursor-pointer flex'>
                         <VscFeedback size={23} className='mr-2 sm:mt-2 mt-1' />
@@ -60,21 +60,21 @@ export default function Nav() {
                 </section>
 
                 <ul className='hidden md:flex items-center cursor-pointer'>
-                    <li className='mx-2 font-bold' onClick={() => navigate("/")}>Home</li>
-                    <li className='mx-2 font-bold'>Contact</li>
-                    <li className='mx-2 font-bold' onClick={() => navigate("/about")}>About</li>
-                 
+                    <li className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 ' onClick={() => navigate("/")}>Home</li>
+                    <li className='mx-3 font-bold text-lg hover:border-b-2 border-blue-700 '>Contact</li>
+                    <li className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 ' onClick={() => navigate("/about")}>About</li>
+
                     <li className='block '> {!auth?.user ? (
                         <>
                             <div className='flex  justify-center items-center font-bold '>
-                                <button className={`mx-2 border-[1px]  cursor-pointer text-sm py-[1px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white "} `} onClick={() => navigate("/login")}> Login</button>
-                                <button className={`mx-2 border-[1px] cursor-pointer border-black  text-sm py-[1px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white"} `} onClick={() => navigate("/signup")}>Signup</button>                            </div>
+                                <button className={`mx-2 border-[1px]  cursor-pointer text-lg py-[0.5px] hover:bg-blue-600  hover:text-white  rounded-full px-5 text-white' ${theme == "light" ? " text-black hover:border-blue-700  border-black" : "text-white  hover:border-blue-700 "} `} onClick={() => navigate("/login")}> Login</button>
+                                <button className={`mx-2 border-[1px] cursor-pointer   text-lg  py-[0.5px] hover:bg-blue-600 hover:text-white  rounded-full px-4 text-white' ${theme == "light" ? " text-black hover:border-blue-700 border-black " : "text-white hover:border-blue-700 "} `} onClick={() => navigate("/signup")}>Signup</button>                            </div>
                         </>
                     ) : (
                         <>
                             {auth?.user?.role === 1 ? (
                                 <div className='flex flex-row cursor-pointer' onClick={() => navigate('/hod')} >
-                                    <li className='mx-2 font-bold mt-2 items-center' >Hod</li>
+                                    <li className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 mt-[7px] items-center' >Hod</li>
                                     <li className=' ml-0' >
                                         <BiUserCircle size={40} className='text-blue-700' />
                                     </li>
@@ -83,14 +83,14 @@ export default function Nav() {
                                 <>
                                     {auth.user?.role === 2 ? (
                                         <div className='flex flex-row cursor-pointer' onClick={() => navigate('/Admin')} >
-                                            <li className='mx-2 font-bold mt-2 items-center' >Principal</li>
+                                            <li className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700  mt-2 items-center' >Principal</li>
                                             <li className=' ml-0' >
                                                 <BiUserCircle size={40} className='text-blue-700' />
                                             </li>
                                         </div>
                                     ) : (
                                         <div className="flex flex-row">
-                                            <Link className='mx-2 font-bold mt-2' to='/student' >{auth?.user?.name}</Link>
+                                            <Link className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 mt-2' to='/student' >{auth?.user?.name}</Link>
                                             <li className="cursor-pointer" >
                                                 <BiUserCircle size={40} className="text-blue-700" onClick={() => navigate('/student')} />
                                             </li>
@@ -100,7 +100,7 @@ export default function Nav() {
                             )}
                         </>
                     )}</li>
-                       <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
+                    <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
                         < section >
                             {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
                                 <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={23} className=' text-black' />

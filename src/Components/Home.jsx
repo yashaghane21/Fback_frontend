@@ -32,7 +32,7 @@ const Home = () => {
 
                     <p className={`${theme == "light" ? "" : "text-white"}`}>
                         <h1 className={`font-bold text-4xl mt-2 sm:text-5xl px-2`}> Feedbacker   </h1>
-                        <h1 className='font-bold w-[100%] sm:w-[90%] mt-4 p-2'>Your Voice Matters! This platform bridges the gap between students and departments, allowing seamless feedback submission and in-depth analysis. Join us in shaping a better academic experience!</h1>
+                        <h1 className='font-bold w-[100%] sm:w-[100%] mt-4 p-2 sm:text-xl'>Your Voice Matters! This platform bridges the gap between students and departments, allowing seamless feedback submission and in-depth analysis. Join us in shaping a better academic experience!</h1>
                         <TypeAnimation
                             sequence={[
 
