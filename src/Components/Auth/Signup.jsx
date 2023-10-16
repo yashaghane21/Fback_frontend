@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { Select } from "antd"
 import { toast } from "react-hot-toast"
-import img from "./ss.png"
 import { ThreeDots } from "react-loader-spinner"
+import lottie from 'lottie-web';
+import animationData from "./react.json"
 import { Link, useNavigate } from 'react-router-dom'
 const Option = Select
 
@@ -111,8 +112,17 @@ const Signup = () => {
   useEffect(() => {
 
     alldepartments();
+    const anim = lottie.loadAnimation({
+      container: document.getElementById('lottie-container'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: animationData, // Your animation data
+    });
+    return () => anim.destroy(); // Clean up animation on component unmount
+  }, []);
 
-  }, [])
+
 
 
 
@@ -120,8 +130,8 @@ const Signup = () => {
   return (
     <div className='flex h-screen'>
 
-      <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
-        <img src={img} alt='ff' className='w-[80%] h-[90%]' />
+<div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
+        <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
       </div>
 
       <div className='flex flex-col w-[100%] sm:w-1/2 justify-center items-center'>
@@ -130,7 +140,7 @@ const Signup = () => {
 
           <h1 className='text-center text-2xl font-bold'>Signup</h1>
           {loader ? <section className='flex justify-center items-center'>
-            <ThreeDots size={23} color='blue'  />
+            <ThreeDots size={23} color='blue' />
           </section> :
             <>
             </>}

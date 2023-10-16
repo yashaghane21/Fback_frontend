@@ -210,6 +210,7 @@ const Subjects = () => {
 
                             </tr>
                         </thead>
+                        
                         {subjects.map((item, index) => (
                             <>
                                 <tr className={`${theme == "light" ? "hover:bg-gray-300 " : "hover:bg-slate-950"}`} key={index}>

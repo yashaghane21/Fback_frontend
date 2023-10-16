@@ -62,23 +62,13 @@ export default function Nav() {
                 <ul className='hidden md:flex items-center cursor-pointer'>
                     <li className='mx-2 font-bold' onClick={() => navigate("/")}>Home</li>
                     <li className='mx-2 font-bold'>Contact</li>
-                    <li className='mx-2 font-bold' onClick={()=> navigate("/about")}>About</li>
-                    <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
-                        < section >
-                            {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
-                                <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={23} className=' text-black' />
-                            </section> : <section className=' flex items-center' onClick={handletheme} >
-                                <h1 className=' text-black font-semibold'></h1> <MdOutlineLightMode size={23} className=' text-white' />
-                            </section>
-                            }
-                        </section>
-                    </li>
-                    <li className='block sm:hidden'> {!auth?.user ? (
+                    <li className='mx-2 font-bold' onClick={() => navigate("/about")}>About</li>
+                 
+                    <li className='block '> {!auth?.user ? (
                         <>
-                            <div className='flex items-center font-bold'>
-                                <button className='mx-2 bg-blue-700 text-sm py-0.5 rounded-md px-2 text-white' onClick={() => navigate("/login")}> Login</button>
-                                <button className='mx-2 bg-blue-700 text-sm py-0.5 rounded-md px-2 text-white' onClick={() => navigate("/signup")}>Signup</button>
-                            </div>
+                            <div className='flex  justify-center items-center font-bold '>
+                                <button className={`mx-2 border-[1px]  cursor-pointer text-sm py-[1px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white "} `} onClick={() => navigate("/login")}> Login</button>
+                                <button className={`mx-2 border-[1px] cursor-pointer border-black  text-sm py-[1px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white"} `} onClick={() => navigate("/signup")}>Signup</button>                            </div>
                         </>
                     ) : (
                         <>
@@ -110,6 +100,16 @@ export default function Nav() {
                             )}
                         </>
                     )}</li>
+                       <li className='mx-2 my-1 font-semibold hover:border-b-2 '>
+                        < section >
+                            {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
+                                <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={23} className=' text-black' />
+                            </section> : <section className=' flex items-center' onClick={handletheme} >
+                                <h1 className=' text-black font-semibold'></h1> <MdOutlineLightMode size={23} className=' text-white' />
+                            </section>
+                            }
+                        </section>
+                    </li>
 
                 </ul>
             </div>

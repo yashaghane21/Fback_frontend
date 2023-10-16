@@ -1,70 +1,28 @@
-import React from 'react'
-import img from "../assets/yy.png"
+import React, { useEffect } from 'react'
 import { BiUserCircle } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './Auth/AuthContext'
 import { TypeAnimation } from 'react-type-animation';
-
+import lottie from 'lottie-web';
+import animationData from "./ff.json"
 const Home = () => {
 
     const { theme, auth } = useAuth()
+    useEffect(() => {
+        const anim = lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: animationData, // Your animation data
+        });
+        return () => anim.destroy();
+    })
     const navigate = useNavigate()
     return (
         <div>
             <section className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
-                <ul className='flex absolute   sm:right-36'>
 
-                    <li>
-                        {!auth?.user ? (
-                            <>
-                                <div className={`flex items-center font-bold `}>
-                                    <button className={`mx-2 border-[1px]  text-sm py-[0.5px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white "} `} onClick={() => navigate("/login")}> Login</button>
-                                    <button className={`mx-2 border-[1px] border-black  text-sm py-[0.5px] hover:bg-blue-600 hover:text-white  rounded-full px-3 text-white' ${theme == "light" ? " text-black border-black" : "text-white border-white"} `} onClick={() => navigate("/signup")}>Signup</button>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                {auth?.user?.role === 1 ? (
-                                    <div className='flex flex-row cursor-pointer' onClick={() => navigate('/hod')} >
-                                        <li className=' ml-0 flex' >
-                                            <BiUserCircle size={23} className='text-blue-700 mt-2' />
-                                            <li className='mx-2 font-bold mt-2 items-center  hover:border-b-4 border-blue-700' >Hod</li>
-                                        </li>
-                                    </div>
-                                ) : (
-                                    <>
-                                        {auth.user?.role === 2 ? (
-                                            <div className='flex flex-row cursor-pointer' onClick={() => navigate('/Admin')} >
-                                                <li className='mx-2 font-bold mt-2 items-center  hover:border-b-2' >Principal</li>
-                                                <li className=' ml-0' >
-                                                    <BiUserCircle size={23} className='text-blue-700' />
-                                                </li>
-                                            </div>
-                                        ) : (
-                                            <div className="flex flex-row">
-
-                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
-
-                                                    <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/student ' >{auth?.user?.name}</Link>
-                                                    <BiUserCircle size={23} className="text-blue-700 mt-2" onClick={() => navigate('/student')} />
-                                                </li>
-
-                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
-
-                                                    <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/cof ' >Course Feedback</Link>
-                                                </li>
-                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
-
-                                                    <Link className='mx-2 font-bold mt-2 hover:border-b-2 border-blue-700' to='/ecf ' >EC Feedback</Link>
-                                                </li>
-                                            </div>
-                                        )}
-                                    </>
-                                )}
-                            </>
-                        )}
-                    </li>
-                </ul>
             </section>
             <div className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
                 <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
@@ -97,8 +55,7 @@ const Home = () => {
 
                 </div>
                 <div className='w-full sm:w-[60%] sm:h-[81vh] h-[40vh] flex justify-center  items-center  '>
-                    <img src={img} alt='' className='h-[40vh] sm:h-[90vh] w-[100%] sm:w-[100%]  ' />
-
+                    <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
                 </div>
 
             </div>

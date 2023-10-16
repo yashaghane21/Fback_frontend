@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import { useState } from 'react'
-import img from "./ss.png"
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from "react-hot-toast"
 import { useAuth } from './AuthContext'
 import { ThreeDots } from "react-loader-spinner"
-
+import lottie from 'lottie-web';
+import animationData from "./react.json"
 const Login = () => {
 
   const navigate = useNavigate()
@@ -56,17 +56,29 @@ const Login = () => {
       }
     }
   }
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: document.getElementById('lottie-container'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: animationData, // Your animation data
+    });
+    return () => anim.destroy(); // Clean up animation on component unmount
+  }, []);
+
   return (
     <div className='flex h-screen w-full'>
 
       <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
-        <img src={img} alt='ff' className='w-[80%] h-[90%]' />
+        <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
       </div>
 
       <div className='flex flex-col w-[100%] sm:w-1/2 justify-center items-center'>
 
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
-          <h1 className='text-center text-3xl font-bold'>Login</h1>
+          <h1 className='text-center text-3xl font-bold'>LOGIN</h1>
           {loader ? <section className='flex justify-center items-center'>
             <ThreeDots size={23} color='blue' />
           </section> :
