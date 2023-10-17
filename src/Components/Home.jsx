@@ -14,7 +14,7 @@ const Home = () => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            animationData: animationData, // Your animation data
+            animationData: animationData,
         });
         return () => anim.destroy();
     })
@@ -22,8 +22,17 @@ const Home = () => {
     return (
         <div>
             <section className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
-
+                {auth?.user?.role === 0 ? (
+                    <section className='absolute right-36 flex'>
+                        <h1 className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 text-black hover:border-b-2 border-blue-700`} onClick={() => navigate('/Admin')}>EC Feedback</h1>
+                        <Link className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 text-black hover:border-b-2 border-blue-700`} to='/cof'>Course Feedback</Link>
+                    </section>
+                ) : (
+                    <>
+                    </>
+                )}
             </section>
+
             <div className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
                 <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
 
@@ -59,7 +68,7 @@ const Home = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
 
     )
 }

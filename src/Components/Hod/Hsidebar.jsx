@@ -79,12 +79,12 @@ export default function Hsidebar() {
 
 
                 <div className='flex flex-row bg-gray-100 '>
-                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[1%] sm:w-[15%]  text-xl pl-2 pt-4`} >
+                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[15%]  text-xl pl-2 pt-4`} >
 
 
-                        <div className='flex justify-center mt-0 items-center '>
+                        <div className='flex justify-center mt-0 '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
-                            <h1 className='font-bold text-white  mt-2'>{dep}</h1>
+                            <h1 className='font-bold text-white text-lg  w-[100%] px-2  mt-2'>{dep}</h1>
 
                         </div>
                         <div className='flex justify-start  mt-8 '>

@@ -9,7 +9,6 @@ import { Toaster } from 'react-hot-toast';
 import Teacher from './Components/Hod/Manage/Teacher'
 import Login from "./Components/Auth/Login";
 import { Authprovider } from './Components/Auth/AuthContext'
-import Home from './Components/Student/Home'
 import Cofeedback from './Components/Student/Cofeedback'
 import Done from './Components/Student/Done'
 import Hhome from './Components/Hod/Hhome'
@@ -36,7 +35,7 @@ const App = () => {
           <Route exact path='/' element={<Layout />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route path='/about' element={<About />} />
-     
+
           <Route path='/admin' element={<Sidebar />}>
             <Route index element={<Cform />} />
             <Route path='cform' element={<Cform />} />
@@ -45,11 +44,11 @@ const App = () => {
           </Route>
 
           <Route path='/student' element={<Ssidebar />} />
-         
-            <Route path='/cof' element={<Cofeedback />} />
-            <Route path='/done' element={<Done />} />
-            <Route path='/ecf' element={<Ecfeedback />} />
-     
+
+          <Route path='/cof' element={<Cofeedback />} />
+          <Route path='/done' element={<Done />} />
+          <Route path='/ecf' element={<Ecfeedback />} />
+
 
           <Route path='/hod' element={<Hsidebar />}>
             <Route index element={<Hhome />} />

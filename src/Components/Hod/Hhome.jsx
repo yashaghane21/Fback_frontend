@@ -8,6 +8,7 @@ import b from "./2.png"
 import c from "./3.png"
 import Mpie from './Charts/Mpie'
 import Pie from "./Charts/PIe"
+import Bar from "./Charts/Bar"
 
 const Hhome = () => {
     const { theme, cusername } = useAuth()
@@ -160,21 +161,10 @@ const Hhome = () => {
             <div className='sm:px-5 p-2 flex justify-center items-center sm:flex-row flex-col-reverse' >
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
-                        <div className={`h-[30vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <FeedbackChart feedbackData={feedbackData} tott={tt} tots={ts} />
+                        <div className={`h-[50vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
+                            <Bar />
                         </div>
-                        <div className={`h-[18vh] my-2  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
-                            <section className='flex w-full h-[100%] '>
-                                <section className='p-5 w-[50%] h-full '>
-                                    <h1 className='font-bold text-xl'>FeedBacker</h1>
-                                    <h1 className='font-bold over text-green-700'>Your Tickites Here</h1>
-                                </section>
-                                <section className='flex justify-center items-center  rounded-2xl w-[50%]'>
-                                    <button className='px-5 py-2 border-green-700  shadow-sm shadow-green-700 border-[1px] rounded-lg '>ABCD</button>
-                                </section>
-                            </section>
-
-                        </div>
+                       
                     </div>
                 </div>
                 <div className='w-[100%] sm:w-[70%] p-2 flex justify-center items-center'>
