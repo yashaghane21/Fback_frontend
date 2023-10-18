@@ -12,12 +12,13 @@ const Cofeedback = () => {
     let values = ['good😃', 'average🙂', 'below average🙂'];
     const navigate = useNavigate()
     const [questions, setquestions] = useState([]);
-    const { theme, auth } = useAuth();
+    const { theme, auth, cusername } = useAuth();
     const [fac, setfac] = useState("")
     const [sub, setsub] = useState([]);
     const [sems, setsem] = useState("")
     const [dep, setdep] = useState("")
     const [subject, setsubject] = useState("")
+    const [emptyStatement, setEmptyStatement] = useState("No subjects available"); // Set your default statement here
 
     const [loader, setloader] = useState(false)
     const id = localStorage.getItem("userid")
@@ -59,12 +60,15 @@ const Cofeedback = () => {
     const subjects = async () => {
         try {
             console.log("shyam", sems);
-            const response = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/subjects", {
+            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/subjects", {
                 sem: sems
             });
+            console.log("uuuu", data.subjects);
+            setsub(data.subjects)
+            console.log(data.sem.name)
+            if (!data.subjects.sem.enabled) {
 
-            console.log("uuuu", response.data)
-            setsub(response.data.subjects)
+            }
 
         } catch (error) {
             console.error(error)
@@ -73,11 +77,9 @@ const Cofeedback = () => {
     }
 
     const handlechange = (value) => {
-        console.log("subject", value)
-        setsubject(value)
+        setsubject(value);
 
-
-    };
+    }
 
     const handleFeedbackChange = (questionId, answer) => {
         console.log("yash", questionId, answer);
@@ -87,6 +89,9 @@ const Cofeedback = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (subject == "") {
+            toast.error(`Dear ${cusername} Your are not allow to give feedback as your sem has Disabled by hod`)
+        }
         if (feedbackData == "") {
             toast.error("Please Provide Answers")
         } else {
@@ -109,16 +114,19 @@ const Cofeedback = () => {
 
             } catch (error) {
                 console.error(error);
-                alert('Error submitting feedback. Please try again.');
             }
         }
 
     }
 
     useEffect(() => {
-        quesions();
-        getuser();
-        console.log("dfdfdfdf", sems)
+        const timer = setTimeout(() => {
+            quesions();
+            getuser();
+            console.log("dfdfdfdf", sems);
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {
@@ -137,16 +145,25 @@ const Cofeedback = () => {
 
             </h1>
             <section className='flex flex-col sm:flex-row items-center  justify-between mb-2 mt-5'>
-                <Select className=' w-[50vh] ant-input text-xl  px-2 text-black ' placeholder='Select a subject' onChange={handlechange}>
-                    {sub.map((item, index) => (
-                        <Option key={index} value={item._id} >
-                            <h1 className='font-semibold'>{item.name} ||  {item.teacher.name}</h1>
-                        </Option>
-                    ))}
+
+                <Select className='w-[50vh] ant-input text-xl px-2 text-black' placeholder='Select a subject' onChange={handlechange}>
+                    {sub.map((item, index) => {
+                        const isSemesterEnabled = item.sem.enabled;
+
+                        if (isSemesterEnabled) {
+                            return (
+                                <Option key={index} value={item._id}>
+                                    <h1 className='font-semibold'>{item.name} || {item.teacher.name}</h1>
+                                </Option>
+                            );
+                        }
+                        return null;
+                        return <p className='font-bold px-5 text-red-700 '>{emptyStatement}</p>
+                    })}
                 </Select>
 
             </section>
-            <section className={`h-[30vh] mb-5 p-1 sm:p-5 text-left ${theme == 'light' ? '' : 'text-white'}`}>
+            <section className={`h-[30vh]  p-1 sm:p-5 text-left ${theme == 'light' ? '' : 'text-white'}`}>
                 <h1 className='text-center'>Welcome to Our Feedback Form:</h1>
                 <h1 className='px-1 text-xs my-2'>
                     1) We've prepared guidelines to ensure your comfort while sharing feedback.
@@ -162,7 +179,7 @@ const Cofeedback = () => {
                     <section className=' '><BarLoader size={23} color='blue' className='w-full' /></section>
                 </section>
                 :
-                <form className='p-5 w-full mt-5 mb-5' onSubmit={handleSubmit}>
+                <form className='p-5 w-full mt-5 ' onSubmit={handleSubmit}>
                     <section className='pb-5 '>
                         {questions.map((qitem, index) => (
                             <section
@@ -189,7 +206,7 @@ const Cofeedback = () => {
                             </section>
                         ))}
                     </section>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center items-center">
                         <button className='bg-blue-700 rounded-md px-3 py-1 text-white'>Submit</button>
                     </div>
                 </form>

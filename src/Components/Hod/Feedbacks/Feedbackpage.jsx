@@ -7,6 +7,7 @@ import { BarLoader } from 'react-spinners'
 import Bar from "../Charts/Bar"
 import { CgProfile } from "react-icons/cg"
 import { BiSearch } from "react-icons/bi"
+import toast from "react-hot-toast"
 const Feedbackpage = () => {
 
     const { theme } = useAuth()
@@ -31,10 +32,17 @@ const Feedbackpage = () => {
     }
     const navigate = useNavigate();
     const [year, setyear] = useState(currentYear)
+    const [enabled, setEnabled] = useState(false);
+
+    const handleToggle = () => {
+        setEnabled(!enabled);
+    };
+
+
     const feedbacks = async () => {
         setloader(true)
         const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
-        console.log(data)
+        console.log("dd", data.feedback)
         setfback(data.feedback)
         setsem(id.id)
         setloader(false)
@@ -128,7 +136,17 @@ const Feedbackpage = () => {
 
         }
     }
-
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post(`https://f-backend-7g5y.onrender.com/api/v2/semesters/${enabled ? 'enable' : 'disable'}`, {
+                id: id.id
+            });
+            console.log(response.data);
+            toast.success(`Semster ${enabled ? "Enabel" : "Disabled"} succesfully`)
+        } catch (error) {
+            console.error(error);
+        }
+    };
     const handlechange = (e) => {
         setsearch(e.target.value)
     }
@@ -166,17 +184,21 @@ const Feedbackpage = () => {
                 </ul>
 
             </div>
-            {/* <section className='p-2 flex sm:justify-end mt-5 justify-center'>
-                <form className='sm:w-[28%] w-[100%]  relative' action="" onSubmit={getsearch} >
-                    <input value={search} onChange={handlechange} type='text' placeholder='Search  ' className={`rounded-full px-5 p-2 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
-                    />
-                    <span className="absolute flex justify-center left-[70px] top-3">
-                        <BiSearch className='mb-2' size={20} />
-                    </span>
-                </form>
-            </section> */}
-            <div className='flex flex-col sm:flex-row '>
-                <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : "bg-[#0c131d]"}  h-[100%] mt-5 overflow-y-auto w-[100%] pb-2 rounded-lg `}>
+            {<section className='p-2 flex sm:justify-end mt-5 justify-center'>
+                <div>
+                    <label className='font-bold text-xl px-2'>
+                        {sub[0]?.sem.enabled ? "Enabled" : "Disabled"}
+                    </label>
+
+                    <label className="switch">
+                        <input className='p-1' type="checkbox" checked={enabled} onChange={handleToggle} />
+                        <span className="slider"></span>
+                    </label>
+                </div>
+                <button onClick={handleSubmit} className='px-4 mx-2 bg-blue-700 rounded-xl text-white' >Submit</button>
+            </section>}
+            <div className='flex flex-col  sm:flex-row '>
+                <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : "bg-[#0c131d]"}  h-[70vh] mt-5 overflow-y-auto w-[100%] pb-2 rounded-lg `}>
 
 
                     <table className='border-collapse w-[100%] '>
@@ -286,7 +308,7 @@ const Feedbackpage = () => {
                     </dialog>
                 </div>
                 <div>
-                    <div className='w-[100%]  flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
+                    <div className='w-[100%] px-5  flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
                         <div className={`h-[50vh] pb-5 flex flex-col justify-center items-center w-[50vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
                             <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 my-4'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                 <option>{year}</option>
