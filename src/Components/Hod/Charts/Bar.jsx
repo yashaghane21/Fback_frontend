@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -9,27 +10,48 @@ import {
   Legend
 } from "recharts";
 
-const data = [
-  {
-    name: "Good",
-    pv: 9142,
-  },
-  {
-    name: "",
-    pv: 1398,
-  },
-  {
-    name: "Page C",
-    pv: 9800,
-  }
-];
 
-export default function CustomBarChart() {
+
+export default function CustomBarChart({ sem, year }) {
+
+  const [bardata, setbardata] = useState(year);
+  const [iyear, setyear] = useState("")
+  const [semester, setsemester] = useState()
+  console.log("testing", sem, year)
+  const getbardata = async () => {
+    try {
+      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/typebysem", {
+        year: iyear,
+        sem: semester,
+
+      });
+      console.log("dd", data.responsedata);
+      setbardata(data.responsedata)
+
+    } catch (error) {
+
+    }
+  }
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      getbardata();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+
+  }, [iyear, semester]);
+
+  useEffect(() => {
+    setyear(year);
+    setsemester(sem);
+  }, [year, sem]);
+
+
   return (
     <BarChart
       width={350}
       height={300}
-      data={data}
+      data={bardata}
       margin={{
         top: 5,
         right: 100,
@@ -40,7 +62,7 @@ export default function CustomBarChart() {
       <XAxis dataKey="name" scale="point" padding={{ left: 40, right: 5 }} />
       <YAxis />
       <Legend />
-      <Bar dataKey="pv" fill="#8884d8"  />
+      <Bar dataKey="pv" fill="#0088FE" />
     </BarChart>
   );
 }

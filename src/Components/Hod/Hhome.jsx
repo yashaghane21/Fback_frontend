@@ -20,6 +20,7 @@ const Hhome = () => {
     const [fbacks, setfbacks] = useState("")
     const id = localStorage.getItem("userid")
     const [type, settype] = useState("good😃")
+    const [sems, setsems] = useState([])
     const date = new Date().getFullYear();
     const cyear = date;
 
@@ -36,6 +37,9 @@ const Hhome = () => {
     const [ts, setts] = useState("")
     const [tf, settf] = useState("")
     const [tt, sett] = useState("")
+    const def = "6527f14233a29f8db1e31de1"
+    const [pyear, setpyear] = useState(cyear)
+    const [psem, setpsem] = useState(def)
 
     const user = async () => {
         const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
@@ -55,6 +59,13 @@ const Hhome = () => {
         settf(data.tfeedbacks)
         sett(data.tteacher)
     }
+    const getsems = async () => {
+        console.log(dep)
+        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
+        console.log("ssss", response.data.sems)
+        setsems(response.data.sems)
+    }
+
     const fdata = async () => {
         const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/countf")
         setFeedbackData(data)
@@ -75,6 +86,7 @@ const Hhome = () => {
     useEffect(() => {
         if (dep) {
             getdata();
+            getsems();
         }
     }, [dep]);
 
@@ -162,9 +174,25 @@ const Hhome = () => {
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
                         <div className={`h-[50vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <Bar />
+                            <section className='flex'>
+                                <select onChange={(e) => setpyear(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                    <option>{year}</option>
+                                    {years.map((y) => (
+
+                                        <option key={y} value={y}>{y}</option>
+                                    ))}
+                                </select>
+                                <select onChange={(e) => setpsem(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                    <option>select sem</option>
+                                    {sems.map((y) => (
+
+                                        <option key={y} value={y._id}>{y.name}</option>
+                                    ))}
+                                </select>
+                            </section>
+                            <Bar sem={psem} year={pyear} />
                         </div>
-                       
+
                     </div>
                 </div>
                 <div className='w-[100%] sm:w-[70%] p-2 flex justify-center items-center'>
@@ -215,7 +243,7 @@ const Hhome = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 

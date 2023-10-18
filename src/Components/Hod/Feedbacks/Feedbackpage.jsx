@@ -18,6 +18,8 @@ const Feedbackpage = () => {
     const [ploader, setploader] = useState(false)
     const [student, setstudent] = useState([])
     const uid = localStorage.getItem("userid")
+    const [sem, setsem] = useState()
+    const [search, setsearch] = useState("")
     // const [sid, setsid] = useState("")
     const currentYear = new Date().getFullYear();
     const pastYears = 3;
@@ -27,13 +29,14 @@ const Feedbackpage = () => {
     for (let i = -pastYears; i <= futureYears; i++) {
         years.push(String(currentYear + i));
     }
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
+    const [year, setyear] = useState(currentYear)
     const feedbacks = async () => {
         setloader(true)
         const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
         console.log(data)
         setfback(data.feedback)
+        setsem(id.id)
         setloader(false)
     }
 
@@ -86,6 +89,29 @@ const Feedbackpage = () => {
 
     }
 
+    // const getsearch = async (e) => {
+    //     e.preventDefault()
+    //     console.log("hii")
+    //     setploader(true)
+    //     try {
+    //         const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/searchfback", {
+    //             search: search
+    //         });
+    //         if (data.success) {
+    //             console.log(data)
+    //             setfback(data.result)
+
+    //         } else {
+
+    //         }
+
+    //         setploader(false)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+
     const getuser = async (sid) => {
         try {
             setploader(true);
@@ -103,7 +129,9 @@ const Feedbackpage = () => {
         }
     }
 
-
+    const handlechange = (e) => {
+        setsearch(e.target.value)
+    }
     useEffect(() => {
         feedbacks()
         subjects()
@@ -114,7 +142,7 @@ const Feedbackpage = () => {
 
             <div className='overflow-x-auto   '>
                 <ul className='flex  w-full cursor-pointer select-none'>
-                    <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All</li>
+                    <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All </li>
 
 
                     <select className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
@@ -138,16 +166,16 @@ const Feedbackpage = () => {
                 </ul>
 
             </div>
-            <section className='p-2 flex sm:justify-end mt-5 justify-center'>
-                <form className='sm:w-[28%] w-[100%]  relative' action="" >
-                    <input type='text' placeholder='Search  ' className={`rounded-full px-5 p-2 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
+            {/* <section className='p-2 flex sm:justify-end mt-5 justify-center'>
+                <form className='sm:w-[28%] w-[100%]  relative' action="" onSubmit={getsearch} >
+                    <input value={search} onChange={handlechange} type='text' placeholder='Search  ' className={`rounded-full px-5 p-2 w-[100%] ${theme == "light" ? "bg-white border-b-2  text-black" : "bg-[#0c131d]"}`}
                     />
                     <span className="absolute flex justify-center left-[70px] top-3">
-                        <BiSearch  className='mb-2' size={20}/>
+                        <BiSearch className='mb-2' size={20} />
                     </span>
                 </form>
-            </section>
-            <div className='flex '>
+            </section> */}
+            <div className='flex flex-col sm:flex-row '>
                 <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : "bg-[#0c131d]"}  h-[100%] mt-5 overflow-y-auto w-[100%] pb-2 rounded-lg `}>
 
 
@@ -258,9 +286,16 @@ const Feedbackpage = () => {
                     </dialog>
                 </div>
                 <div>
-                    <div className='w-[100%]  hidden sm:block  sm:my-0 sm:w-[100%] pl-5 ' >
-                        <div className={`h-[45vh] flex justify-center items-center w-[50vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <Bar />
+                    <div className='w-[100%]  flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
+                        <div className={`h-[50vh] pb-5 flex flex-col justify-center items-center w-[50vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
+                            <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 my-4'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                <option>{year}</option>
+                                {years.map((y) => (
+
+                                    <option key={y} value={y}>{y}</option>
+                                ))}
+                            </select>
+                            <Bar sem={sem} year={year} />
                         </div>
 
                     </div>
