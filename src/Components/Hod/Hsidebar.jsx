@@ -14,6 +14,7 @@ import { PiStudent } from "react-icons/pi"
 import { MdSubject } from "react-icons/md"
 import { HiOutlineLogout } from "react-icons/hi"
 import { BiLastPage } from "react-icons/bi"
+import u from "./Manage/user.png"
 export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth, cusername } = useAuth()
@@ -71,15 +72,15 @@ export default function Hsidebar() {
 
 
 
-                <div onClick={handleNav} className='block sm:hidden absolute right-0 top-0 mt-5 m-2'>
-                    {nav ? <AiOutlineClose size={20} className={`${theme == "light" ? "text-black" : ""}`} /> : <AiOutlineMenu size={20} className={`${theme == "light" ? "text-black" : ""}`} />}
+                <div onClick={handleNav} className='block md:hidden absolute right-0 top-0 mx-2 mt-3 m-2'>
+                    {nav ? <AiOutlineClose size={30} className={`${theme == "light" ? "text-black" : ""}`} /> : <AiOutlineMenu size={30} className={`${theme == "light" ? "text-black" : ""}`} />}
                 </div>
 
 
 
 
                 <div className='flex flex-row bg-gray-100 '>
-                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[15%]  text-xl pl-2 pt-4`} >
+                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
 
 
                         <div className='flex justify-center mt-0 '>
@@ -87,9 +88,9 @@ export default function Hsidebar() {
                             <h1 className='font-bold text-white text-lg  w-[100%] px-2  mt-2'>{dep}</h1>
 
                         </div>
-                        <div className='flex justify-start  mt-8 '>
+                        <div className='flex justify-start w-[30%]  mt-8 '>
                             <ul className='mt-4  cursor-pointer px-8 ' >
-                            <Link to='/hod/home'>
+                                <Link to='/hod/home'>
                                     <li className='text-white w-[180px]  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-sm   rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />Dashboard</li>
                                 </Link>
                                 <Link to='/hod/sems'>
@@ -131,7 +132,7 @@ export default function Hsidebar() {
 
                     <div
                         className={`${theme === 'light' ? 'bg-[#1e293b]' : 'bg-[#1e293b]'
-                            } ${nav ? 'fixed left-0 top-0 w-[90%] h-full border-r bg-[#0C134F] ease-in-out duration-500 p-5 text-2xl z-40 md:hidden' : 'ease-in-out duration-500  fixed left-[-100%] md:hidden'
+                            } ${nav ? 'fixed left-0 top-0 w-[100%] h-full border-r bg-[#0C134F] ease-in-out duration-500 p-5 text-2xl z-40 md:hidden' : 'ease-in-out duration-500  fixed left-[-100%] md:hidden'
                             }`}
                         onClick={handleNav}
                     >
@@ -178,18 +179,18 @@ export default function Hsidebar() {
                         </div>
                     </div>
 
-                    <div className="w-full h-[50vh] sm:w-[90%] bg-[#f1f5f9]">
+                    <div className="w-full sm:w-[100%] bg-[#f1f5f9]">
                         <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>Hod Dashboard</h1>
                             </section>
                             <section className='flex'>
-                                <section className=' hidden sm:block border-orange-700 mt-4 bg-orange-700 h-[5vh] w-[5vh] border-2 rounded-full'>
-                                    {/* <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' /> */}
-                                    <h1 className='text-center text-white font-bold text-xl'>{cusername[0]}</h1>
+                                <section className=' hidden sm:block  '>
+                                    <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' />
+                                    {/* <h1 className='text-center text-white font-bold text-xl'>{cusername[0]}</h1> */}
                                 </section>
-                                < section className='mt-4  px-8 hidden sm:block' >
+                                < section className='mt-4 mx-4  px-8 hidden sm:block' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
                                         <h1 className=' text-black font-semibold'></h1> <MdDarkMode size={30} className={`${theme == "light" ? "" : "text-black"}`} />
                                     </section> : <section className=' flex items-center' onClick={handletheme} >

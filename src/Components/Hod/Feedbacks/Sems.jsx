@@ -15,7 +15,7 @@ const Sems = () => {
     const id = localStorage.getItem("userid")
     const [loader, setloader] = useState(false)
     const [name, setname] = useState("")
-  
+
     const addsem = async (e) => {
         e.preventDefault();
         const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/sem", {
@@ -80,18 +80,20 @@ const Sems = () => {
                     <button onClick={() => window.my_modal_1.showModal()} className='px-7 py-1 font-bold  shadow-md hidden sm:block text-white bg-blue-700 rounded-full'> New Semester</button>
                 </section>
             </section>
-            <div className='flex justify-center items-center mt-5   '>
+            <div className='mt-5 '>
                 {loader ? <section className='flex justify-center w-full items-center h-[100vh]'>
                     <section className=' '><BarLoader size={23} color='blue' className='w-full' /></section>
                 </section> :
-                    <div className='p-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 '>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 w-[100%] justify-items-center  md:grid-cols-3 lg:grid-cols-3 gap-5 '>
                         {sems.map((item, index) =>
-                            <div className={`relative h-40 my-2 w-[40vh]  shadow-xl rounded-2xl   sm:mx-4  ${theme == "light" ? "bg-[#f5f1f0] text-black" : "bg-[#0c131d] text-white"}`} key={index}>
-                                <AiOutlineDelete onClick={() => delsem(item._id)} size={23} color='red' className='absolute right-4 bottom-2 cursor-pointer' />
+                            <div className={`relative h-[22vh] my-2 w-[80%]  shadow-xl rounded-2xl   sm:mx-4  ${theme == "light" ? "bg-[#f5f1f0] text-black" : "bg-[#0c131d] text-white"}`} key={index}>
+                                {/* <AiOutlineDelete onClick={() => delsem(item._id)} size={23} color='red' className='absolute right-4 bottom-2 cursor-pointer' /> */}
 
                                 <h1 className={`text-center  font-bold p-5  text-3xl ${theme == "light" ? "t" : "text-white"}`}>{item.name}</h1>
-                                <section className='flex flex-col justify-start items-center'>
-                                    <button onClick={() => navigate(`/hod/fpage/${item._id}`)} className='my-2 border-[1px] border-gray-400 py-[0.5px] px-5 rounded-3xl  font-semibold hover:bg-blue-600 hover:font-bold hover:border-none hover:text-white '>View</button>
+                                <section className='flex justify-center gap-3 '>
+                                    <button onClick={() => navigate(`/hod/fpage/${item._id}`)} className='my-2 border-[1px] border-gray-400 py-[0.5px] px-4 rounded-3xl  font-semibold hover:bg-blue-600 hover:font-bold hover:border-none hover:text-white '>View</button>
+
+                                    <button onClick={() => delsem(item._id)} className='my-2 border-[1px] border-gray-400 py-[0.5px] px-4 rounded-3xl  font-semibold hover:bg-red-600 hover:font-bold hover:border-none hover:text-white '>Delete</button>
                                 </section>
                             </div>
                         )}

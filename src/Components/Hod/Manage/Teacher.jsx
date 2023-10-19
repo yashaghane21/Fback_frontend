@@ -207,9 +207,9 @@ const teacher = () => {
 
                 ) :
                     (
-                        <div className={`p-2 h-[60vh] sm:h-[70vh] overflow-y-auto sm:p-5 grid rounded-lg select-none grid-cols-1 mt-5 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-3 min-[600px]:grid-cols-1 ${theme == "light" ? "text-black" : ""}`}>
+                        <div className={`p-2 h-[70%] mb-5 sm:h-[70vh] overflow-y-auto  grid grid-cols-1 sm:grid-cols-2 w-[100%] justify-items-center  md:grid-cols-3 lg:grid-cols-3 gap-5 ${theme == "light" ? "text-black" : ""}`}>
                             {teachers?.map((item, index) => (
-                                <div className={` relative h-[20vh] sm:h-[22vh] mb-2 w-[42vh] mx-5 my-5 flex rounded-2xl ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d] text-white shadow-black"}`} key={index}>
+                                <div className={` relative h-[20vh] sm:h-[22vh] mb-2 w-[80%] mx-5 my-5 flex rounded-2xl ${theme == "light" ? "text-black bg-[#f5f1f0]" : "bg-[#0c131d] text-white shadow-black"}`} key={index}>
                                     <section className='w-[30%] rounded-full p-4'>
                                         {/* <CgProfile size={80} className='' /> */}
                                         <img src={up} alt='dd' />

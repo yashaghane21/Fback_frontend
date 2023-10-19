@@ -8,6 +8,7 @@ import Bar from "../Charts/Bar"
 import { CgProfile } from "react-icons/cg"
 import { BiSearch } from "react-icons/bi"
 import toast from "react-hot-toast"
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 const Feedbackpage = () => {
 
     const { theme } = useAuth()
@@ -33,6 +34,7 @@ const Feedbackpage = () => {
     const navigate = useNavigate();
     const [year, setyear] = useState(currentYear)
     const [enabled, setEnabled] = useState(false);
+    const [content, setContent] = useState('');
 
     const handleToggle = () => {
         setEnabled(!enabled);
@@ -48,6 +50,7 @@ const Feedbackpage = () => {
         setloader(false)
     }
 
+    console.log(fback[0])
     const getbyyear = async (year) => {
         setloader(true)
 
@@ -119,6 +122,7 @@ const Feedbackpage = () => {
     //     }
     // }
 
+    console.log(fback[0])
 
     const getuser = async (sid) => {
         try {
@@ -138,11 +142,12 @@ const Feedbackpage = () => {
     }
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(`https://f-backend-7g5y.onrender.com/api/v2/semesters/${enabled ? 'enable' : 'disable'}`, {
+            const response = await axios.post(`https://f-backend-7g5y.onrender.com/api/v2/semesters/${enabled ? 'disable' : 'enable'}`, {
                 id: id.id
             });
             console.log(response.data);
-            toast.success(`Semster ${enabled ? "Enabel" : "Disabled"} succesfully`)
+            toast.success(`Semster ${enabled ? "disabled" : "enabled"} succesfully`)
+            feedbacks();
         } catch (error) {
             console.error(error);
         }
@@ -152,6 +157,7 @@ const Feedbackpage = () => {
     }
     useEffect(() => {
         feedbacks()
+        console.log("sss", fback[0])
         subjects()
         console.log(id)
     }, [uid])
@@ -180,15 +186,22 @@ const Feedbackpage = () => {
                             <option value={item} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item} </option>
                         ))}
                     </select>
+                    {/* {fback[0].sem.enabled.toString() === "true" ? (
+                        <>
+                            <h1>dff</h1>
+                        </>
+                    ) : (
+                        <>
+                            <h1>dh</h1>
+                        </>
+                    )} */}
 
                 </ul>
 
             </div>
             {<section className='p-2 flex sm:justify-end mt-5 justify-center'>
-                <div>
-                    <label className='font-bold text-xl px-2'>
-                        {sub[0]?.sem.enabled ? "Enabled" : "Disabled"}
-                    </label>
+                <div className='flex'>
+                    <h1 className='font-bold text-xl px-2 flex' data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
 
                     <label className="switch">
                         <input className='p-1' type="checkbox" checked={enabled} onChange={handleToggle} />
@@ -246,16 +259,31 @@ const Feedbackpage = () => {
                                         {item.student?.Enroll}
                                     </td>
                                     <td
-                                        className='p-2 font-semibold cursor-pointer text-left'
+                                        className='p-2 font-semibold text-left cursor-pointer'
                                         onClick={() => getuser(item.student._id)}
                                     >
                                         {item.student?.name}
                                     </td>
+
+
+
                                     <td
-                                        className='p-2 font-semibold text-left flex cursor-pointer'
+                                        className=' font-semibold text-left flex cursor-pointer'
                                         onClick={() => navigate(`/hod/mainf/${item._id}`)}
                                     >
-                                        View<AiOutlineEye size={23} className='mx-1 mt-1' />
+                                        View<AiOutlineEye size={23} className='' />
+                                    </td>
+                                    <td
+                                        className=' font-semibold cursor-pointer text-left'
+                                    >
+                                        {item.sem.enabled.toString() === 'true' ? (
+                                            // Render content when item.sem.enabled is true
+                                            
+                                            <span className={`absolute right-48 hidden sm:block sm:top-[85px] bg-green-700 px-4 py-[0.5px] rounded-lg text-white`}>Semster Enabled For Feedback</span>
+                                        ) : (
+                                            // Render content when item.sem.enabled is false
+                                            <span className='absolute right-48 hidden sm:block sm:top-[85px] text-white bg-red-700 px-4 py-[0.5px] rounded-lg'>Semester Disabled For Feedback</span>
+                                        )}
                                     </td>
                                 </tr>
                             ))
@@ -308,9 +336,9 @@ const Feedbackpage = () => {
                     </dialog>
                 </div>
                 <div>
-                    <div className='w-[100%] px-5  flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
-                        <div className={`h-[50vh] pb-5 flex flex-col justify-center items-center w-[50vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left mx-5 my-4'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                    <div className='w-[100%] px-5   flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
+                        <div className={`h-[70vh]  pb-5 flex flex-col justify-center items-center w-[55vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
+                            <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                 <option>{year}</option>
                                 {years.map((y) => (
 
@@ -323,7 +351,10 @@ const Feedbackpage = () => {
                     </div>
                 </div>
             </div>
-
+            <ReactTooltip
+                id="my-tooltip"
+                place='top'
+            />
         </div>
     )
 }

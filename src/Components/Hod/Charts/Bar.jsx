@@ -49,7 +49,7 @@ export default function CustomBarChart({ sem, year }) {
 
   return (
     <BarChart
-      width={350}
+      width={400}
       height={300}
       data={bardata}
       margin={{

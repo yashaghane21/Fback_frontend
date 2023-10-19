@@ -93,14 +93,14 @@ const Hhome = () => {
     return (
 
 
-        <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-full`}>
+        <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-[100%]`}>
             <section className='rounded-md  px-7 mt-4'>
                 <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , {cusername} 👏👏 </h1>
             </section>
 
-            <div className='flex justify-center items-center sm:justify-start '>
-                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  min-[600px]:grid-cols-1 p-2 sm:p-5 '>
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh] mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+            <div className='flex justify-center items-center w-[100%] sm:pl-5  '>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 max-[715px]:justify-items-center justify-items-center sm:justify-items-start p-5  w-[100%] '>
+                    <div className={`h-[18vh] w-[90%] sm:w-[80%]  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
@@ -118,7 +118,7 @@ const Hhome = () => {
 
                     </div>
 
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[90%] sm:w-[80%]    rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
@@ -134,7 +134,7 @@ const Hhome = () => {
                         </section>
 
                     </div>
-                    <div className={`h-[18vh] w-[40vh] sm:w-[48vh]  mx-7 my-5  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
+                    <div className={`h-[18vh] w-[90%] sm:w-[80%]   rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
                                 <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>
@@ -173,8 +173,8 @@ const Hhome = () => {
             <div className='sm:px-5 p-2 flex justify-center items-center sm:flex-row flex-col-reverse' >
                 <div className='flex justify-center items-center sm:justify-start sm:px-5'>
                     <div className='w-[100%] my-5  sm:my-0 sm:w-[30%] ' >
-                        <div className={`h-[50vh]  w-[50vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
-                            <section className='flex'>
+                        <div className={`h-[50vh]  w-[55vh]  rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
+                            <section className='flex px-7'>
                                 <select onChange={(e) => setpyear(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                     <option>{year}</option>
                                     {years.map((y) => (
@@ -182,8 +182,8 @@ const Hhome = () => {
                                         <option key={y} value={y}>{y}</option>
                                     ))}
                                 </select>
-                                <select onChange={(e) => setpsem(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                    <option>select sem</option>
+                                <select placeholder='Select sem' onChange={(e) => setpsem(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
+                                  
                                     {sems.map((y) => (
 
                                         <option key={y} value={y._id}>{y.name}</option>
