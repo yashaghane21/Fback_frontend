@@ -152,7 +152,7 @@ export default function AdminDashB() {
                         </div>
                     </div>
 
-                    <div className="w-full h-[50vh] sm:w-[90%] bg-[#f1f5f9]">
+                    <div className="w-full h-[50vh] sm:w-[100%] bg-[#f1f5f9]">
                         <div className={`${theme === 'light' ? 'bg-ehite' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">

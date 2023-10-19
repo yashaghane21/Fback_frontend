@@ -46,23 +46,24 @@ export default function CustomBarChart({ sem, year }) {
     setsemester(sem);
   }, [year, sem]);
 
-
   return (
-    <BarChart
-      width={400}
-      height={300}
-      data={bardata}
-      margin={{
-        top: 5,
-        right: 100,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <XAxis dataKey="name" scale="point" padding={{ left: 40, right: 5 }} />
-      <YAxis />
-      <Legend />
-      <Bar dataKey="pv" fill="#0088FE" />
-    </BarChart>
+    <div style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}>
+      <BarChart
+        width={400}
+        height={300}
+        data={bardata}
+        margin={{
+          top: 5,
+          right: 100,
+          left: 20,
+          bottom: 5
+        }}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 40, right: 5 }} />
+        <YAxis />
+        <Legend />
+        <Bar dataKey="pv" fill="#1E88E5" />
+      </BarChart>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { BiSolidDashboard, BiUserCircle } from 'react-icons/bi'
 // import { VscFeedback } from "react-icons/vsc"
@@ -19,6 +19,12 @@ export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth, cusername } = useAuth()
     const id = localStorage.getItem("userid")
+    const location = useLocation();
+    
+    const isActive = (path) => {
+        return location.pathname === path ? ' border-l-4 border-blue-700' : '';
+    };
+
     const [dep, setdep] = useState("")
     const user = async () => {
         const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
@@ -90,25 +96,32 @@ export default function Hsidebar() {
                         </div>
                         <div className='flex justify-start w-[30%]  mt-8 '>
                             <ul className='mt-4  cursor-pointer px-8 ' >
+
                                 <Link to='/hod/home'>
-                                    <li className='text-white w-[180px]  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-sm   rounded-md border-none cursor-pointer'><AiOutlineHome size={30} className=' pr-2 pb-2 ' />Dashboard</li>
+                                    <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/hod/home")}`}><AiOutlineHome size={35} className=' pr-2 pb-2 ' />Dashboard</li>
                                 </Link>
+
                                 <Link to='/hod/sems'>
-                                    <li className='text-white   my-2 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm  px-3   rounded-md border-none cursor-pointer'><VscFeedback size={30} className=' pr-2 pb-2 ' />FeedBacks</li>
+                                    <li className={`text-white   my-4 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px]  px-3   rounded-md cursor-pointer  ${isActive("/hod/sems")}`}><VscFeedback size={35} className=' pr-2 pb-2 ' />FeedBacks</li>
                                 </Link>
+
                                 <Link to='/hod/teacher'>
-                                    <li className='text-white my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm px-3 w-[180px]  rounded-md border-none cursor-pointer'><MdManageAccounts size={30} className=' pr-2 pb-2 ' />Faculties</li>
+                                    <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/hod/teacher")}`}><MdManageAccounts size={35} className=' pr-2 pb-2 ' />Faculties</li>
                                 </Link>
+
                                 <Link to='/hod/students'>
-                                    <li className='text-white w-[180px] my-2 px-3    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm  rounded-md border-none cursor-pointer'><PiStudent size={30} className=' pr-2 pb-2 ' />Students</li>
+                                    <li className={`text-white w-[180px] my-4 px-3    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] rounded-md  cursor-pointer  ${isActive("/hod/students")}}`}><PiStudent size={35} className=' pr-2 pb-2 ' />Students</li>
                                 </Link>
+
                                 <Link to='/hod/sub'>
-                                    <li className='text-white w-[180px] my-2 px-3   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex text-sm   rounded-md border-none cursor-pointer'><MdSubject size={30} className=' pr-2 pb-2 ' />Subjects</li>
+                                    <li className={`text-white w-[180px] my-4 px-3    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px]  rounded-md  cursor-pointer  ${isActive("/hod/sub")}}`}><MdSubject size={35} className=' pr-2 pb-2 ' />Subjects</li>
                                 </Link>
+
                                 <Link to='/hod/efb'>
-                                    <li className='text-white w-[180px] my-2 px-3   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  rounded-md border-none cursor-pointer'><BiLastPage size={30} className=' pr-2 pb-2 ' />EFback</li>
+                                    <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/hod/efb")}`}><BiLastPage size={35} className=' pr-2 pb-2 ' />EFback</li>
                                 </Link>
-                                <li onClick={handleLogOut} className='text-white w-[180px] px-3 mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+
+                                <li onClick={handleLogOut} className='text-white w-[180px] px-3 mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[18px] text-center  rounded-md cursor-pointer'><HiOutlineLogout size={35} className=' pr-2 pb-2 ' />Log Out</li>
 
                                 < section className='mt-4  px-8 sm:hidden' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
@@ -138,7 +151,7 @@ export default function Hsidebar() {
                     >
                         <div className='flex justify-center items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
-                            <section className='h-[7vh] w-[7vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
+                            <section className='h-[7vh] my-2 w-[7vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
                                 <VscFeedback size={40} color='white' className='p-2 font-bold' />
                             </section>
 
@@ -186,7 +199,7 @@ export default function Hsidebar() {
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>Hod Dashboard</h1>
                             </section>
                             <section className='flex'>
-                                <section className=' hidden sm:block  '>
+                                <section onClick={() => navigate("/hod/profile")} className=' hidden sm:block  '>
                                     <img src={u} alt='dsd' className='h-[6vh] mt-3 border-2 rounded-full' />
                                     {/* <h1 className='text-center text-white font-bold text-xl'>{cusername[0]}</h1> */}
                                 </section>

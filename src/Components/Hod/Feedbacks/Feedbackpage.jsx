@@ -169,8 +169,7 @@ const Feedbackpage = () => {
                     <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All </li>
 
 
-                    <select className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
-                        <option className='text-black'>Filter By Subject </option>
+                    <select placeholder='select a subject' className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
                         {sub.map((item, index) => (
                             // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             //     key={index}>{item.name}</li>]
@@ -178,8 +177,7 @@ const Feedbackpage = () => {
                         ))}
                     </select>
 
-                    <select className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbyyear(e.target.value)}>
-                        <option>Filter By Year </option>
+                    <select placeholder='select a year' className={` border-[2px] px-7 rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbyyear(e.target.value)}>
                         {years.map((item, index) => (
                             // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             //     key={index}>{item.name}</li>]
@@ -199,12 +197,12 @@ const Feedbackpage = () => {
                 </ul>
 
             </div>
-            {<section className='p-2 flex sm:justify-end mt-5 justify-center'>
+            {<section className='p-2 flex sm:justify-end sm:mr-[15vh] mt-5 justify-center'>
                 <div className='flex'>
-                    <h1 className='font-bold text-xl px-2 flex' data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
+                    <h1 className={` ${theme == "light" ? "text-white" : "text-black"}ont-bold text-xl px-2 flex  `} data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
 
                     <label className="switch">
-                        <input className='p-1' type="checkbox" checked={enabled} onChange={handleToggle} />
+                        <input className=' mt-3 ' type="checkbox" checked={enabled} onChange={handleToggle} />
                         <span className="slider"></span>
                     </label>
                 </div>
@@ -268,21 +266,21 @@ const Feedbackpage = () => {
 
 
                                     <td
-                                        className=' font-semibold text-left flex cursor-pointer'
+                                        className=' font-semibold text-left  flex cursor-pointer'
                                         onClick={() => navigate(`/hod/mainf/${item._id}`)}
                                     >
-                                        View<AiOutlineEye size={23} className='' />
+                                        View<AiOutlineEye size={23} className='ml-2' />
                                     </td>
                                     <td
                                         className=' font-semibold cursor-pointer text-left'
                                     >
                                         {item.sem.enabled.toString() === 'true' ? (
                                             // Render content when item.sem.enabled is true
-                                            
-                                            <span className={`absolute right-48 hidden sm:block sm:top-[85px] bg-green-700 px-4 py-[0.5px] rounded-lg text-white`}>Semster Enabled For Feedback</span>
+
+                                            <span className={`absolute right-[18vh] hidden sm:block sm:top-[85px] bg-green-700 px-4 py-[1px] rounded-lg text-white`}>Semster Enabled For Feedback</span>
                                         ) : (
                                             // Render content when item.sem.enabled is false
-                                            <span className='absolute right-48 hidden sm:block sm:top-[85px] text-white bg-red-700 px-4 py-[0.5px] rounded-lg'>Semester Disabled For Feedback</span>
+                                            <span className='absolute right-[18vh] hidden sm:block sm:top-[85px] text-white bg-red-500 px-4 py-[1px] rounded-lg'>Semester Disabled For Feedback</span>
                                         )}
                                     </td>
                                 </tr>
@@ -337,7 +335,7 @@ const Feedbackpage = () => {
                 </div>
                 <div>
                     <div className='w-[100%] px-5   flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
-                        <div className={`h-[70vh]  pb-5 flex flex-col justify-center items-center w-[55vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
+                        <div className={`h-[50vh]  pb-5 flex flex-col justify-center items-center w-[55vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
                             <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                 <option>{year}</option>
                                 {years.map((y) => (
