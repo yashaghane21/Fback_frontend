@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, Outlet } from 'react-router-dom'
+import { Link, useNavigate, Outlet, useLocation } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { BiSolidDashboard } from 'react-icons/bi'
 import { VscFeedback } from "react-icons/vsc"
@@ -14,6 +14,12 @@ import { FaWpforms } from "react-icons/fa"
 export default function AdminDashB() {
     const { theme, auth, setauth, settheme } = useAuth()
     const navigate = useNavigate()
+
+    const location = useLocation();
+
+    const isActive = (path) => {
+        return location.pathname === path ? ' border-l-4 border-blue-700' : '';
+    };
 
 
     const [nav, setNav] = useState(false);
@@ -64,7 +70,7 @@ export default function AdminDashB() {
 
 
                 <div className='flex flex-row bg-gray-100 '>
-                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[1%] sm:w-[15%]  text-xl pl-2 pt-4`} >
+                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
 
 
                         <div className='flex justify-center mt-0 items-center '>
@@ -75,20 +81,26 @@ export default function AdminDashB() {
 
                         </div>
                         <hr className='mt-1 font-bold'></hr>
-                        <div className='flex justify-start  mt-8 items-start'>
-                            <ul className='mt-4  cursor-none ' >
+                        <div className='flex justify-start w-[50%]   mt-8 '>
+                            <ul className='mt-4  cursor-pointer px-8 ' >
+                            <Link to='/admin/adash'>
+                                    <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/adash")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Dashboard</li>
+                                </Link>
                                 <Link to='/admin/cform'>
-                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><FaWpforms size={30} className=' pr-2 pb-2 ' />Course Form</li>
+                                    <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/cform")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Course Form</li>
                                 </Link>
+
                                 <Link to='/admin/ecf'>
-                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />EndCourse Form</li>
+                                    <li className={`text-white   my-4 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px]  px-3   rounded-md cursor-pointer  ${isActive("/admin/ecf")}`}><VscFeedback size={35} className=' pr-2 pb-2 ' />EndCourse</li>
                                 </Link>
+
                                 <Link to='/admin/manage'>
-                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />Manage</li>
+                                    <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/admin/manage")}`}><BsCalendarCheck size={35} className=' pr-2 pb-2 ' />Manage</li>
                                 </Link>
 
+                             
 
-                                <li onClick={handleLogOut} className='text-white w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+                                <li onClick={handleLogOut} className='text-white w-[180px] px-3 mt-[30vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[18px] text-center  rounded-md cursor-pointer'><HiOutlineLogout size={35} className=' pr-2 pb-2 ' />Log Out</li>
 
                                 < section className='mt-4  px-8 sm:hidden' >
                                     {theme == "light" ? <section className=' flex items-center' onClick={handletheme} size={30}>
@@ -112,8 +124,9 @@ export default function AdminDashB() {
 
                     <div
                         className={`${theme === 'light' ? 'bg-[#1e293b]' : 'bg-[#1e293b]'
-                            } ${nav ? 'fixed left-0 top-0 w-[30vh] h-full border-r bg-[#0C134F] ease-in-out duration-500 p-5 text-2xl z-40 md:hidden' : 'ease-in-out duration-500  fixed left-[-100%] md:hidden'
+                            } ${nav ? 'fixed left-0 top-0 w-[100%] h-full border-r bg-[#0C134F] ease-in-out duration-500 p-5 text-2xl z-40 md:hidden' : 'ease-in-out duration-500  fixed left-[-100%] md:hidden'
                             }`}
+                            
                         onClick={handleNav}
                     >
                         <div className='flex justify-center items-center '>
@@ -126,15 +139,22 @@ export default function AdminDashB() {
                         <hr></hr>
                         <div className='flex flex-col text-xl  list-none'>
                             <ul className='mt-4  cursor-none' >
+                            <Link to='/admin/adash'>
+                                    <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/adash")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Dashboard</li>
+                                </Link>
                                 <Link to='/admin/cform'>
-                                    <li className='text-white w-max  my-2    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><FaWpforms size={30} className=' pr-2 pb-2 ' />Course Form</li>
+                                    <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/cform")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Course Form</li>
                                 </Link>
+
                                 <Link to='/admin/ecf'>
-                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />EndCourse Form</li>
+                                    <li className={`text-white   my-4 w-[180px]  hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px]  px-3   rounded-md cursor-pointer  ${isActive("/admin/ecf")}`}><VscFeedback size={35} className=' pr-2 pb-2 ' />EndCourse</li>
                                 </Link>
+
                                 <Link to='/admin/manage'>
-                                    <li className='text-white w-max  my-2   hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><BsCalendarCheck size={30} className=' pr-2 pb-2 ' />Manage</li>
+                                    <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/admin/manage")}`}><BsCalendarCheck size={35} className=' pr-2 pb-2 ' />Manage</li>
                                 </Link>
+
+
 
 
 
@@ -152,7 +172,7 @@ export default function AdminDashB() {
                         </div>
                     </div>
 
-                    <div className="w-full h-[50vh] sm:w-[100%] bg-[#f1f5f9]">
+                    <div className=" h-[50vh] w-[100%] bg-[#f1f5f9]">
                         <div className={`${theme === 'light' ? 'bg-ehite' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">

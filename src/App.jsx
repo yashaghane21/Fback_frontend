@@ -27,6 +27,7 @@ import About from './Components/About';
 import Profile from './Components/Hod/Profile';
 import View from './Components/Hod/View';
 import Edit from './Components/Hod/Edit';
+import Hadmin from './Components/Admin/Hadmin';
 
 const App = () => {
   return (
@@ -35,8 +36,15 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Layout />} />
           <Route path='/about' element={<About />} />
+          <Route path='/ecf' element={<Ecfeedback />} />
+          <Route path='/cof' element={<Cofeedback />} />
+          <Route path='/done' element={<Done />} />
           <Route path='/admin' element={<Sidebar />}>
-            <Route index element={<Cform />} />
+
+
+            <Route index element={<Hadmin />} />
+
+            <Route path='adash' element={<Hadmin />} />
             <Route path='cform' element={<Cform />} />
             <Route path='ecf' element={<Ecform />} />
             <Route path='manage' element={<Manage />} />
@@ -56,7 +64,7 @@ const App = () => {
             <Route path='students' element={< Students />} />
             <Route path='efb' element={< Endfeedbacks />} />
 
-           
+
             <Route
               path='profile'
               element={<Profile />}

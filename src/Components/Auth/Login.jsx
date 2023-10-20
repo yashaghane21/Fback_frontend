@@ -87,13 +87,13 @@ const Login = () => {
           <h1 className='font-bold text-lg '>Email:</h1>
 
 
-          <input type='text' placeholder='Enter Email' className='w-full p-2 border-2 rounded-2xl mt-2 ' value={email} onChange={(e) => setemail(e.target.value)} />
+          <input type='text' placeholder='Enter Email' className='w-full p-2  rounded-2xl mt-2 ' value={email} onChange={(e) => setemail(e.target.value)} />
           <h1 className='my-2 font-bold text-lg'>Password</h1>
 
-          <input type='password' placeholder='Enter Password ' className='w-full p-2 border-2 rounded-2xl mt-2 ' value={Password} onChange={(e) => setpassword(e.target.value)} />
+          <input type='password' placeholder='Enter Password ' className='w-full p-2  rounded-2xl mt-2 ' value={Password} onChange={(e) => setpassword(e.target.value)} />
 
 
-          <input type='submit' className='w-[100%] bg-blue-700 border-2 rounded-2xl font-bold p-2 mt-6 text-white' />
+          <input type='submit' className='w-[100%] bg-blue-700  rounded-2xl font-bold p-2 mt-6 text-white' />
 
           <h1 className='text-center mt-2 font-semibold'>Not Registered ? <Link to="/signup" className='text-blue-800'>Register Here</Link></h1>
         </form>
