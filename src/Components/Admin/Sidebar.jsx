@@ -10,6 +10,7 @@ import { AiOutlineHome } from "react-icons/ai"
 import { BsCalendarCheck } from "react-icons/bs"
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md'
 import { FaWpforms } from "react-icons/fa"
+import { FcDepartment } from "react-icons/fc"
 
 export default function AdminDashB() {
     const { theme, auth, setauth, settheme } = useAuth()
@@ -86,6 +87,9 @@ export default function AdminDashB() {
                             <Link to='/admin/adash'>
                                     <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/adash")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Dashboard</li>
                                 </Link>
+                                <Link to='/admin/dept'>
+                                    <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/admin/dept")}`}><FcDepartment size={40} color="white" className=' pr-2 pb-2 ' />Departments</li>
+                                </Link>
                                 <Link to='/admin/cform'>
                                     <li className={`text-white w-[180px]  my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-3 text-[16px]   rounded-md  cursor-pointer'  ${isActive("/admin/cform")}`}><FaWpforms size={35} className=' pr-2 pb-2 ' />Course Form</li>
                                 </Link>
@@ -97,6 +101,7 @@ export default function AdminDashB() {
                                 <Link to='/admin/manage'>
                                     <li className={`text-white my-4    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex  text-[16px] px-3 w-[180px]  rounded-md  cursor-pointer  ${isActive("/admin/manage")}`}><BsCalendarCheck size={35} className=' pr-2 pb-2 ' />Manage</li>
                                 </Link>
+                              
 
                              
 

@@ -28,6 +28,8 @@ import Profile from './Components/Hod/Profile';
 import View from './Components/Hod/View';
 import Edit from './Components/Hod/Edit';
 import Hadmin from './Components/Admin/Hadmin';
+import Departments from './Components/Admin/Departments';
+import Pdata from './Components/Admin/Pdata';
 
 const App = () => {
   return (
@@ -48,6 +50,8 @@ const App = () => {
             <Route path='cform' element={<Cform />} />
             <Route path='ecf' element={<Ecform />} />
             <Route path='manage' element={<Manage />} />
+            <Route path='dept' element={<Departments />} />
+            <Route path='pdata/:id' element={<Pdata />} />
           </Route>
 
           <Route
@@ -55,6 +59,7 @@ const App = () => {
             element={<Hsidebar />}
           >
             <Route index element={<Hhome />} />
+
             <Route path='home' element={<Hhome />} />
             <Route path='sems' element={<Sems />} />
             <Route path='fpage/:id' element={<Feedbackpage />} />

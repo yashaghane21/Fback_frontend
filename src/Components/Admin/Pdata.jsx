@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from "axios"
-import FeedbackChart from './Charts/FeedbackChart'
-import { useAuth } from '../Auth/AuthContext'
+import { useAuth } from "../Auth/AuthContext"
 import a from "./1.png"
 import b from "./2.png"
 import c from "./3.png"
-import Mpie from './Charts/Mpie'
-import Pie from "./Charts/PIe"
-import Bar from "./Charts/Bar"
+import Mpie from "../Hod/Charts/Mpie"
+import Pie from "../Hod/Charts/PIe"
+import Bar from "../Hod/Charts/Bar"
+import { useParams } from 'react-router-dom'
 
-const Hhome = () => {
+const Pdata = () => {
     const { theme, cusername } = useAuth()
     const [feedbackData, setFeedbackData] = useState({ tfeedbacks: 0 });
     const [totalgood, setTotalGood] = useState(0);
@@ -18,7 +18,8 @@ const Hhome = () => {
     const [totalBelowaverage, settotalBelowaverage] = useState(0)
     const [dep, setdep] = useState("")
     const [fbacks, setfbacks] = useState("")
-    const id = localStorage.getItem("userid")
+    const id = useParams()
+    console.log(id.id)
     const [type, settype] = useState("good😃")
     const [sems, setsems] = useState([])
     const date = new Date().getFullYear();
@@ -43,7 +44,7 @@ const Hhome = () => {
 
     const user = async () => {
         const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
-            id: id
+            id: id.id
         })
         console.log(data)
         console.log("useert", data.user.department)
@@ -95,7 +96,7 @@ const Hhome = () => {
 
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-[100%]`}>
             <section className='rounded-md  px-7 mt-4'>
-                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , {cusername} 👏👏 </h1>
+                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center w-[100%] sm:pl-5  '>
@@ -247,4 +248,4 @@ const Hhome = () => {
     )
 }
 
-export default Hhome
+export default Pdata

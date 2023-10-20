@@ -36,8 +36,7 @@ export default function Nav() {
         toast.success("Logout Succesfully ")
     }
 
-
-
+    
     useEffect(() => {
 
         localStorage.setItem("theme", theme)
