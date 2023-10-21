@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Ecfeedback = () => {
-    const { theme } = useAuth()
+    const { theme, cusername } = useAuth()
     const id = localStorage.getItem("userid")
     let values = ['good😃', 'average🙂', 'below average🙂'];
     const [questions, setquestions] = useState([]);
@@ -17,7 +17,7 @@ const Ecfeedback = () => {
     const [dep, setdep] = useState("")
     const navigate = useNavigate();
     const [feedbackData, setFeedbackData] = useState([])
-
+    const [on, setOn] = useState(null);
     const quesions = async () => {
         try {
             setloader(true);
@@ -32,22 +32,20 @@ const Ecfeedback = () => {
         }
     };
 
-    const getuser = async () => {
+    const getUser = async (id) => {
         try {
-            console.log(id)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/user", {
+            console.log(id);
+            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
-            })
-            console.log(data)
-            console.log("useert", data.user.sem._id)
-
-
-            setdep(data.user.department)
-
+            });
+            setdep(data.user);
+            console.log(data.user.sem);
+            setOn(data.user.sem.enabled ? "ok" : "nok");
         } catch (error) {
-
+            console.error("Error fetching user:", error);
         }
-    }
+    };
+
     const handleFeedbackChange = (questionId, answer) => {
         console.log("yash", questionId, answer);
         console.log(feedbackData);
@@ -85,18 +83,27 @@ const Ecfeedback = () => {
     }
 
     useEffect(() => {
-        quesions()
-        getuser()
-    }, [])
+        getUser(id);
+        if (on === "nok") {
+            navigate("/");
+            toast.error(`Dear ${cusername}, you are not allowed to give feedback as your semester has been disabled by the HoD`);
+        }
+        if (on === "ok") {
+            toast.success(`welcome ${cusername}`)
+        }
+        quesions();
+    }, [on]);
+
+
+
     return (
         <div className={`h-[91vh] overflow-y-auto w-full ${theme == 'light' ? 'text-black bg-white' : 'bg-[#1d232a]'}`}>
-            <h1 className={` text-center font-semibold sm:text-2xl p-5 ${theme == 'light' ? '' : 'text-white'}`}>
-                FeedBack Form
-
+            <h1 className={`text-center font-semibold sm:text-2xl p-5 ${theme === 'light' ? '' : 'text-white'}`}>
+                FeedBack Form 
             </h1>
 
             <section className={`h-[30vh] mb-5 p-1 sm:p-5 text-left ${theme == 'light' ? '' : 'text-white'}`}>
-                <h1 className='text-center'>Welcome to Our Endcourse Feedback Form:</h1>
+                <h1 className='text-center'> Welcome  to Our Endcourse Feedback Form:</h1>
                 <h1 className='px-1 text-xs my-2'>
                     1) We've prepared guidelines to ensure your comfort while sharing feedback.
                 </h1>

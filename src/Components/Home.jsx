@@ -24,7 +24,7 @@ const Home = () => {
             <section className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
                 {auth?.user?.role === 0 ? (
                     <section className='absolute right-36 flex'>
-                        <h1 className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 text-black hover:border-b-2 border-blue-700`} onClick={() => navigate('/Admin')}>EC Feedback</h1>
+                        <h1 className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 cursor-pointer text-black hover:border-b-2 border-blue-700`} onClick={() => navigate('/ecf')}>EC Feedback</h1>
                         <Link className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 text-black hover:border-b-2 border-blue-700`} to='/cof'>Course Feedback</Link>
                     </section>
                 ) : (

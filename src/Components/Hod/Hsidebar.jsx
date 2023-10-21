@@ -74,7 +74,7 @@ export default function Hsidebar() {
     return (
         <>
 
-            <div className={`${theme == "light" ? "" : ""} w-[100%]      `}>
+            <div className={`${theme == "light" ? "" : "bg-[#1d232a]"} w-[100%]      `}>
 
 
 
@@ -86,7 +86,7 @@ export default function Hsidebar() {
 
 
                 <div className='flex flex-row bg-gray-100 '>
-                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
+                    <div className={` border-r-[0.1px]  ${theme == "light" ? " bg-[#1e293b]" : "bg-[#1d232a]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
 
 
                         <div className='flex justify-center mt-0 '>
@@ -198,7 +198,7 @@ export default function Hsidebar() {
                     </div>
 
                     <div className="w-full sm:w-[100%] h-[100%] bg-[#f1f5f9]">
-                        <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
+                        <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1d232a]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>Hod Dashboard</h1>

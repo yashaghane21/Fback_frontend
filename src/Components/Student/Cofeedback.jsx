@@ -19,7 +19,7 @@ const Cofeedback = () => {
     const [dep, setdep] = useState("")
     const [subject, setsubject] = useState("")
     const [emptyStatement, setEmptyStatement] = useState("No subjects available"); // Set your default statement here
-
+    const [on, seton] = useState(null)
     const [loader, setloader] = useState(false)
     const id = localStorage.getItem("userid")
     const [feedbackData, setFeedbackData] = useState([])
@@ -40,7 +40,7 @@ const Cofeedback = () => {
 
 
 
-    const getuser = async () => {
+    const getuser = async (id) => {
         try {
             console.log(id)
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/user", {
@@ -49,6 +49,7 @@ const Cofeedback = () => {
             console.log(data)
             console.log("useert", data.user.sem._id)
             setsem(data.user.sem._id)
+            seton(data.user.sem.enabled ? "ok" : "nok");
 
             setdep(data.user.department)
 
@@ -118,16 +119,18 @@ const Cofeedback = () => {
         }
 
     }
-
     useEffect(() => {
-        const timer = setTimeout(() => {
-            quesions();
-            getuser();
-            console.log("dfdfdfdf", sems);
-        }, 1000);
-
-        return () => clearTimeout(timer);
-    }, []);
+        getuser(id);
+        if (on === "nok") {
+            navigate("/");
+            toast.error(`Dear ${cusername}, you are not allowed to give feedback as your semester has been disabled by the HoD`);
+        }
+        quesions();
+        if (on === "ok") {
+            toast.success(`welcome ${cusername}`)
+        }
+   
+    }, [on]);
 
     useEffect(() => {
         if (sems) {

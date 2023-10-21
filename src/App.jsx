@@ -75,7 +75,7 @@ const App = () => {
               path='profile'
               element={<Profile />}
             >
-              <Route index element={< View/>} />
+              <Route index element={< View />} />
               <Route path='view' element={< View />} />
               <Route path='edit' element={<Edit />} />
             </Route>
