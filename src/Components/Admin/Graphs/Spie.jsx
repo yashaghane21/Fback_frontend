@@ -9,12 +9,13 @@ import {
   Tooltip
 } from "recharts";
 
-export default function PIe({ year, type }) {
+export default function Spie({ year, type, uid }) {
 
+  console.log(uid)
 
-
-  const id = localStorage.getItem("userid");
+  // const id = localStorage.getItem("userid");
   const [dep, setDep] = useState("");
+  const [id, setid] = useState(uid)
   const [sem1, setSem1] = useState('');
   const [sem2, setSem2] = useState('');
   const [sem3, setSem3] = useState('');
@@ -28,12 +29,14 @@ export default function PIe({ year, type }) {
 
   const [y, sety] = useState(cyear)
   const [ty, setty] = useState()
-  
+
   const user = async () => {
     try {
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
-        id: id
+      console.log(uid)
+      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/user", {
+        id: uid.id
       });
+      console.log(data.user.department._id)
       setDep(data.user.department);
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -84,15 +87,21 @@ export default function PIe({ year, type }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await user();
+
       await getSemesters();
       await pieData();
     }
+    setid(uid)
+    fetchData();
     sety(year)
     setty(type)
-    fetchData();
-  }, [id, dep, sem1, sem2, sem3, sem4, sem5, sem6, year]);
 
+  }, [uid, dep, sem1, sem2, sem3, sem4, sem5, sem6, year]);
+
+
+  useEffect(() => {
+    user();
+  }, [])
   return (
     <AreaChart
       width={680}

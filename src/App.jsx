@@ -68,13 +68,14 @@ const App = () => {
             <Route path='sub' element={< Subjects />} />
             <Route path='students' element={< Students />} />
             <Route path='efb' element={< Endfeedbacks />} />
+            <Route path='ecmain/:id' element={< Ecmainf />} />
 
 
             <Route
               path='profile'
               element={<Profile />}
             >
-              <Route index element={< Profile />} />
+              <Route index element={< View/>} />
               <Route path='view' element={< View />} />
               <Route path='edit' element={<Edit />} />
             </Route>

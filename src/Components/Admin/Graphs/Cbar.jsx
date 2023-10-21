@@ -34,7 +34,7 @@ const data = [
 export default function Cbar() {
   return (
     <BarChart
-      width={350}
+      width={300}
       height={300}
       data={data}
       margin={{

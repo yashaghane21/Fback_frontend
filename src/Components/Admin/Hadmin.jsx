@@ -88,7 +88,7 @@ const Hadmin = () => {
 
 
                             <section className=''>
-                                <div id="lottie-container" style={{ width: '400px', height: '350px' }} />
+                                <div id="lottie-container" style={{ width: '300px', height: '350px' }} />
                             </section>
 
                         </section>

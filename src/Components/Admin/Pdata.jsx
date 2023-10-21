@@ -9,6 +9,7 @@ import Mpie from "../Hod/Charts/Mpie"
 import Pie from "../Hod/Charts/PIe"
 import Bar from "../Hod/Charts/Bar"
 import { useParams } from 'react-router-dom'
+import Spie from './Graphs/Spie'
 
 const Pdata = () => {
     const { theme, cusername } = useAuth()
@@ -38,6 +39,7 @@ const Pdata = () => {
     const [ts, setts] = useState("")
     const [tf, settf] = useState("")
     const [tt, sett] = useState("")
+    const [uid, setuid] = useState(id)
     const def = "6527f14233a29f8db1e31de1"
     const [pyear, setpyear] = useState(cyear)
     const [psem, setpsem] = useState(def)
@@ -82,6 +84,7 @@ const Pdata = () => {
     useEffect(() => {
         user();
         fdata();
+        setuid(id)
     }, [id]);
 
     useEffect(() => {
@@ -217,7 +220,7 @@ const Pdata = () => {
                                 </select>
                             </section>
 
-                            <Pie year={year} type={type} />
+                            <Spie year={year} type={type} uid={uid} />
                         </div>
                     </section>
 

@@ -6,6 +6,8 @@ import axios from 'axios'
 import { BarLoader } from 'react-spinners'
 import { toast } from 'react-hot-toast'
 import { CgProfile } from "react-icons/cg"
+import { AiOutlineDash } from 'react-icons/ai'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 const Manage = () => {
     const { theme } = useAuth();
@@ -75,7 +77,7 @@ const Manage = () => {
         try {
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/department", {
                 name: name,
-                hod: hodi
+
             });
 
             if (data.success) {
@@ -95,10 +97,26 @@ const Manage = () => {
         }
     }
 
+    const delhod = async (id) => {
+        const pass = prompt("Enter Password")
+        if (pass === "del") {
+
+            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/hod/${id}`)
+            toast.success("Hod Deleted Succesfully")
+            alldepartments()
+            gethods()
+        }
+        else {
+            toast.error("Wrong password")
+        }
+
+
+    }
     const gethods = async () => {
         try {
             const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/hods");
             sethods(data.hods)
+            console.log(data.hods)
         } catch (error) {
             console.error("Error fetching HODs:", error);
         }
@@ -130,7 +148,20 @@ const Manage = () => {
         }
     };
 
+    const deldep = async (id) => {
+        const pass = prompt("Enter Password")
+        if (pass === "del") {
 
+            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/dep/${id}`)
+            toast.success("Department Deleted Succesfully")
+            alldepartments()
+        }
+        else {
+            toast.error("Wrong password")
+        }
+
+
+    }
 
     useEffect(() => {
         alldepartments()
@@ -155,13 +186,14 @@ const Manage = () => {
                     <section className=' '><BarLoader size={23} color='blue' /></section>
                 </section> :
                     <>
-                        <table className='border-collapse select-none w-[90%] '>
+                        <table className='border-collapse select-none w-[90%] overflow-x-auto '>
                             <thead>
                                 <tr className=' bg-blue-700 rounded-md'>
                                     <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Department</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'>Hod</th>
                                     <th className='p-2 text-left py-2 text-white text-lg'> Update Hod</th>
+                                    <th className='p-2 text-left py-2 text-white text-lg'>Edit</th>
 
 
                                 </tr>
@@ -170,8 +202,8 @@ const Manage = () => {
                                 <>
                                     <tr className=' hover:bg-gray-400 border-b select-none first-letter: border-slate-500 ' key={index}>
                                         <td className=' p-2 font-semibold text-left hidden sm:block text-sm'>{index + 1}</td>
-                                        <td className=' p-2 font-semibold text-left text-blue-600'>{item.name}</td>
-                                        <td onClick={() => getuser(item.hod._id)} className={`p-2  cursor-pointer font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item.hod.name}</td>
+                                        <td className=' p-2 font-semibold text-left text-blue-600'>{item?.name}</td>
+                                        <td onClick={() => getuser(item?.hod._id)} className={`p-2  cursor-pointer font-semibold text-left ${theme == "light" ? "text-black" : "text-white"}`}>{item?.hod?.name}</td>
                                         <Select className='w-full ant-input text-xl mb-2 mt-2 rounded-2xl ' placeholder='Select A Hod' onChange={(value) => updept(item._id, value)}  >
 
                                             {hods.map((s) => (
@@ -180,7 +212,7 @@ const Manage = () => {
                                                 </Option>
                                             ))}
                                         </Select>
-
+                                        <td onClick={() => deldep(item._id)} className=' p-2 font-semibold text-left text-blue-600'><AiOutlineDelete className="mx-4" size={23} color='red' /></td>
                                     </tr>
                                 </>
                             ))}
@@ -203,7 +235,7 @@ const Manage = () => {
                                 {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name} onChange={(e) => setname(e.target.value)}
                             />
-                            {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]   " : "focus:outline-none bg-[#0c131d] border-none"}' `} placeholder='select a teacher ' onChange={(e) => handlehod(e.target.value)}>
+                            {/* {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]   " : "focus:outline-none bg-[#0c131d] border-none"}' `} placeholder='select a teacher ' onChange={(e) => handlehod(e.target.value)}>
                                 <option>Select a Hod</option>
                                 {hods.map((s) => (
                                     <option key={s._id} value={s._id}>
@@ -212,7 +244,7 @@ const Manage = () => {
                                 ))}
 
                             </select>
-                            }
+                            } */}
 
                             <button onClick={adddept}
                                 className='hover:bg-blue-700 border-2 text-white px-8 py-1 mt-3 rounded-full'>Add</button>
@@ -284,12 +316,11 @@ const Manage = () => {
 
                         <>
                             <section className='flex justify-between'>
-                                {/* <section className='flex'>
+                                <section className='flex'>
 
-                                    <AiOutlineDelete onClick={() => delfac(teach._id)} size={23} color='red' className='mx-2' />
-                                    <AiOutlineEdit onClick={handleEditClick} size={23} />
+                                    <AiOutlineDelete onClick={() => delhod(uhod._id)} size={23} color='red' className='mx-2' />
 
-                                </section> */}
+                                </section>
                                 <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-black" : ""}`}>✕</button>
                             </section>
 
@@ -311,7 +342,10 @@ const Manage = () => {
                                 <h1 className='my-2 font-semibold'>{uhod?.phone}</h1>
 
                                 <hr></hr>
+                                <h1 className='font-bold  text-1xl'>Department</h1>
+                                <h1 className='my-2 font-semibold'>{uhod?.department?.name}</h1>
 
+                                <hr></hr>
                             </div>
                         </>
 
