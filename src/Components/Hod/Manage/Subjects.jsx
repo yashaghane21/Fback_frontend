@@ -239,18 +239,18 @@ const Subjects = () => {
 
                     </table>
                     <dialog id="my_modal_1" className="modal">
-                        <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-blsck bg-white"}`}>
+                        <form method='dialog' className={`modal-box ${theme == 'dark' ? " text-white bg-[#1d232a]" : "text-black bg-white"}`}>
                             <button className={`btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ${theme == 'dark' ? " text-white bg-black" : ""}`}>✕</button>
                             <h1 className='text-blue-700 font-bold'>Add Subject</h1>
                             <div className='w-full mt-2'>
                                 <form className='w-[1005]'>
                                     <input type='text' placeholder='Name' className=
-                                        {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `}
+                                        {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-white  text-black " : " bg-[#0c131d] focus:outline-none border-none"}' `}
                                         value={name}
                                         onChange={(e) => setname(e.target.value)}
                                     />
 
-                                    {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a teacher ' onChange={(e) => handlet(e.target.value)}>
+                                    {<select className={`p-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white text-black   " : " bg-[#0c131d] focus:outline-none border-none"}' `} placeholder='select a teacher ' onChange={(e) => handlet(e.target.value)}>
                                         <option>select a teacher</option>
                                         {teachers.map((item, index) => (
 
@@ -260,7 +260,7 @@ const Subjects = () => {
 
                                     </select>
                                     }
-                                    {<select className={`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handles(e.target.value)}>
+                                    {<select className={`p-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : " bg-[#0c131d] focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handles(e.target.value)}>
                                     <option>select a semester</option>
                                         {sems.map((item, index) => (
                                             <option className='' key={index} value={item._id}>{item.name}</option>

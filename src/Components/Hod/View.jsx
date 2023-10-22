@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../Auth/AuthContext'
-import u from "./Manage/user.png"
+import u from "./m.png"
+import f from "./f.png"
 import { FiPhoneCall } from "react-icons/fi"
 import { AiOutlineMail } from "react-icons/ai"
 import axios from 'axios'
@@ -41,19 +42,20 @@ const View = () => {
     }, [])
     return (
 
-        <div className={`${theme == "light" ? "bg-white" : "bg-[#0f1c2e]"} h-[91vh] overflow-y-auto  w-full`}>
+        <div className={`${theme == "light" ? "bg-white" : ""} h-[91vh] overflow-y-auto  w-full`}>
             <div className='sm:p-7 mt-5 flex justify-center sm:justify-start'>
                 <div className={`${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#5f7b8b] shadow-xl text-white"} h-[54vh] sm:h-[60vh] w-[90%] sm:w-[55%] p-5  rounded-2xl`}>
-                    <section className='h-[18vh] flex justify-center ' >
+                    <section className='h-[18vh] flex justify-center'>
                         {gender === "Male" ? (
-                            <img src={u} alt=' ' className='h-[15vh] ' />
-
+                            <img src={u} alt='' className='h-[15vh]' />
+                        ) : gender === "Female" ? (
+                            <img src={f} alt='' className='h-[15vh]' />
                         ) : (
-
-                            <h1>fdsf</h1>
+                            <>
+                            </>
                         )}
-
                     </section>
+
                     <h1 className={`font-bold text-lg my-2 ${theme == "light" ? "text-black" : "text-white"}`}>{name}  </h1>
                     <section className='flex gap-4 my-2'>
                         <h1 className={`font-bold text-md ${theme == "light" ? "text-black" : "text-white"} `}>{dob.slice(0, 10)}</h1>

@@ -75,8 +75,13 @@ const Ecfeedback = () => {
                 }
 
             } catch (error) {
-                console.error(error);
-                alert('Error submitting feedback. Please try again.');
+                if (error.response && error.response.data && error.response.data.message) {
+                    toast.error(error.response.data.message, {
+                        autoClose: 2000,
+                    });
+                } else {
+                    toast.error("An error occurred:", error.message);
+                }
             }
         }
 
@@ -99,7 +104,7 @@ const Ecfeedback = () => {
     return (
         <div className={`h-[91vh] overflow-y-auto w-full ${theme == 'light' ? 'text-black bg-white' : 'bg-[#1d232a]'}`}>
             <h1 className={`text-center font-semibold sm:text-2xl p-5 ${theme === 'light' ? '' : 'text-white'}`}>
-                FeedBack Form 
+                FeedBack Form
             </h1>
 
             <section className={`h-[30vh] mb-5 p-1 sm:p-5 text-left ${theme == 'light' ? '' : 'text-white'}`}>

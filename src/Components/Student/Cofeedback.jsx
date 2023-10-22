@@ -114,7 +114,13 @@ const Cofeedback = () => {
                 }
 
             } catch (error) {
-                console.error(error);
+                if (error.response && error.response.data && error.response.data.message) {
+                    toast.error(error.response.data.message, {
+                        autoClose: 2000,
+                    });
+                } else {
+                    toast.error("An error occurred:", error.message);
+                }
             }
         }
 
@@ -129,7 +135,7 @@ const Cofeedback = () => {
         if (on === "ok") {
             toast.success(`welcome ${cusername}`)
         }
-   
+
     }, [on]);
 
     useEffect(() => {

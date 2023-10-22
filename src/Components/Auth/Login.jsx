@@ -87,7 +87,7 @@ const Login = () => {
           <h1 className='font-bold text-lg '>Email:</h1>
 
 
-          <input type='text' placeholder='Enter Email' className='w-full p-2  rounded-2xl mt-2 ' value={email} onChange={(e) => setemail(e.target.value)} />
+          <input type='text' required placeholder='Enter Email' className='w-full p-2  rounded-2xl mt-2 ' value={email} onChange={(e) => setemail(e.target.value)} />
           <h1 className='my-2 font-bold text-lg'>Password</h1>
 
           <input type='password' placeholder='Enter Password ' className='w-full p-2  rounded-2xl mt-2 ' value={Password} onChange={(e) => setpassword(e.target.value)} />

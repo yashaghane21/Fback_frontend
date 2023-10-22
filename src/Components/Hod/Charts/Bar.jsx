@@ -50,7 +50,7 @@ export default function CustomBarChart({ sem, year }) {
     <div style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}>
       <BarChart
         width={400}
-        height={300}
+        height={290}
         data={bardata}
         margin={{
           top: 5,

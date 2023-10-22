@@ -59,7 +59,7 @@ const Sems = () => {
             }
         }
         else {
-            alert("wrong password")
+            toast.error("Wrong password")
         }
 
 
@@ -110,7 +110,7 @@ const Sems = () => {
                     <div className='w-full mt-2'>
                         <form className='w-[1005]'>
                             <input type='text' placeholder=' Semester Name' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name}
                                 onChange={(e) => setname(e.target.value)}
                             />

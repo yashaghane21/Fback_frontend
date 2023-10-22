@@ -199,7 +199,7 @@ const Feedbackpage = () => {
             </div>
             {<section className='p-2 flex sm:justify-end sm:mr-[15vh] mt-5 justify-center'>
                 <div className='flex'>
-                    <h1 className={` ${theme == "light" ? "text-white" : "text-black"}ont-bold text-xl px-2 flex  `} data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
+                    <h1 className={` ${theme == "light" ? "text-black" : "text-white "} font-bold text-xl px-2 flex  `} data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
 
                     <label className="switch">
                         <input className=' mt-3 ' type="checkbox" checked={enabled} onChange={handleToggle} />
@@ -235,7 +235,7 @@ const Feedbackpage = () => {
                             <tr className=' h-[50vh] w-full'>
                                 <td className=' w-24'></td>
                                 <td className=' w-70'></td>
-                                <td className=' w-48 font-bold text-center'>No Feedbacks found</td>
+                                <td className={`w-48 font-bold text-center ${theme == "light" ? "text-black" : "text-white"}`}>No Feedbacks found</td>
                                 <td className=' w-44'></td>
                             </tr>
                         ) : (
@@ -353,7 +353,7 @@ const Feedbackpage = () => {
                 id="my-tooltip"
                 place='top'
             />
-        </div>
+        </div >
     )
 }
 

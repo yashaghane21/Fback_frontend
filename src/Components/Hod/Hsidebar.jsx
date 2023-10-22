@@ -15,6 +15,7 @@ import { MdSubject } from "react-icons/md"
 import { HiOutlineLogout } from "react-icons/hi"
 import { BiLastPage } from "react-icons/bi"
 import u from "./Manage/user.png"
+import { useSyncExternalStore } from 'react';
 export default function Hsidebar() {
 
     const { theme, setauth, settheme, auth, cusername } = useAuth()
@@ -152,7 +153,10 @@ export default function Hsidebar() {
                         <div className='flex justify-center items-center '>
                             {/* <h1 className='p-0  text-xl font-bold text-white cursor-none'> Hod Dashboard</h1> */}
                             <section className='h-[7vh] my-2 w-[7vh] border-2 rounded-full flex justify-center items-center hover:bg-slate-950 '>
-                                <VscFeedback size={40} color='white' className='p-2 font-bold' />
+                                <section onClick={() => navigate("/hod/profile")} className='   '>
+                                    <img src={u} alt='dsd' className='h-[6vh]  border-2 rounded-full' />
+                                    {/* <h1 className='text-center text-white font-bold text-xl'>{cusername[0]}</h1> */}
+                                </section>
                             </section>
 
                         </div>
@@ -189,8 +193,9 @@ export default function Hsidebar() {
                                         <h1 className=' text-black font-semibold'></h1> <MdOutlineLightMode size={30} className=' text-white' />
                                     </section>
                                     }
+
                                 </section>
-                                <li onClick={handleLogOut} className='text-white w-max mt-[40vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
+                                <li onClick={handleLogOut} className='text-white w-max mt-[10vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
 
                             </ul>

@@ -236,23 +236,26 @@ const teacher = () => {
                             <input type='text' placeholder='Name' className=
                                 {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name}
-
+                                required
                                 onChange={(e) => setname(e.target.value)}
                             />
                             <input type='email' placeholder='Email' className=
                                 {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={email}
+                                required
                                 onChange={(e) => setemail(e.target.value)}
                             />
 
                             <input type='text' placeholder='Phone' className=
                                 {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={phone}
+                                required
                                 onChange={(e) => setphone(e.target.value)}
                             />
                             <input type='text' placeholder='Education' className=
                                 {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={education}
+                                re
                                 onChange={(e) => seteducation(e.target.value)}
                             />
                             <button onClick={upfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Update</button>
@@ -272,13 +275,14 @@ const teacher = () => {
                     <h1 className='text-blue-700 font-bold text-xl'>Add Teacher</h1>
                     <div className='w-full mt-2'>
                         <form className='w-[1005]'>
-                            <input type='text' placeholder='Name' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                            <input type='text' placeholder='Name'
+                                className=
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name}
                                 onChange={(e) => setname(e.target.value)}
-                            />
-                            <input type='email' placeholder='Email' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                required />
+                            <input type='email' placeholder='Email' required className=
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={email}
                                 onChange={(e) => setemail(e.target.value)}
                             />
@@ -288,16 +292,16 @@ const teacher = () => {
                                 <option className=''>sd</option>
                             </select> */}
                             <input type='text' placeholder='Phone' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={phone}
                                 onChange={(e) => setphone(e.target.value)}
                             />
                             <input type='text' placeholder='Education' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={education}
                                 onChange={(e) => seteducation(e.target.value)}
                             />
-                            <button onClick={addfac} className={`hover:bg-blue-700 border-2  px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Add</button>
+                            <button onClick={addfac} className={` border-[1.5px] hover:bg-blue-700    px-8 py-1 mt-3 rounded-full ${theme == "light" ? "text-black" : "text-white"}`}>Add</button>
                         </form>
                     </div>
 

@@ -4,10 +4,12 @@ import axios from 'axios'
 import { BiRightArrow } from "react-icons/bi"
 import { Navigate, useNavigate } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
+
 const Departments = () => {
     const { theme } = useAuth()
     const [deps, setdeps] = useState([])
     const [loader, setloader] = useState(false)
+
     const alldepartments = async () => {
         try {
             setloader(true)

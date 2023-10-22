@@ -8,11 +8,22 @@ import Ecpie from './Graphs/Ecpie'
 import lottie from 'lottie-web';
 import animationData from "./ec.json"
 const Hadmin = () => {
-    const { theme } = useAuth()
+    const { theme, cusername } = useAuth()
     const [departments, setdepartments] = useState([]);
     const d = "64dbc27b25871abf6b82b27c"
     const [dep, setdep] = useState(d)
     const [edep, setedep] = useState(d)
+
+    const date = new Date().getFullYear();
+    const yr2 = date - 1
+    const yr3 = date - 2
+    console.log(yr3)
+    const [y1, sety1] = useState(date)
+    const [y2, sety2] = useState(yr2)
+    const [y3, sety3] = useState(yr3)
+
+
+    console.log(yr3)
     const alldepartments = async () => {
         try {
             const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v1/department");
@@ -37,7 +48,7 @@ const Hadmin = () => {
     return (
         <div className={`p-2 h-[91vh] overflow-y-auto  sm:p-5 ${theme == "light" ? "bg-white " : "bg-[#1d232a]"}`}>
             <section className='rounded-md  px-7 mt-4'>
-                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , Principal  👏👏 </h1>
+                <h1 className={`  text-center sm:mx-7 sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , {cusername}  👏👏 </h1>
             </section>
 
             <div className='w-[100%] h-[150vh] sm:[100vh] mt-5  p-2 flex  justify-center  flex-col sm:flex-row gap-5'>
@@ -61,7 +72,7 @@ const Hadmin = () => {
 
 
                             <section className=''>
-                                <Cbar />
+                                <Cbar y1={y1} y2={y2} y3={y3} dep={dep} />
                             </section>
 
                         </section>
