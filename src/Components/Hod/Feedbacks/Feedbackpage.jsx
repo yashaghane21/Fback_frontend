@@ -6,9 +6,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
 import Bar from "../Charts/Bar"
 import { CgProfile } from "react-icons/cg"
-import { BiSearch } from "react-icons/bi"
+import { AiOutlineScan } from "react-icons/ai"
 import toast from "react-hot-toast"
 import { Tooltip as ReactTooltip } from 'react-tooltip'
+import * as XLSX from 'xlsx'
+import { saveAs } from 'file-saver';
+import lottie from 'lottie-web';
+import animationData from "./hh.json"
+
 const Feedbackpage = () => {
 
     const { theme } = useAuth()
@@ -22,11 +27,12 @@ const Feedbackpage = () => {
     const uid = localStorage.getItem("userid")
     const [sem, setsem] = useState()
     const [search, setsearch] = useState("")
-    // const [sid, setsid] = useState("")
+    const [sid, setsid] = useState("")
     const currentYear = new Date().getFullYear();
     const pastYears = 3;
     const futureYears = 10;
     const years = [];
+    const [cdat, setcdata] = useState([])
 
     for (let i = -pastYears; i <= futureYears; i++) {
         years.push(String(currentYear + i));
@@ -40,15 +46,64 @@ const Feedbackpage = () => {
         setEnabled(!enabled);
     };
 
+    const exportdata = {
 
+    }
     const feedbacks = async () => {
         setloader(true)
         const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
-        console.log("dd", data.feedback)
+        const course = data.feedback.map(feedback => feedback.student.name);
+        const studentNames = data.feedback.map(feedback => feedback.course.name);
+        const answers = data.feedback.flatMap(feedback => feedback.feedback.map(item => item.answer));
+        console.log(answers)
+        console.log(studentNames)
+        console.log("dd", data.feedback[0].student.name)
+        const cde = data.feedback.map(feedback => feedback.department.name);
+        setsid(cde)
+        const exportdata = [
+            { name: studentNames },
+            { course: course }
+        ]
+
+        setcdata(exportdata)
         setfback(data.feedback)
         setsem(id.id)
         setloader(false)
     }
+
+
+    const jsonToExcel = () => {
+        toast.success("Data exported succesfully")
+        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+
+        const ws_data = fback.map(item => {
+            const feedbackData = {};
+            feedbackData['Feedback ID'] = item._id;
+            feedbackData['Department'] = item.department.name;
+            feedbackData['Semester Name'] = item.sem.name;
+            feedbackData['Course Name'] = item.course.name;
+            feedbackData['Student Name'] = item.student.name;
+            feedbackData['Email'] = item.student.email;
+            feedbackData['Enrollment'] = item.student.Enroll;
+            feedbackData['Year'] = item.year;
+            feedbackData['Timestamp'] = item.timestamp;
+
+            item.feedback.forEach((feedback, index) => {
+                feedbackData[`Question ${index + 1}`] = feedback.question.question;
+                feedbackData[`Answer ${index + 1}`] = feedback.answer;
+            });
+
+            return feedbackData;
+        });
+
+        const ws = XLSX.utils.json_to_sheet(ws_data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Feedback Data');
+        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        const data = new Blob([excelBuffer], { type: fileType });
+        saveAs(data, `${sid}.xlsx`);
+    }
+
 
     console.log(fback[0])
     const getbyyear = async (year) => {
@@ -160,16 +215,23 @@ const Feedbackpage = () => {
         console.log("sss", fback[0])
         subjects()
         console.log(id)
+        const anim = lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: animationData, // Your animation data
+        });
+        return () => anim.destroy();
     }, [uid])
     return (
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
 
             <div className='overflow-x-auto   '>
                 <ul className='flex  w-full cursor-pointer select-none'>
-                    <li className='  bg-white text-black  border-[1px] border-black rounded-md px-3 font-bold' onClick={feedbacks}>All </li>
+                    <li className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`}onClick={feedbacks}>All </li>
 
-
-                    <select placeholder='select a subject' className={` border-[2px] rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbysub(e.target.value)}>
+                    <select onChange={(e) => setsub(e.target.value)} className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`}>
                         {sub.map((item, index) => (
                             // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             //     key={index}>{item.name}</li>]
@@ -177,7 +239,7 @@ const Feedbackpage = () => {
                         ))}
                     </select>
 
-                    <select placeholder='select a year' className={` border-[2px] px-7 rounded-lg mx-2 ${theme == "light" ? "bg-white" : "bg-white "}`} onChange={(e) => getbyyear(e.target.value)}>
+                    <select placeholder='select a year' className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onChange={(e) => getbyyear(e.target.value)}>
                         {years.map((item, index) => (
                             // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                             //     key={index}>{item.name}</li>]
@@ -334,7 +396,7 @@ const Feedbackpage = () => {
                     </dialog>
                 </div>
                 <div>
-                    <div className='w-[100%] px-5   flex justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
+                    <div className='w-[100%] px-5   flex flex-col justify-center items-center  sm:my-0 sm:w-[100%] pl-5 ' >
                         <div className={`h-[50vh]  pb-5 flex flex-col justify-center items-center w-[55vh] mt-5 rounded-2xl ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"} `} >
                             <select onChange={(e) => setyear(e.target.value)} className={`px-5 rounded-2xl text-left'  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
                                 <option>{year}</option>
@@ -345,6 +407,12 @@ const Feedbackpage = () => {
                             </select>
                             <Bar sem={sem} year={year} />
                         </div>
+
+                        <section className='mt-5 w-[100%] px-2'>
+                            <button onClick={jsonToExcel} className=' text-sm sm:text-xl pl-[2vh] items-center justify-center text-center w-[100%] font-bold py-2 border-[0.5px] border-blue-700 shadow-blue-700 shadow-2xl flex rounded-2xl'>Export To Excel Sheet           <div id="lottie-container" style={{ width: '140px', height: '90px' }} /></button>
+                        </section>
+
+
 
                     </div>
                 </div>
