@@ -71,7 +71,7 @@ export default function AdminDashB() {
 
 
                 <div className='flex flex-row bg-gray-100 '>
-                    <div className={`${theme == "light" ? " bg-[#1e293b]" : "bg-[#1e293b]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
+                    <div className={` border-r-[0.5px] ${theme == "light" ? " bg-[#1d232a]" : "bg-[#1d232a]"} hidden md:block h-screen w-[100%] sm:w-[20%]  text-xl pl-2 pt-4`} >
 
 
                         <div className='flex justify-center mt-0 items-center '>
@@ -128,7 +128,7 @@ export default function AdminDashB() {
                     {/* Mobile Navbar is here */}
 
                     <div
-                        className={`${theme === 'light' ? 'bg-[#1e293b]' : 'bg-[#1e293b]'
+                        className={`${theme === 'light' ? 'bg-[#1d232a]' : 'bg-[#1d232a]'
                             } ${nav ? 'fixed left-0 top-0 w-[100%] h-full border-r bg-[#0C134F] ease-in-out duration-500 p-5 text-2xl z-40 md:hidden' : 'ease-in-out duration-500  fixed left-[-100%] md:hidden'
                             }`}
 
@@ -179,9 +179,9 @@ export default function AdminDashB() {
                             </ul>
                         </div>
                     </div>
-
+                    {/* bg-[#1e293b] */}
                     <div className=" h-[50vh] w-[100%] bg-[#f1f5f9]">
-                        <div className={`${theme === 'light' ? 'bg-ehite' : 'bg-[#1e293b]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
+                        <div className={`${theme === 'light' ? 'bg-white' : 'bg-[#1d232a]'} w-[100%] flex justify-between border-b-2 shadow-lg ml-0 h-[9vh] `}>
 
                             <section className="flex justify-center items-center ">
                                 <h1 className={`text-center font-bold text-xl px-5 ${theme == "light" ? "text-black" : "text-white"}`}>PRINCIPAL DASHBOARD</h1>
