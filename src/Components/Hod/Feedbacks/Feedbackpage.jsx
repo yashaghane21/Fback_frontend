@@ -24,10 +24,12 @@ const Feedbackpage = () => {
     const [loader, setloader] = useState(false)
     const [ploader, setploader] = useState(false)
     const [student, setstudent] = useState([])
+    const [alert, setalert] = useState(false)
     const uid = localStorage.getItem("userid")
     const [sem, setsem] = useState()
     const [search, setsearch] = useState("")
     const [sid, setsid] = useState("")
+    const [enable, setenable] = useState("")
     const currentYear = new Date().getFullYear();
     const pastYears = 3;
     const futureYears = 10;
@@ -50,25 +52,39 @@ const Feedbackpage = () => {
 
     }
     const feedbacks = async () => {
-        setloader(true)
-        const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
-        const course = data.feedback.map(feedback => feedback.student.name);
-        const studentNames = data.feedback.map(feedback => feedback.course.name);
-        const answers = data.feedback.flatMap(feedback => feedback.feedback.map(item => item.answer));
-        console.log(answers)
-        console.log(studentNames)
-        console.log("dd", data.feedback[0].student.name)
-        const cde = data.feedback.map(feedback => feedback.department.name);
-        setsid(cde)
-        const exportdata = [
-            { name: studentNames },
-            { course: course }
-        ]
 
-        setcdata(exportdata)
-        setfback(data.feedback)
-        setsem(id.id)
-        setloader(false)
+        try {
+            setloader(true)
+            const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
+            const course = data.feedback.map(feedback => feedback.student.name);
+
+            const studentNames = data.feedback.map(feedback => feedback.course.name);
+            const answers = data.feedback.flatMap(feedback => feedback.feedback.map(item => item.answer));
+            console.log(answers)
+            console.log(studentNames)
+            console.log("dd", data.feedback[0].student.name)
+            console.log(data, data.feedback[0].sem.enabled)
+            const cde = data.feedback.map(feedback => feedback.department.name);
+            setsid(cde)
+            const exportdata = [
+                { name: studentNames },
+                { course: course }
+            ]
+            if (data.feedback[0].sem.enabled) {
+                setenable("Semester Enabled For Feedback")
+
+            } else {
+                setenable("Semester disabled For Feedback")
+            }
+            setcdata(exportdata)
+            setfback(data.feedback)
+            setsem(id.id)
+            setloader(false)
+
+        } catch (error) {
+            setloader(false)
+        }
+
     }
 
 
@@ -201,6 +217,7 @@ const Feedbackpage = () => {
                 id: id.id
             });
             console.log(response.data);
+            setalert(response.data.sem.enabled ? true : false)
             toast.success(`Semster ${enabled ? "disabled" : "enabled"} succesfully`)
             feedbacks();
         } catch (error) {
@@ -212,6 +229,7 @@ const Feedbackpage = () => {
     }
     useEffect(() => {
         feedbacks()
+
         console.log("sss", fback[0])
         subjects()
         console.log(id)
@@ -227,38 +245,39 @@ const Feedbackpage = () => {
     return (
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto p-5 w-full`}>
 
-            <div className='overflow-x-auto   '>
-                <ul className='flex  w-full cursor-pointer select-none'>
-                    <li className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`}onClick={feedbacks}>All </li>
+            <div className='flex flex-col  sm:flex-row sm:justify-between w-full'>
 
-                    <select onChange={(e) => setsub(e.target.value)} className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`}>
-                        {sub.map((item, index) => (
-                            // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
-                            //     key={index}>{item.name}</li>]
-                            <option value={item._id} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item.name} </option>
-                        ))}
-                    </select>
+                <div className=' overflow-x-auto  w-[100%] sm:w-[70%] '>
+                    <ul className='flex    cursor-pointer select-none'>
+                        <li className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onClick={feedbacks}>All </li>
 
-                    <select placeholder='select a year' className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onChange={(e) => getbyyear(e.target.value)}>
-                        {years.map((item, index) => (
-                            // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
-                            //     key={index}>{item.name}</li>]
-                            <option value={item} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item} </option>
-                        ))}
-                    </select>
-                    {/* {fback[0].sem.enabled.toString() === "true" ? (
-                        <>
-                            <h1>dff</h1>
-                        </>
-                    ) : (
-                        <>
-                            <h1>dh</h1>
-                        </>
-                    )} */}
+                        <select onChange={(e) => getbysub(e.target.value)} className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`}>
+                            {sub.map((item, index) => (
+                                // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                                //     key={index}>{item.name}</li>]
+                                <option value={item._id} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item.name} </option>
+                            ))}
+                        </select>
 
-                </ul>
+                        <select placeholder='select a year' className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onChange={(e) => getbyyear(e.target.value)}>
+                            <option>By year</option>
+                            {years.map((item, index) => (
+                                // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                                //     key={index}>{item.name}</li>]
+                                <option value={item} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item} </option>
+                            ))}
+                        </select>
 
+
+                    </ul>
+
+
+                </div>
+                <div className='sm:w-[35%] w-[100%] mt-2  sm:mt-0 flex justify-center'>
+                    <span data-tooltip-id="my-tooltip" data-tooltip-content="Red for Disabel ,green for Enable" className={` ${alert ? "bg-green-700" : "bg-red-700"} px-4   py-[1px] rounded-lg font-bold text-white`}>{enable} </span>
+                </div>
             </div>
+
             {<section className='p-2 flex sm:justify-end sm:mr-[15vh] mt-5 justify-center'>
                 <div className='flex'>
                     <h1 className={` ${theme == "light" ? "text-black" : "text-white "} font-bold text-xl px-2 flex  `} data-tooltip-id="my-tooltip" data-tooltip-content="Check box for disable" >Action</h1>
@@ -268,7 +287,7 @@ const Feedbackpage = () => {
                         <span className="slider"></span>
                     </label>
                 </div>
-                <button onClick={handleSubmit} className='px-4 mx-2 bg-blue-700 rounded-xl text-white' >Submit</button>
+                <button onClick={handleSubmit} className='px-4 mx-2 bg-blue-700 rounded-xl text-white' >Submit </button>
             </section>}
             <div className='flex flex-col  sm:flex-row '>
                 <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : "bg-[#0c131d]"}  h-[70vh] mt-5 overflow-y-auto w-[100%] pb-2 rounded-lg `}>
@@ -277,7 +296,7 @@ const Feedbackpage = () => {
                     <table className='border-collapse w-[100%] '>
                         <thead>
                             <tr className=' bg-blue-600 '>
-                                <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'>Index</th>
+                                <th className='p-2 py-2 text-left text-white text-lg hidden sm:block'></th>
                                 <th className='p-2 text-left py-2 text-white text-lg'>Course</th>
                                 <th className='p-2 text-left py-2 text-white text-lg'>Enroll</th>
                                 <th className='p-2 text-left py-2 text-white text-lg'>Student</th>
@@ -333,7 +352,7 @@ const Feedbackpage = () => {
                                     >
                                         View<AiOutlineEye size={23} className='ml-2' />
                                     </td>
-                                    <td
+                                    {/* <td
                                         className=' font-semibold cursor-pointer text-left'
                                     >
                                         {item.sem.enabled.toString() === 'true' ? (
@@ -344,7 +363,7 @@ const Feedbackpage = () => {
                                             // Render content when item.sem.enabled is false
                                             <span className='absolute right-[18vh] hidden sm:block sm:top-[85px] text-white bg-red-500 px-4 py-[1px] rounded-lg'>Semester Disabled For Feedback</span>
                                         )}
-                                    </td>
+                                    </td> */}
                                 </tr>
                             ))
                         )}
@@ -409,7 +428,7 @@ const Feedbackpage = () => {
                         </div>
 
                         <section className='mt-5 w-[100%] px-2'>
-                            <button onClick={jsonToExcel} className=' text-sm sm:text-xl pl-[2vh] items-center justify-center text-center w-[100%] font-bold py-2 border-[0.5px] border-blue-700 shadow-blue-700 shadow-2xl flex rounded-2xl'>Export To Excel Sheet           <div id="lottie-container" style={{ width: '140px', height: '90px' }} /></button>
+                            <button onClick={jsonToExcel} className={` ${theme == "light" ? "text-blue-700" : "text-white"} text-sm sm:text-xl pl-[2vh] items-center justify-center text-center w-[100%] font-bold py-2 border-[0.5px] border-blue-700 shadow-blue-700 shadow-md flex rounded-2xl `}>Export To Excel Sheet           <div id="lottie-container" style={{ width: '140px', height: '90px' }} /></button>
                         </section>
 
 

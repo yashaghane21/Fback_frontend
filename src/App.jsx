@@ -30,6 +30,7 @@ import Edit from './Components/Hod/Edit';
 import Hadmin from './Components/Admin/Hadmin';
 import Departments from './Components/Admin/Departments';
 import Pdata from './Components/Admin/Pdata';
+import Excel from './Components/Excel';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
           <Route path='/' element={<Layout />} />
           <Route path='/about' element={<About />} />
           <Route path='/ecf' element={<Ecfeedback />} />
+          <Route path='/excel' element={<Excel />} />
           <Route path='/cof' element={<Cofeedback />} />
           <Route path='/done' element={<Done />} />
           <Route path='/admin' element={<Sidebar />}>
@@ -82,6 +84,7 @@ const App = () => {
           </Route>
 
           <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
         </Routes>
         <Toaster />
       </BrowserRouter>

@@ -24,6 +24,7 @@ const Endfeedbacks = () => {
             });
             console.log(data);
             setdep(data.user.department);
+            console.log(data.user.department)
             getfbydep()
             setloader(false);
 
@@ -39,7 +40,7 @@ const Endfeedbacks = () => {
             const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/ecfeedbackby", {
                 dep: dep
             });
-            console.log(data.feedback)
+            console.log(data)
             setfbacks(data.feedback)
             setloader(false)
         } catch (error) {

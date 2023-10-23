@@ -7,7 +7,7 @@ import { useAuth } from './Auth/AuthContext'
 const Footer = () => {
     const { theme } = useAuth()
     return (
-        <div className={`${theme == "light" ? "bg-white" : " bg-slate-950"} h-[20vh] w-full`}>
+        <div className={`${theme == "light" ? "bg-[#f5f1f0]" : " bg-[#0c131d]"} h-[20vh] w-full`}>
             <div className='flex justify-between items-center'>
                 <section className='px-5 pt-5 flex  justify-center items-center'>
                     <section>

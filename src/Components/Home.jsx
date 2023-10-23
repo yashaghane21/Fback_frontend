@@ -4,24 +4,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './Auth/AuthContext'
 import { TypeAnimation } from 'react-type-animation';
 import lottie from 'lottie-web';
-import animationData from "./ff.json"
+import ppj from "./ff.json"
 const Home = () => {
 
     const { theme, auth } = useAuth()
     useEffect(() => {
         const anim = lottie.loadAnimation({
-            container: document.getElementById('lottie-container'),
+            container: document.getElementById('pp'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            animationData: animationData,
+            animationData: ppj,
         });
         return () => anim.destroy();
     })
     const navigate = useNavigate()
     return (
         <div>
-            <section className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
+            <section className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
                 {auth?.user?.role === 0 ? (
                     <section className='absolute right-36 flex'>
                         <h1 className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 cursor-pointer text-black hover:border-b-2 border-blue-700`} onClick={() => navigate('/ecf')}>EC Feedback</h1>
@@ -33,7 +33,7 @@ const Home = () => {
                 )}
             </section>
 
-            <div className={`${theme == "light" ? "bg-[#f1f5f9]" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
+            <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
                 <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
 
 
@@ -64,7 +64,7 @@ const Home = () => {
 
                 </div>
                 <div className='w-full sm:w-[60%] sm:h-[81vh] h-[40vh] flex justify-center  items-center  '>
-                    <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
+                    <div id="pp" style={{ width: '800px', height: '600px' }} />
                 </div>
 
             </div>

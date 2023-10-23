@@ -38,7 +38,7 @@ const Ecfeedback = () => {
             const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
                 id: id
             });
-            setdep(data.user);
+            setdep(data.user.department);
             console.log(data.user.sem);
             setOn(data.user.sem.enabled ? "ok" : "nok");
         } catch (error) {

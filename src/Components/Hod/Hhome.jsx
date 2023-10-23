@@ -39,7 +39,7 @@ const Hhome = () => {
     const [tt, sett] = useState("")
     const def = "6527f14233a29f8db1e31de1"
     const [pyear, setpyear] = useState(cyear)
-    const [psem, setpsem] = useState(def)
+    const [psem, setpsem] = useState()
 
     const user = async () => {
         const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
@@ -183,7 +183,7 @@ const Hhome = () => {
                                     ))}
                                 </select>
                                 <select placeholder='Select sem' onChange={(e) => setpsem(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-
+                                 <option>sems</option>
                                     {sems.map((y) => (
 
                                         <option key={y} value={y._id}>{y.name}</option>

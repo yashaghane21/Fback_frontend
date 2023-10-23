@@ -67,14 +67,14 @@ const View = () => {
                             <FiPhoneCall size={23} className='p-1' />
 
                         </section>
-                        <h1 className={`font-bold px-2 text-lg mt-1 ${theme == "light" ? "text-black" : "text-white"}`}>9309454285</h1>
+                        <h1 className={`font-bold px-2 text-lg mt-1 ${theme == "light" ? "text-black" : "text-white"}`}>{phone}</h1>
                     </section>
                     <section className='mt-1 sm:mt-5 flex'>
                         <section className={`h-[5vh] w-[5vh] flex justify-center items-center  rounded-full  ${theme == "light" ? "text-black" : "bg-[#1d232a] "}`}>
                             <AiOutlineMail size={23} className='p-1' />
 
                         </section>
-                        <h1 className={`font-bold px-2 text-lg mt-1 ${theme == "light" ? "text-black" : "text-white"}`}>yashaghane@gmail.com</h1>
+                        <h1 className={`font-bold px-2 text-lg mt-1 ${theme == "light" ? "text-black" : "text-white"}`}>{email}</h1>
                     </section>
                 </div>
             </div>

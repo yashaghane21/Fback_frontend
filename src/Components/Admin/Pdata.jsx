@@ -39,6 +39,7 @@ const Pdata = () => {
     const [ts, setts] = useState("")
     const [tf, settf] = useState("")
     const [tt, sett] = useState("")
+    const [n, setn] = useState("")
     const [uid, setuid] = useState(id)
     const def = "6527f14233a29f8db1e31de1"
     const [pyear, setpyear] = useState(cyear)
@@ -50,6 +51,7 @@ const Pdata = () => {
         })
         console.log(data)
         console.log("useert", data.user.department)
+        setn(data.user.department.name)
         setdep(data.user.department._id)
         getdata();
     }
@@ -99,7 +101,7 @@ const Pdata = () => {
 
         <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} h-[91vh] overflow-y-auto   w-[100%]`}>
             <section className='rounded-md  px-7 mt-4'>
-                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Welcome , 👏👏 </h1>
+                <h1 className={`  text-center sm:text-left text-xl sm:text-2xl px-2 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Department of {n} , 👏👏 </h1>
             </section>
 
             <div className='flex justify-center items-center w-[100%] sm:pl-5  '>
