@@ -39,6 +39,10 @@ const Signup = () => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     setloader(true)
+    if (dept === "" || sem === "") {
+      toast.error("Please fill all fields");
+
+    }
     try {
       setloader(true)
       const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v1/register", {
@@ -60,13 +64,13 @@ const Signup = () => {
         navigate("/login")
       }
       else {
-        toast.warn("user already exist", {
+        toast.error("user already exist", {
           autoClose: 2000,
         })
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
-        toast.warn(error.response.data.message, {
+        toast.error(error.response.data.message, {
           autoClose: 2000,
         });
       } else {
@@ -144,15 +148,15 @@ const Signup = () => {
           </section> :
             <>
             </>}
-          <input type='text' placeholder='Name ' className='w-full p-2 border-2 mt-5 my-2 rounded-2xl'
+          <input type='text' required placeholder='Name ' className='w-full p-2 border-2 mt-5 my-2 rounded-2xl'
             value={name} onChange={(e) => setname(e.target.value)} />
-          <input type='email' placeholder='Enter Email' className='w-full p-2 border-2  my-2 rounded-2xl'
+          <input type='email' required placeholder='Enter Email' className='w-full p-2 border-2  my-2 rounded-2xl'
             value={email} onChange={(e) => setemail(e.target.value)} />
-          <input type='text' placeholder='Enter Password ' className='w-full p-2 border-2 my-2 rounded-2xl'
+          <input type='text' required placeholder='Enter Password ' className='w-full p-2 border-2 my-2 rounded-2xl'
             value={Password} onChange={(e) => setpassword(e.target.value)} />
-          <input type='text' placeholder='Enter Enroll' className='w-full p-2 border-2 rounded-2xl my-2 '
+          <input type='text' required placeholder='Enter Enroll' className='w-full p-2 border-2 rounded-2xl my-2 '
             value={enroll} onChange={(e) => setenroll(e.target.value)} />
-          <input type='text' placeholder='Enter Phone ' className='w-full p-2 border-2 rounded-2xl '
+          <input type='text' required placeholder='Enter Phone ' className='w-full p-2 border-2 rounded-2xl '
             value={phone} onChange={(e) => setphone(e.target.value)} />
 
           <Select className='w-full ant-input text-xl mt-4 rounded-2xl ' placeholder='Select a Department' onChange={handlechange}>
@@ -163,7 +167,7 @@ const Signup = () => {
             ))}
           </Select>
 
-          <Select className='w-full ant-input text-xl mt-4 rounded-2xl ' placeholder='Select a semester' onChange={handlesem}>
+          <Select required className='w-full ant-input text-xl mt-4 rounded-2xl ' placeholder='Select a semester' onChange={handlesem}>
             {semester.map((s) => (
               <Option key={s._id} value={s._id}>
                 {s.name}
