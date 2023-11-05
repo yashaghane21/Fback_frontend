@@ -8,6 +8,7 @@ import b from "./2.png"
 import c from "./3.png"
 import Mpie from './Charts/Mpie'
 import Pie from "./Charts/PIe"
+
 import Bar from "./Charts/Bar"
 
 const Hhome = () => {
@@ -103,7 +104,7 @@ const Hhome = () => {
                     <div className={`h-[18vh] w-[90%] sm:w-[80%]  rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
-                                <h1 className='font-bold text-blue-700 text-2xl'>{ts}</h1>
+                                <h1 className='font-bold text-blue-700 text-2xl sm:text-3xl'>{ts}</h1>
                                 <h1 className={`font-bold text-xl ${theme == "light" ? "text-black" : "text-white"}`}>Students Enrolled</h1>
 
 
@@ -121,7 +122,7 @@ const Hhome = () => {
                     <div className={`h-[18vh] w-[90%] sm:w-[80%]    rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
-                                <h1 className='font-bold text-blue-700 text-2xl'>{tf}</h1>
+                                <h1 className='font-bold text-2xl sm:text-3xl text-blue-700 '>{tf}</h1>
                                 <h1 className={`font-bold text-xl ${theme == "light" ? "text-black" : "text-white"}`}>Feeedback Submitted</h1>
 
                             </section>
@@ -137,7 +138,7 @@ const Hhome = () => {
                     <div className={`h-[18vh] w-[90%] sm:w-[80%]   rounded-2xl shadow-md ${theme == "light" ? " bg-[#f5f1f0] shadow-lg" : "bg-[#0c131d] shadow-xl text-white"}`}>
                         <section className='flex justify-between px-5'>
                             <section className='py-5'>
-                                <h1 className='font-bold text-blue-700 text-2xl'>{tt}</h1>
+                                <h1 className='font-bold text-2xl sm:text-3xl text-blue-700'>{tt}</h1>
                                 <h1 className={`font-bold text-xl ${theme == "light" ? "text-black" : "text-white"}`}>Teachers</h1>
 
 

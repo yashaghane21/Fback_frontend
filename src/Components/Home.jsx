@@ -4,10 +4,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './Auth/AuthContext'
 import { TypeAnimation } from 'react-type-animation';
 import lottie from 'lottie-web';
+import toast from "react-hot-toast"
+import { HiOutlineLogout } from "react-icons/hi"
 import ppj from "./ff.json"
 const Home = () => {
 
-    const { theme, auth } = useAuth()
+
+    const { theme, auth, setauth } = useAuth()
+    const handleLogOut = () => {
+        setauth({
+            user: null,
+            token: "",
+        })
+        localStorage.removeItem("auth");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("username");
+        navigate('/')
+        toast.success("Logout Succesfully ")
+    }
+
     useEffect(() => {
         const anim = lottie.loadAnimation({
             container: document.getElementById('pp'),
@@ -23,9 +38,13 @@ const Home = () => {
         <div>
             <section className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} hidden sm:block p-6 font-bold  w-full justify-center items-center `}>
                 {auth?.user?.role === 0 ? (
-                    <section className='absolute right-36 flex'>
+                    <section className='absolute right-[180px] flex'>
                         <h1 className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 cursor-pointer text-black hover:border-b-2 border-blue-700`} onClick={() => navigate('/ecf')}>EC Feedback</h1>
                         <Link className={`${theme == "light" ? "" : "text-white"} mx-2 mt-2 text-black hover:border-b-2 border-blue-700`} to='/cof'>Course Feedback</Link>
+                        <li onClick={handleLogOut} className={`${theme == "light" ? "" : "text-white"}  flex mt-2 text-black hover:border-b-2 border-blue-700`}>
+                            <HiOutlineLogout size={27} className='pr-2 mt-1 pb-2' />
+
+                        </li>
                     </section>
                 ) : (
                     <>

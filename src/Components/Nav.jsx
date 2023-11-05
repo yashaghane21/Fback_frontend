@@ -10,7 +10,7 @@ import { HiOutlineLogout } from "react-icons/hi"
 export default function Nav() {
     const [nav, setnav] = useState(false);
     const navigate = useNavigate();
-    const { theme, settheme, auth } = useAuth()
+    const { theme, settheme, auth, setauth } = useAuth()
 
     const handle = () => {
         setnav(!nav);
@@ -113,7 +113,7 @@ export default function Nav() {
                 </ul>
             </div>
 
-            <section className='  md:hidden '>
+            <section className='  sm:hidden '>
                 <ul className={`bg-gray-300 flex flex-col absolute left-0 h-screen shadow-sm ${nav ? 'w-[90%] sm:w-17' : "w-0 overflow-hidden"} transition-all ease-linear duration-200`}>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline' onClick={() => navigate("/")}>Home</li>
                     <li className='mx-2 text-black my-1 font-semibold hover:border-b-2 border-black inline'>Contact</li>
@@ -155,21 +155,21 @@ export default function Nav() {
                                         </div>
                                     ) : (
 
+                                        <>
+                                            <section className='flex h-[30vh] font-bold'>
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1">
+                                                    <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/cof'>Course Feedback</Link>
+                                                </li>
+                                                <li className="cursor-pointer flex group-hover:underline-offset-1">
+                                                    <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/ecf'>EC Feedback</Link>
+                                                </li>
+                                                <li onClick={handleLogOut} className={`${theme == "light" ? "" : "text-white"}  flex mt-2 text-black hover:border-b-2 border-blue-700`}>
+                                                    <HiOutlineLogout size={27} className='pr-2 mt-1 pb-2' />
 
-                                        <section className='flex  font-bold'>
-                                            <li className="cursor-pointer flex group-hover:underline-offset-1">
-                                                <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/cof'>Course Feedback</Link>
-                                            </li>
-                                            <li className="cursor-pointer flex group-hover:underline-offset-1">
-                                                <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/ecf'>EC Feedback</Link>
-                                            </li>
-                                            <li onClick={handleLogOut} className='text-black w-max mt-[50vh] hover:rounded-md font-semibold hover:bg-[#6528F7] flex px-9 text-sm text-center rounded-md border-none cursor-pointer'>
-                                                <HiOutlineLogout size={30} className='pr-2 pb-2' />
-                                                Log Out
-                                            </li>
-                                        </section>
+                                                </li>
+                                            </section>
 
-
+                                        </>
 
                                     )}
                                 </>

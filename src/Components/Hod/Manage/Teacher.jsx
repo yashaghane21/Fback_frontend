@@ -234,26 +234,26 @@ const teacher = () => {
                     <div className='w-full mt-2'>
                         <form className='w-[100%]' >
                             <input type='text' placeholder='Name' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] border-2 text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={name}
                                 required
                                 onChange={(e) => setname(e.target.value)}
                             />
                             <input type='email' placeholder='Email' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] border-2 text-black   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={email}
                                 required
                                 onChange={(e) => setemail(e.target.value)}
                             />
 
                             <input type='text' placeholder='Phone' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] border-2 text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={phone}
                                 required
                                 onChange={(e) => setphone(e.target.value)}
                             />
                             <input type='text' placeholder='Education' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2  my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] border-2 text-black  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={education}
                                 re
                                 onChange={(e) => seteducation(e.target.value)}

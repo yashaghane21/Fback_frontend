@@ -153,7 +153,7 @@ const Cofeedback = () => {
                 FeedBack Form
 
             </h1>
-            <section className='flex flex-col sm:flex-row items-center  justify-between mb-2 mt-5'>
+            <section className='flex flex-col sm:flex-row items-center px-5  justify-between mb-2 mt-5'>
 
                 <Select className='w-[50vh] ant-input text-xl px-2 text-black' placeholder='Select a subject' onChange={handlechange}>
                     {sub.map((item, index) => {

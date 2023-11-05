@@ -69,14 +69,17 @@ export default function Hsidebar() {
         const localtheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute("data-theme", localtheme)
 
-        if (auth?.user?.role !== 1) {
-            navigate("/");
-            toast.error("Unauthorized access");
-        } else {
+        const authData = JSON.parse(localStorage.getItem("auth"));
+        if (!authData || !authData.user || authData.user.role !== 1) {
+            if (window.location.pathname !== '/') {
+                navigate("/");
+                toast.error("Unauthorized access");
+            }
         }
 
 
-    }, [auth?.user?.token])
+
+    }, [])
 
 
     return (

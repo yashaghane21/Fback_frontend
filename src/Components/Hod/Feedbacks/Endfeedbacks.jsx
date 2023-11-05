@@ -69,10 +69,11 @@ const Endfeedbacks = () => {
             {loader ? <section className='h-[70vh] flex justify-center items-center'>
                 <BarLoader size={23} color='blue' />
             </section> :
-                <>
-                    <div className={`py-3 sm:p-6 flex justify-center mt-5 ${theme == "light" ? "text-black" : "text-white"}`}>
+                <div className='flex justify-center'>
+                    <div className={` ${theme == "light" ? "bg-[#f5f1f0]" : "bg-[#0c131d]"}  h-[80vh] mt-5 overflow-y-auto w-[100%] sm:w-[90%] pb-2 rounded-lg `}>
 
-                        <table className='border-collapse select-none w-[90%] '>
+
+                        <table className='border-collapse  w-[100%] '>
                             <thead>
                                 <tr className=' bg-blue-700 '>
                                     <th className='p-2 py-2 text-left text-white text-lg '>Index</th>
@@ -104,7 +105,7 @@ const Endfeedbacks = () => {
 
                         </table>
                     </div>
-                </>}
+                </div>}
 
 
 
