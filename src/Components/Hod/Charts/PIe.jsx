@@ -28,10 +28,10 @@ export default function PIe({ year, type }) {
 
   const [y, sety] = useState(cyear)
   const [ty, setty] = useState()
-  
+
   const user = async () => {
     try {
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+      const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
         id: id
       });
       setDep(data.user.department);
@@ -42,7 +42,7 @@ export default function PIe({ year, type }) {
 
   const getSemesters = async () => {
     try {
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v1/getsembydep`, {
+      const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v1/getsembydep`, {
         dep: dep
       });
 
@@ -64,7 +64,7 @@ export default function PIe({ year, type }) {
 
   const pieData = async () => {
     try {
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/goodfeedbackby", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/goodfeedbackby", {
         dep: dep,
         year: year,
         sem1: sem1,

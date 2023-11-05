@@ -32,7 +32,7 @@ const Manage = () => {
         console.log("uuuuu", id, value)
 
         try {
-            const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/uphod", {
+            const { data } = await axios.put("https://vercel-zpzg.vercel.app/api/v2/uphod", {
                 id: id,
                 value: value
             });
@@ -53,7 +53,7 @@ const Manage = () => {
     const addhod = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/addhod", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app//api/v2/addhod", {
                 name: hname,
                 email: email,
                 password: password,
@@ -75,7 +75,7 @@ const Manage = () => {
     const adddept = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/department", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/department", {
                 name: name,
 
             });
@@ -101,7 +101,7 @@ const Manage = () => {
         const pass = prompt("Enter Password")
         if (pass === "del") {
 
-            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/hod/${id}`)
+            const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/hod/${id}`)
             toast.success("Hod Deleted Succesfully")
             alldepartments()
             gethods()
@@ -114,7 +114,7 @@ const Manage = () => {
     }
     const gethods = async () => {
         try {
-            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/hods");
+            const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v3/hods");
             sethods(data.hods)
             console.log(data.hods)
         } catch (error) {
@@ -126,7 +126,7 @@ const Manage = () => {
         try {
             console.log(id)
             window.my_modal_3.showModal()
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             });
             setuhod(data.user)
@@ -139,7 +139,7 @@ const Manage = () => {
     const alldepartments = async () => {
         try {
             setloader(true)
-            const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v1/department");
+            const response = await axios.get("https://vercel-zpzg.vercel.app/api/v1/department");
             console.log(response.data.departments);
             setdepartments(response.data.departments);
             setloader(false)
@@ -152,7 +152,7 @@ const Manage = () => {
         const pass = prompt("Enter Password")
         if (pass === "del") {
 
-            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/dep/${id}`)
+            const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/dep/${id}`)
             toast.success("Department Deleted Succesfully")
             alldepartments()
         }

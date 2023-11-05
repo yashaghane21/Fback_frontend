@@ -26,7 +26,7 @@ const Signup = () => {
   const alldepartments = async () => {
     try {
       setloader(true)
-      const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v1/department");
+      const response = await axios.get("https://vercel-zpzg.vercel.app/api/v1/department");
       console.log(response.data.departments);
       setdepartments(response.data.departments);
       setloader(false)
@@ -41,7 +41,7 @@ const Signup = () => {
     setloader(true)
     try {
       setloader(true)
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v1/register", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v1/register", {
         name: name,
         email: email,
         Enroll: enroll,
@@ -83,7 +83,7 @@ const Signup = () => {
     setloader(true)
     try {
       setloader(true)
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v1/getsembydep`, {
+      const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v1/getsembydep`, {
         dep: dep
       });
 
@@ -130,7 +130,7 @@ const Signup = () => {
   return (
     <div className='flex h-screen'>
 
-<div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
+      <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
         <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
       </div>
 

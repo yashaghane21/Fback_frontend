@@ -18,7 +18,7 @@ const Sems = () => {
 
     const addsem = async (e) => {
         e.preventDefault();
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/sem", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/sem", {
             department: dept,
             name: name
         });
@@ -28,7 +28,7 @@ const Sems = () => {
         }
     }
     const getdepid = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+        const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
             id: id
         })
         console.log(data)
@@ -40,7 +40,7 @@ const Sems = () => {
     const getsems = async () => {
         setloader(true)
         console.log(dept)
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dept}`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/sems/${dept}`)
         console.log(response.data.sems)
         setsems(response.data.sems)
         setloader(false)
@@ -52,7 +52,7 @@ const Sems = () => {
 
         if (confirmed === "del") {
             console.log(id);
-            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/semdel/${id}`);
+            const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/semdel/${id}`);
             if (data.success) {
                 toast.success("Semester deleted succesfully")
                 getsems()

@@ -55,7 +55,7 @@ const Feedbackpage = () => {
 
         try {
             setloader(true)
-            const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/feedback/${id.id}`)
+            const { data } = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/feedback/${id.id}`)
             const course = data.feedback.map(feedback => feedback.student.name);
 
             const studentNames = data.feedback.map(feedback => feedback.course.name);
@@ -126,7 +126,7 @@ const Feedbackpage = () => {
         setloader(true)
 
 
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fbacksemyr", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/fbacksemyr", {
             sem: id.id,
             year: year
         })
@@ -145,7 +145,7 @@ const Feedbackpage = () => {
         setsubid(subject)
         console.log(subject);
 
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/feedbacksub", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/feedbacksub", {
             sub: subject
         })
         console.log(data)
@@ -158,7 +158,7 @@ const Feedbackpage = () => {
     const subjects = async () => {
         try {
             console.log(id)
-            const response = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/subjectsq", {
+            const response = await axios.post("https://vercel-zpzg.vercel.app/api/v3/subjectsq", {
                 sem: id.id
             })
 
@@ -200,7 +200,7 @@ const Feedbackpage = () => {
             setploader(true);
             window.my_modal_1.showModal()
             // console.log("ghfjhvjh", sid);
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: sid
             });
             window.my_modal_1.showModal()
@@ -213,7 +213,7 @@ const Feedbackpage = () => {
     }
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(`https://f-backend-7g5y.onrender.com/api/v2/semesters/${enabled ? 'disable' : 'enable'}`, {
+            const response = await axios.post(`https://vercel-zpzg.vercel.app/api/v2/semesters/${enabled ? 'disable' : 'enable'}`, {
                 id: id.id
             });
             console.log(response.data);

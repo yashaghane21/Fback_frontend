@@ -46,7 +46,7 @@ const Pdata = () => {
     const [psem, setpsem] = useState(def)
 
     const user = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+        const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
             id: id.id
         })
         console.log(data)
@@ -56,7 +56,7 @@ const Pdata = () => {
         getdata();
     }
     const getdata = async () => {
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/getdata", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/getdata", {
             dep: dep
         });
         console.log("fgfg", data)
@@ -66,17 +66,17 @@ const Pdata = () => {
     }
     const getsems = async () => {
         console.log(dep)
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/sems/${dep}`)
         console.log("ssss", response.data.sems)
         setsems(response.data.sems)
     }
 
     const fdata = async () => {
-        const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/countf")
+        const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v2/countf")
         setFeedbackData(data)
         console.log(data)
 
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/countsA/64dbc5db25871abf6b82b2e4`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/countsA/64dbc5db25871abf6b82b2e4`)
         console.log(response)
         setfbacks(response.data)
     }

@@ -21,7 +21,7 @@ const Students = () => {
         try {
             setLoading(true)
             console.log("Fetching user data for id:", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             })
             console.log(data.user.department._id)
@@ -36,7 +36,7 @@ const Students = () => {
     const getstudents = async () => {
         setLoading(true);
         console.log(dep)
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/students", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/students", {
             dep: dep
         })
         console.log(data.students)
@@ -52,7 +52,7 @@ const Students = () => {
     const getsems = async () => {
         setLoading(true)
         console.log(dep)
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/sems/${dep}`)
         console.log("ankita", response.data.sems)
         setsems(response.data.sems)
         setLoading(false)
@@ -60,7 +60,7 @@ const Students = () => {
     const getbyfilter = async (sem) => {
         setLoading(true)
         sets(sem)
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/stubysem", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/stubysem", {
             sem: sem
         });
         setstudents(data.students)
@@ -80,7 +80,7 @@ const Students = () => {
 
     const updatesem = async (e) => {
         e.preventDefault();
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/updstusem", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/updstusem", {
             osem: old, nsem: snew
         })
         if (data.success) {
@@ -90,18 +90,18 @@ const Students = () => {
 
 
     const delstu = async (id) => {
-        
+
         const confirmed = window.prompt("note: if you delete student then student details from respective feedbacks will be delete,Developers will not be responsible for this. Enter password");
 
         if (confirmed === "del") {
             console.log(id);
-            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/studel/${id}`);
+            const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/studel/${id}`);
             if (data.success) {
                 toast.success("Student deleted succesfully")
                 getstudents()
             }
         }
-        else{
+        else {
             alert("wrong password")
         }
 
@@ -111,7 +111,7 @@ const Students = () => {
     const searchs = async (e) => {
         e.preventDefault();
 
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/searchstud", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/searchstud", {
             search: search
         });
         console.log("test4", data.result)

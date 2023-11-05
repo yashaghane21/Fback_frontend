@@ -36,7 +36,7 @@ export default function Nav() {
         toast.success("Logout Succesfully ")
     }
 
-    
+
     useEffect(() => {
 
         localStorage.setItem("theme", theme)
@@ -154,28 +154,23 @@ export default function Nav() {
                                             </li>
                                         </div>
                                     ) : (
-                                        <div className="flex flex-col">
-                                            <section className='flex '>
-                                                <Link className='mx-2 font-bold text-black mt-2' to='/student' >{auth?.user?.name}    </Link>
-                                                <li className="cursor-pointer" >
-                                                    <BiUserCircle size={40} className="text-green-700" onClick={() => navigate('/student')} />
-                                                </li>
-                                            </section>
 
-                                            <section className='flex flex-col'>
-                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
 
-                                                    <Link className='mx-2  mt-2 text-black hover:border-b-2 border-blue-700' to='/cof ' >Course Feedback</Link>
-                                                </li>
-                                                <li className="cursor-pointer flex group-hover:underline-offset-1 " >
+                                        <section className='flex  font-bold'>
+                                            <li className="cursor-pointer flex group-hover:underline-offset-1">
+                                                <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/cof'>Course Feedback</Link>
+                                            </li>
+                                            <li className="cursor-pointer flex group-hover:underline-offset-1">
+                                                <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/ecf'>EC Feedback</Link>
+                                            </li>
+                                            <li onClick={handleLogOut} className='text-black w-max mt-[50vh] hover:rounded-md font-semibold hover:bg-[#6528F7] flex px-9 text-sm text-center rounded-md border-none cursor-pointer'>
+                                                <HiOutlineLogout size={30} className='pr-2 pb-2' />
+                                                Log Out
+                                            </li>
+                                        </section>
 
-                                                    <Link className='mx-2 mt-2 text-black hover:border-b-2 border-blue-700' to='/ecf ' >EC Feedback</Link>
-                                                </li>
-                                                <li onClick={handleLogOut} className='text-black w-max mt-[50vh]    hover:rounded-md  font-semibold  hover:bg-[#6528F7]  flex px-9 text-sm text-center  rounded-md border-none cursor-pointer'><HiOutlineLogout size={30} className=' pr-2 pb-2 ' />Log Out</li>
 
-                                            </section>
 
-                                        </div>
                                     )}
                                 </>
                             )}

@@ -37,7 +37,7 @@ export default function Cbar({ y1, y2, y3, dep }) {
   const [cdata, setcdata] = useState([])
 
   const getdata = async (dy1, y2, y3, dep) => {
-    const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/depsyear", {
+    const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/depsyear", {
       year1: y1, year2: y2, year3: y3,
       dep: dep
     });

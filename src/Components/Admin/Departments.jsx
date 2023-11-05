@@ -13,7 +13,7 @@ const Departments = () => {
     const alldepartments = async () => {
         try {
             setloader(true)
-            const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/depsfback");
+            const response = await axios.get("https://vercel-zpzg.vercel.app/api/v2/depsfback");
             console.log(response.data.responseData);
             setdeps(response.data.responseData);
             setloader(false)

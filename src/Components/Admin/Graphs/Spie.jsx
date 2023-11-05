@@ -33,7 +33,7 @@ export default function Spie({ year, type, uid }) {
   const user = async () => {
     try {
       console.log(uid)
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/user", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v3/user", {
         id: uid.id
       });
       console.log(data.user.department._id)
@@ -45,9 +45,10 @@ export default function Spie({ year, type, uid }) {
 
   const getSemesters = async () => {
     try {
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v1/getsembydep`, {
+      const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v1/getsembydep`, {
         dep: dep
       });
+      console.log(data)
 
       if (Array.isArray(data.sems) && data.sems.length >= 6) {
         const semesterIDs = data.sems.slice(0, 6).map(sem => sem._id);
@@ -67,7 +68,7 @@ export default function Spie({ year, type, uid }) {
 
   const pieData = async () => {
     try {
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/goodfeedbackby", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/goodfeedbackby", {
         dep: dep,
         year: year,
         sem1: sem1,

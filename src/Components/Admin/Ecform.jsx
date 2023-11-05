@@ -15,7 +15,7 @@ const Ecform = () => {
     const quesions = async () => {
         try {
             setloader(true);
-            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/ecques");
+            const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v3/ecques");
             console.log(data);
 
             setquestions(data.questions);
@@ -27,7 +27,7 @@ const Ecform = () => {
     };
     const addq = async (e) => {
         e.preventDefault();
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/ecquestion", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/ecquestion", {
             question: text
         });
         if (data.success) {
@@ -41,7 +41,7 @@ const Ecform = () => {
         if (confirmed) {
             console.log(id);
             try {
-                const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/ecqdel/${id}`);
+                const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/ecqdel/${id}`);
 
                 if (data?.success) {
                     toast.success("Question deleted successfully");
@@ -106,7 +106,7 @@ const Ecform = () => {
 
 
                             <input type='text' placeholder='question' className=
-                                {`p-2 border-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0]  " : "focus:outline-none bg-[#0c131d] border-none"}' `}
+                                {`p-2 my-2 w-full rounded-full ${theme == "light" ? "bg-[#f5f1f0] border-2   " : "focus:outline-none bg-[#0c131d] border-none"}' `}
                                 value={text} onChange={(e) => settext(e.target.value)}
                             />
 

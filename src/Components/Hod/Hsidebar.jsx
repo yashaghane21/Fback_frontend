@@ -28,7 +28,7 @@ export default function Hsidebar() {
 
     const [dep, setdep] = useState("")
     const user = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+        const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
             id: id
         })
         console.log(data)
@@ -68,6 +68,13 @@ export default function Hsidebar() {
         localStorage.setItem("theme", theme)
         const localtheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute("data-theme", localtheme)
+
+        if (auth?.user?.role !== 1) {
+            navigate("/");
+            toast.error("Unauthorized access");
+        } else {
+        }
+
 
     }, [auth?.user?.token])
 

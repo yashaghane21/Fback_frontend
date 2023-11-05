@@ -28,7 +28,7 @@ const Subjects = () => {
     const getUserData = async () => {
         try {
             console.log("Fetching user data for id:", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             })
             console.log(data.user.department._id)
@@ -44,7 +44,7 @@ const Subjects = () => {
         try {
             getUserData()
             setLoading(true)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/fac", {
                 dep: dep
             })
             console.log(data.teachers)
@@ -59,7 +59,7 @@ const Subjects = () => {
     const getSubjects = async () => {
         try {
             setLoading(true)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/subjects", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/subjects", {
                 dep: dep
             })
             console.log(data)
@@ -75,7 +75,7 @@ const Subjects = () => {
     const upteacher = async (id, value) => {
         console.log("uuuuu", id, value)
 
-        const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/uteacher", {
+        const { data } = await axios.put("hhttps://vercel-zpzg.vercel.app/api/v2/uteacher", {
             id: id, value: value
         });
         if (data?.success) {
@@ -93,7 +93,7 @@ const Subjects = () => {
     const getsems = async () => {
         setLoading(true)
         console.log(dept)
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/sems/${dep}`)
         console.log("ankita", response.data.sems)
         setsems(response.data.sems)
         setLoading(false)
@@ -102,7 +102,7 @@ const Subjects = () => {
     const getbyfilter = async (sem) => {
         setLoading(true)
         sets(sem)
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/getsubbysem", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/getsubbysem", {
             sem: sem
         });
         console.log("test2", data.subjects)
@@ -121,7 +121,7 @@ const Subjects = () => {
     const addsub = async (e) => {
         e.preventDefault();
         console.log("sem", sem, "dep", dep)
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/course", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/course", {
             name: name,
             department: dep,
             sem: sem,
@@ -142,7 +142,7 @@ const Subjects = () => {
     const searchsub = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/searchsub", {
+        const { data } = await axios.post("hhttps://vercel-zpzg.vercel.app/api/v2/searchsub", {
             search: search
         });
         console.log("test 3 ", data)
@@ -210,7 +210,7 @@ const Subjects = () => {
 
                             </tr>
                         </thead>
-                        
+
                         {subjects.map((item, index) => (
                             <>
                                 <tr className={`${theme == "light" ? "hover:bg-gray-300 " : "hover:bg-slate-950"}`} key={index}>
@@ -261,7 +261,7 @@ const Subjects = () => {
                                     </select>
                                     }
                                     {<select className={`p-2 my-2 w-full rounded-full ${theme == "light" ? "bg-white   " : " bg-[#0c131d] focus:outline-none border-none"}' `} placeholder='select a semester ' onChange={(e) => handles(e.target.value)}>
-                                    <option>select a semester</option>
+                                        <option>select a semester</option>
                                         {sems.map((item, index) => (
                                             <option className='' key={index} value={item._id}>{item.name}</option>
                                         ))}

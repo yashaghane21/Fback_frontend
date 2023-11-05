@@ -15,7 +15,7 @@ const Ecmainf = () => {
     const getf = async () => {
         setloader(true)
         console.log(id)
-        const { data } = await axios.get(` https://f-backend-7g5y.onrender.com/api/v2/ecfback/${id.id}`)
+        const { data } = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/ecfback/${id.id}`)
         console.log(data.fback)
         setfbacks(data.fback)
         setloader(false)

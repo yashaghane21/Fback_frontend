@@ -26,7 +26,7 @@ const Hadmin = () => {
     console.log(yr3)
     const alldepartments = async () => {
         try {
-            const response = await axios.get("https://f-backend-7g5y.onrender.com/api/v1/department");
+            const response = await axios.get("https://vercel-zpzg.vercel.app/api/v1/department");
             console.log(response.data.departments);
             setdepartments(response.data.departments);
         } catch (error) {

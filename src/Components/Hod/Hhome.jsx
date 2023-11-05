@@ -42,7 +42,7 @@ const Hhome = () => {
     const [psem, setpsem] = useState()
 
     const user = async () => {
-        const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+        const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
             id: id
         })
         console.log(data)
@@ -51,7 +51,7 @@ const Hhome = () => {
         getdata();
     }
     const getdata = async () => {
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/getdata", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/getdata", {
             dep: dep
         });
         console.log("fgfg", data)
@@ -61,17 +61,17 @@ const Hhome = () => {
     }
     const getsems = async () => {
         console.log(dep)
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/sems/${dep}`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/sems/${dep}`)
         console.log("ssss", response.data.sems)
         setsems(response.data.sems)
     }
 
     const fdata = async () => {
-        const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v2/countf")
+        const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v2/countf")
         setFeedbackData(data)
         console.log(data)
 
-        const response = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/countsA/64dbc5db25871abf6b82b2e4`)
+        const response = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/countsA/64dbc5db25871abf6b82b2e4`)
         console.log(response)
         setfbacks(response.data)
     }
@@ -183,7 +183,7 @@ const Hhome = () => {
                                     ))}
                                 </select>
                                 <select placeholder='Select sem' onChange={(e) => setpsem(e.target.value)} className={`px-5 my-5 rounded-2xl text-left mx-5 '  ${theme == "light" ? " bg-[#f5f1f0]" : "bg-[#0c131d] border-[1px]  text-white"}`}>
-                                 <option>sems</option>
+                                    <option>sems</option>
                                     {sems.map((y) => (
 
                                         <option key={y} value={y._id}>{y.name}</option>

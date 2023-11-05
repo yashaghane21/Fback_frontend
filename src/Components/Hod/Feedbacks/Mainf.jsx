@@ -17,7 +17,7 @@ const Mainf = () => {
 
     const getf = async () => {
         setloader(true)
-        const { data } = await axios.get(` https://f-backend-7g5y.onrender.com/api/v2/fback/${id.id}`)
+        const { data } = await axios.get(` https://vercel-zpzg.vercel.app/api/v2/fback/${id.id}`)
         console.log(data)
         setfbacks(data.fback)
         setloader(false)

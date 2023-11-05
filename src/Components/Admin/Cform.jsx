@@ -15,7 +15,7 @@ const Cform = () => {
     const quesions = async () => {
         try {
             setloader(true);
-            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/ques");
+            const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v3/ques");
             console.log(data);
 
             setquestions(data.questions);
@@ -28,7 +28,7 @@ const Cform = () => {
 
     const addq = async (e) => {
         e.preventDefault();
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/question", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/question", {
             question: text
         });
         if (data.success) {
@@ -43,7 +43,7 @@ const Cform = () => {
         if (confirmed) {
             console.log(id);
             try {
-                const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/qdel/${id}`)
+                const { data } = await axios.delete(`https://vercel-zpzg.vercel.app//api/v2/qdel/${id}`)
 
                 if (data.success) {
                     toast.success("Question deleted successfully");

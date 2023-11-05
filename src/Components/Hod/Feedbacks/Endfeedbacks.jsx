@@ -6,6 +6,8 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
 const Endfeedbacks = () => {
+
+    console.log("ayhh")
     const { theme } = useAuth()
     const [fbacks, setfbacks] = useState([]);
     const [dep, setdep] = useState("")
@@ -19,7 +21,7 @@ const Endfeedbacks = () => {
         try {
             setloader(true)
 
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: uid
             });
             console.log(data);
@@ -37,7 +39,7 @@ const Endfeedbacks = () => {
         console.log(dep)
         try {
             setloader(true)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/ecfeedbackby", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/ecfeedbackby", {
                 dep: dep
             });
             console.log(data)

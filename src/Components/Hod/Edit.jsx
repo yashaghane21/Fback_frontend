@@ -14,7 +14,7 @@ const Edit = () => {
   const getUserData = async () => {
     try {
       console.log("Fetching user data for id:", id)
-      const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+      const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
         id: id
       })
       console.log(data.user)
@@ -33,7 +33,7 @@ const Edit = () => {
     e.preventDefault();
     console.log("dfshfgh")
     try {
-      const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/updatehod", {
+      const { data } = await axios.put("https://vercel-zpzg.vercel.app/api/v2/updatehod", {
         name: name,
         email: email,
         phone: phone,

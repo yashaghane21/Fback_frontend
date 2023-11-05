@@ -55,7 +55,11 @@ export default function AdminDashB() {
         localStorage.setItem("theme", theme)
         const localtheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute("data-theme", localtheme)
-
+        if (auth?.user?.role !== 2) {
+            navigate("/")
+            toast.error("Unauthorized access");
+        } else {
+        }
 
     }, [])
     return (

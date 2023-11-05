@@ -21,7 +21,7 @@ const Ecfeedback = () => {
     const quesions = async () => {
         try {
             setloader(true);
-            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/ecques");
+            const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v3/ecques");
             console.log(data);
 
             setquestions(data.questions);
@@ -35,7 +35,7 @@ const Ecfeedback = () => {
     const getUser = async (id) => {
         try {
             console.log(id);
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             });
             setdep(data.user.department);
@@ -59,7 +59,7 @@ const Ecfeedback = () => {
         }
         else {
             try {
-                const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/ecfeedback', {
+                const { data } = await axios.post('https://vercel-zpzg.vercel.app/api/v3/ecfeedback', {
                     department: dep,
                     student: id,
                     feedback: feedbackData

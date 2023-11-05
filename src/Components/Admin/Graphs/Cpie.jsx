@@ -15,7 +15,7 @@ export default function Cpie({ dept }) {
     const [cdata, setcdata] = useState([]);
 
     const getdata = async (dep) => {
-        const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/depfback", {
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/depfback", {
             dep: dep
         });
         setcdata(data.responsedata);

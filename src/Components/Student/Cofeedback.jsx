@@ -28,7 +28,7 @@ const Cofeedback = () => {
     const quesions = async () => {
         try {
             setloader(true);
-            const { data } = await axios.get("https://f-backend-7g5y.onrender.com/api/v3/ques");
+            const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v3/ques");
             console.log(data);
 
             setquestions(data.questions);
@@ -43,7 +43,7 @@ const Cofeedback = () => {
     const getuser = async (id) => {
         try {
             console.log(id)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/user", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v3/user", {
                 id: id
             })
             console.log(data)
@@ -61,7 +61,7 @@ const Cofeedback = () => {
     const subjects = async () => {
         try {
             console.log("shyam", sems);
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v3/subjects", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v3/subjects", {
                 sem: sems
             });
             console.log("uuuu", data.subjects);
@@ -97,7 +97,7 @@ const Cofeedback = () => {
             toast.error("Please Provide Answers")
         } else {
             try {
-                const { data } = await axios.post('https://f-backend-7g5y.onrender.com/api/v3/feedback', {
+                const { data } = await axios.post('https://vercel-zpzg.vercel.app/api/v3/feedback', {
                     department: dep,
                     sem: sems,
                     course: subject,

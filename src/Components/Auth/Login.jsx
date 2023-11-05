@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     setloader(true)
     try {
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v1/login", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v1/login", {
         email: email,
         password: Password
       })

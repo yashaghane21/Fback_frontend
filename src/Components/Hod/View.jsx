@@ -18,7 +18,7 @@ const View = () => {
     const getUserData = async () => {
         try {
             console.log("Fetching user data for id:", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             })
             console.log(data.user)

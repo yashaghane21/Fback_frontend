@@ -27,7 +27,7 @@ const teacher = () => {
         try {
 
             console.log("ghfjhvjh", id)
-            const { data } = await axios.post(`https://f-backend-7g5y.onrender.com/api/v3/user`, {
+            const { data } = await axios.post(`https://vercel-zpzg.vercel.app/api/v3/user`, {
                 id: id
             })
             console.log(data.user.department._id)
@@ -44,7 +44,7 @@ const teacher = () => {
         e.preventDefault();
         setploader(true)
         try {
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/searchfac", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/searchfac", {
                 search: search
             });
             if (data.success) {
@@ -69,7 +69,7 @@ const teacher = () => {
     const addfac = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/addfac", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/addfac", {
                 name: name,
                 email: email,
                 phone: phone,
@@ -91,7 +91,7 @@ const teacher = () => {
     const upfac = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.put("https://f-backend-7g5y.onrender.com/api/v2/updateteacher", {
+            const { data } = await axios.put("https://vercel-zpzg.vercel.app/api/v2/updateteacher", {
                 name: name,
                 email: email,
                 phone: phone,
@@ -114,7 +114,7 @@ const teacher = () => {
         try {
             console.log(dep)
             setploader(true)
-            const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/fac", {
+            const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/fac", {
                 dep: dep
             })
             console.log(data.teachers)
@@ -134,7 +134,7 @@ const teacher = () => {
 
         if (confirmed) {
             console.log(id);
-            const { data } = await axios.delete(`https://f-backend-7g5y.onrender.com/api/v2/delfac/${id}`);
+            const { data } = await axios.delete(`https://vercel-zpzg.vercel.app/api/v2/delfac/${id}`);
             if (data.success) {
                 toast.success("teacher deleted succesfully")
                 getteachers()
@@ -146,7 +146,7 @@ const teacher = () => {
     const getbyid = async (id) => {
         setploader(true)
         console.log(id)
-        const { data } = await axios.get(`https://f-backend-7g5y.onrender.com/api/v2/fac/${id}`)
+        const { data } = await axios.get(`https://vercel-zpzg.vercel.app/api/v2/fac/${id}`)
         console.log("yashhshs", data.teachers)
 
         setteach(data.teachers)

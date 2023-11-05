@@ -20,7 +20,7 @@ export default function CustomBarChart({ sem, year }) {
   console.log("testing", sem, year)
   const getbardata = async () => {
     try {
-      const { data } = await axios.post("https://f-backend-7g5y.onrender.com/api/v2/typebysem", {
+      const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/typebysem", {
         year: iyear,
         sem: semester,
 
