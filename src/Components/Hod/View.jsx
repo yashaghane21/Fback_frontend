@@ -58,12 +58,12 @@ const View = () => {
 
                     <h1 className={`font-bold text-lg my-2 ${theme == "light" ? "text-black" : "text-white"}`}>{name}  </h1>
                     <section className='flex gap-4 my-2'>
-                        <h1 className={`font-bold text-md ${theme == "light" ? "text-black" : "text-white"} `}>{dob.slice(0, 10)}</h1>
+                        <h1 className={`font-bold text-md ${theme == "light" ? "text-black" : "text-white"} `}>{dob?.slice(0, 10)}</h1>
                         <h1 className={`${theme == "light" ? "text-black" : "text-white"} font-bold text-md`}>{gender}</h1>
                     </section>
                     <h1 className={`font-semibold text-sm sm:text-lg ${theme == "light" ? "text-black" : "text-white"}`}>HOD : {dep}</h1>
                     <section className='mt-2 sm:mt-5 flex'>
-                        <section className={`h-[5vh] w-[5vh] flex justify-center items-center  rounded-full  ${theme == "light" ? "text-black" : "bg-[#1d232a] "}`}>
+                        <section className={`h-[5vh] w-[5vh] flex justify-center items-center  rounded-full  ${theme == "light" ? "text-black" : "bg-[#1d232a] text-white "}`}>
                             <FiPhoneCall size={23} className='p-1' />
 
                         </section>

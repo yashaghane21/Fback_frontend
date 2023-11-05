@@ -71,18 +71,18 @@ const Edit = () => {
             <input defaultValue={name} type='text'
               value={name}
               onChange={(e) => setname(e.target.value)}
-              className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}`} />
+              className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] text-white border-none"}`} />
           </section >
 
           <h1 className={` font-bold my-2 ${theme == "light" ? "text-black" : "text-white"}`}>Email</h1>
           <input defaultValue={email} type='text'
             value={email}
             onChange={(e) => setemail(e.target.value)}
-            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}`} />
+            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] text-white border-none"}`} />
 
           <h1 className={` my-1 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>Gender</h1>
           <select
-            onChange={(e) => setgender(e.target.value)} placeholder="Selct a gender" className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}`} >
+            onChange={(e) => setgender(e.target.value)} placeholder="Selct a gender" className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] text-white border-none"}`} >
             <option value="" disabled selected hidden>
               Select a gender
             </option>
@@ -94,13 +94,13 @@ const Edit = () => {
           <input defaultValue={phone} type='text'
             value={phone}
             onChange={(e) => setphone(e.target.value)}
-            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}`} />
+            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] text-white border-none"}`} />
           <h1 className={` my-1 font-bold ${theme == "light" ? "text-black" : "text-white"}`}>DOB</h1>
           <input type='date'
             defaultValue={dob}
             value={dob}
             onChange={(e) => setdob(e.target.value)}
-            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none bg-[#0c131d] border-none"}`} />
+            className={`p-1 py-2 sm:w-[40%] w-[100%] px-4  rounded-md ${theme == "light" ? "bg-[#f5f1f0] text-black  " : "focus:outline-none text-white bg-[#0c131d] border-none"}`} />
 
           <section className='flex justify-center sm:w-[40%] w-[100%]'>
             <button
