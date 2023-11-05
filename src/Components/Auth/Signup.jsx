@@ -70,14 +70,17 @@ const Signup = () => {
         toast.error("user already exist", {
           autoClose: 2000,
         })
+        setloader(false)
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message, {
           autoClose: 2000,
         });
+        setloader(false)
       } else {
         toast.error("An error occurred:", error.message);
+        setloader(false)
       }
     }
 
