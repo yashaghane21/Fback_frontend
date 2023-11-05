@@ -43,6 +43,9 @@ const Signup = () => {
       toast.error("Please fill all fields");
 
     }
+    if (Password.length !== 6) {
+      toast.error("Password  size should be 6 letters");
+    }
     try {
       setloader(true)
       const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v1/register", {
