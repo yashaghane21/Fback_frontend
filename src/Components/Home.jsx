@@ -53,7 +53,7 @@ const Home = () => {
             </section>
 
             <div className={`${theme == "light" ? "bg-white" : "bg-[#1d232a]"} flex flex-col sm:flex-row h-screen `}>
-                <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] flex flex-col  justify-center  items-start p-5 '>
+                <div className='h-[50vh] w-full sm:h-[81vh] sm:w-[43%] lg:ml-[10vh] flex flex-col  justify-center  items-start p-5 '>
 
 
 

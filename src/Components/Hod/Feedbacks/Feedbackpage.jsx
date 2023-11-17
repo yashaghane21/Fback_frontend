@@ -81,7 +81,7 @@ const Feedbackpage = () => {
             }
             setcdata(exportdata)
             setfback(data.feedback)
-            setsem(id.id)
+
             setloader(false)
 
         } catch (error) {
@@ -252,7 +252,7 @@ const Feedbackpage = () => {
     }
     useEffect(() => {
         feedbacks()
-
+        setsem(id.id)
         console.log("sss", fback[0])
         subjects()
         shifts()
