@@ -22,6 +22,7 @@ const Cofeedback = () => {
     const [on, seton] = useState(null)
     const [loader, setloader] = useState(false)
     const id = localStorage.getItem("userid")
+    const [shift, setshift] = useState("")
     const [feedbackData, setFeedbackData] = useState([])
     console.log(id)
 
@@ -50,7 +51,7 @@ const Cofeedback = () => {
             console.log("useert", data.user.sem._id)
             setsem(data.user.sem._id)
             seton(data.user.sem.enabled ? "ok" : "nok");
-
+            setshift(data.user.shift)
             setdep(data.user.department)
 
         } catch (error) {
@@ -102,7 +103,7 @@ const Cofeedback = () => {
                     sem: sems,
                     course: subject,
                     student: id,
-                    feedback: feedbackData
+                    feedback: feedbackData, shift: shift
                 });
                 if (data?.success) {
                     toast.success("Feedback Submited Succesfully ")

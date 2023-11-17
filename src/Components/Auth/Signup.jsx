@@ -22,6 +22,8 @@ const Signup = () => {
   const [semester, setsemester] = useState([]);
   const [sem, setsem] = useState("")
   const [loader, setloader] = useState(false)
+  const [sshift, setshifts] = useState([])
+  const [s, sets] = useState("")
 
   const alldepartments = async () => {
     try {
@@ -35,10 +37,16 @@ const Signup = () => {
     }
   };
 
+  const shifts = async () => {
+    const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v1/shifts")
+    console.log(data)
+    setshifts(data.shifts)
+  }
 
   const handlesubmit = async (e) => {
     e.preventDefault();
     setloader(true)
+
     if (dept === "" || sem === "") {
       toast.error("Please fill all fields");
 
@@ -55,7 +63,8 @@ const Signup = () => {
         password: Password,
         phone: phone,
         department: dept,
-        sem: sem
+        sem: sem,
+        shift: s
       });
       console.log(data)
       if (data.success) {
@@ -118,10 +127,15 @@ const Signup = () => {
     console.log("sem", value);
     setsem(value);
   };
+  const handles = (value) => {
+    console.log("sem", value);
+    sets(value);
+  };
 
   useEffect(() => {
 
     alldepartments();
+    shifts();
     const anim = lottie.loadAnimation({
       container: document.getElementById('lottie-container'),
       renderer: 'svg',
@@ -181,6 +195,14 @@ const Signup = () => {
             ))}
           </Select>
 
+
+          <Select required className='w-full ant-input text-xl mt-4 rounded-2xl ' placeholder='Select a semester' onChange={handles}>
+            {sshift.map((s) => (
+              <Option key={s._id} value={s._id}>
+                {s.name}
+              </Option>
+            ))}
+          </Select>
           <input type='submit' className='w-[100%] bg-blue-700 border-2 rounded-2xl  p-2 mt-6 text-white' />
           <h1 className='text-center mt-2 font-semibold'>Already Registered ? <Link to="/login" className='text-blue-800'>Sign in Here</Link></h1>
         </form>

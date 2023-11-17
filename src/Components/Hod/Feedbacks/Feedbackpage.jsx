@@ -18,6 +18,8 @@ const Feedbackpage = () => {
 
     const { theme } = useAuth()
     const id = useParams()
+    const [s, sets] = useState("")
+    const [sshifts, setshifts] = useState([])
     const [fback, setfback] = useState([])
     const [sub, setsub] = useState([])
     const [subid, setsubid] = useState("")
@@ -62,6 +64,7 @@ const Feedbackpage = () => {
             const answers = data.feedback.flatMap(feedback => feedback.feedback.map(item => item.answer));
             console.log(answers)
             console.log(studentNames)
+            setfback(data.feedback)
             console.log("dd", data.feedback[0].student.name)
             console.log(data, data.feedback[0].sem.enabled)
             const cde = data.feedback.map(feedback => feedback.department.name);
@@ -129,6 +132,20 @@ const Feedbackpage = () => {
         const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/fbacksemyr", {
             sem: id.id,
             year: year
+        })
+        console.log(data)
+        setfback(data.feedback)
+        setloader(false);
+
+    }
+
+    const getyshift = async (s) => {
+        setloader(true)
+
+        console.log(s)
+        const { data } = await axios.post("https://vercel-zpzg.vercel.app/api/v2/feedbackshift", {
+            shift: s, sem: id.id
+
         })
         console.log(data)
         setfback(data.feedback)
@@ -224,6 +241,12 @@ const Feedbackpage = () => {
             console.error(error);
         }
     };
+    const shifts = async () => {
+        const { data } = await axios.get("https://vercel-zpzg.vercel.app/api/v1/shifts")
+        console.log(data)
+        setshifts(data.shifts)
+    }
+
     const handlechange = (e) => {
         setsearch(e.target.value)
     }
@@ -232,6 +255,7 @@ const Feedbackpage = () => {
 
         console.log("sss", fback[0])
         subjects()
+        shifts()
         console.log(id)
         const anim = lottie.loadAnimation({
             container: document.getElementById('lottie-container'),
@@ -260,14 +284,21 @@ const Feedbackpage = () => {
                         </select>
 
                         <select placeholder='select a year' className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onChange={(e) => getbyyear(e.target.value)}>
-                            <option>By year</option>
+                            <option>Select Year</option>
                             {years.map((item, index) => (
                                 // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
                                 //     key={index}>{item.name}</li>]
                                 <option value={item} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item} </option>
                             ))}
                         </select>
-
+                        <select placeholder='select a year' className={`px-5 mx-2 rounded-md text-left'  ${theme == "light" ? " bg-[#f5f1f0] text-black" : "bg-[#0c131d]  text-white"}`} onChange={(e) => getyshift(e.target.value)}>
+                            <option>Shift</option>
+                            {sshifts.map((item, index) => (
+                                // <li className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-bold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} value={item._id} onClick={() => getbysub(item._id)}
+                                //     key={index}>{item.name}</li>]
+                                <option value={item._id} className={`mx-1 shadow-black border-[1px] border-black bg-white max-w-full select-none font-semibold text-black rounded-md  px-2  ${item._id == subid ? "border-b-4 border-blue-700" : "border-b-0"} `} >{item.name} </option>
+                            ))}
+                        </select>
 
                     </ul>
 
