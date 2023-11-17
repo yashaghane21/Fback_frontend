@@ -154,7 +154,7 @@ const Signup = () => {
   return (
     <div className='flex h-screen'>
 
-      <div className='hidden sm:flex justify-center items-center bg-blue-700 w-1/2'>
+      <div className='hidden sm:flex justify-center items-center w-1/2'>
         <div id="lottie-container" style={{ width: '800px', height: '600px' }} />
       </div>
 
@@ -162,7 +162,7 @@ const Signup = () => {
 
         <form className='w-full px-6 md:px-[20vh]' onSubmit={handlesubmit}>
 
-          <h1 className='text-center text-2xl font-bold'>Signup</h1>
+          <h1 className='text-center text-2xl font-bold text-blue-700'>Signup</h1>
           {loader ? <section className='flex justify-center items-center'>
             <ThreeDots size={23} color='blue' />
           </section> :

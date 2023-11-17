@@ -89,9 +89,9 @@ export default function Nav() {
                                         </div>
                                     ) : (
                                         <div className="flex flex-row">
-                                            <Link className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 mt-2' to='/student' >{auth?.user?.name}</Link>
+                                            <Link className='mx-2 font-bold text-lg hover:border-b-2 border-blue-700 mt-2'  >{auth?.user?.name}</Link>
                                             <li className="cursor-pointer" >
-                                                <BiUserCircle size={40} className="text-blue-700" onClick={() => navigate('/student')} />
+                                                <BiUserCircle size={40} className="text-blue-700"  />
                                             </li>
                                         </div>
                                     )}
